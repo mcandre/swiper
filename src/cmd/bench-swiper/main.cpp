@@ -23,7 +23,7 @@ static std::string gen_password(uint *prng_seed) {
     return s;
 }
 
-volatile int successes = 0;
+volatile unsigned long long successes = 0;
 volatile time_t start = 0;
 volatile time_t end = 0;
 

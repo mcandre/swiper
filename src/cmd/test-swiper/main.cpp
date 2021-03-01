@@ -39,7 +39,6 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 
     memcpy(password_cstr, Data, password_cstr_len);
     password_cstr[password_cstr_len] = '\0';
-
     const auto password = std::string(password_cstr);
     PropReversible(password);
     return 0;

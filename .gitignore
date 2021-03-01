@@ -5,7 +5,7 @@ bin/
 debug/
 CTestTestfile.cmake
 Testing/
-
+crash-*
 # Created by https://www.gitignore.io/api/c,cmake
 
 ### C ###
