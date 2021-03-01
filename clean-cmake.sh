@@ -13,6 +13,7 @@ rm -rf *.vcxproj || :
 rm -rf *.vcxproj.filters || :
 rm -rf *.sln || :
 rm -rf x64 || :
+rm -rf *.dir || :
 
 /usr/bin/find . \
     -iwholename '*cmake*' \
