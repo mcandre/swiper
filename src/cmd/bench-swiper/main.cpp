@@ -25,11 +25,16 @@ static std::string gen_password(uint *prng_seed) {
 }
 
 volatile int successes = 0;
-volatile time_t start;
+volatile time_t start = 0;
+volatile time_t end = 0;
 
 void handle_alarm(int sig) {
     if (sig == SIGALRM) {
-        auto elapsed = time(nullptr) - start;
+        if (end == 0) {
+            end = time(nullptr);
+        }
+
+        auto elapsed = end - start;
         std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
         exit(EXIT_SUCCESS);
     }
@@ -86,6 +91,8 @@ int main(int argc, const char **argv) {
             successes++;
         }
     }
+
+    end = time(nullptr);
 
     for (;;) {
         sleep(1);

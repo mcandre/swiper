@@ -40,7 +40,9 @@ std::string swiper::Encrypt(uint *prng_seed, const std::string &password) {
 }
 
 std::optional<std::string> swiper::Decrypt(const std::string &hash) {
-    if (hash.length() < 2 || hash.length() % 2 != 0) {
+    auto len = hash.length();
+
+    if (len < 2 || len % 2 != 0) {
         return std::nullopt;
     }
 
@@ -53,7 +55,7 @@ std::optional<std::string> swiper::Decrypt(const std::string &hash) {
 
     auto password = std::stringstream();
 
-    for (size_t i = 2; i < hash.length(); i += 2) {
+    for (size_t i = 2; i < len; i += 2) {
         errno = 0;
         const auto c = std::stoi(hash.substr(i, 2), nullptr, 16);
 
