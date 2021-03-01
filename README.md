@@ -1,4 +1,4 @@
-# swiper: a high performance Cisco password cracker
+# swiper: high performance Cisco password cracker
 
 # BENCHMARK
 
