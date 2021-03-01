@@ -11,4 +11,6 @@ $ bench-swiper
 
 https://mcandre.github.io/swiper/
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for build steps.
+# CONTRIBUTING
+
+For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
