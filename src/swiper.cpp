@@ -4,10 +4,6 @@
 
 #include <array>
 #include <cstdint>
-#ifdef _WIN32
-#define _CRT_RAND_S
-#include <cstdlib>
-#endif
 #include <iostream>
 #include <random>
 #include <sstream>
