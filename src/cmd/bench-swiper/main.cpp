@@ -34,9 +34,9 @@ int main(int argc, const char **argv) {
     const auto args = std::vector<std::string_view>{argv, argv+argc};
 
     if (args.size() == 2) {
-        unsigned int m_t_s = 0;
-        auto sv = args.at(1);
-        auto result = std::from_chars(sv.data(), sv.data() + sv.size(), m_t_s);
+        unsigned int m_t_s;
+        const auto sv = args.at(1);
+        const auto result = std::from_chars(sv.data(), sv.data() + sv.size(), m_t_s);
 
         if (result.ec == std::errc::invalid_argument) {
             std::cerr << "error: max time seconds must be an integer" << std::endl;
@@ -51,16 +51,16 @@ int main(int argc, const char **argv) {
         max_time_sec = m_t_s;
     }
 
-    auto prng_seed = (unsigned int)(time(nullptr));
+    const auto prng_seed = (unsigned int)(time(nullptr));
     const auto password = gen_password(prng_seed);
     const auto hash = swiper::Encrypt(prng_seed, password);
 
     std::atomic<unsigned long long> successes = 0;
-    time_t start = time(nullptr);
+    const time_t start = time(nullptr);
 
     std::thread t([&]() {
         std::this_thread::sleep_for(std::chrono::seconds(max_time_sec));
-        auto elapsed = time(nullptr) - start;
+        const auto elapsed = time(nullptr) - start;
         std::cout << std::scientific;
         std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
         exit(EXIT_SUCCESS);
