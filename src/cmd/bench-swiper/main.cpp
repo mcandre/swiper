@@ -60,9 +60,9 @@ int main(int argc, const char **argv) {
 
     auto prng_seed = uint(time(nullptr));
 
-    std::vector<std::string> hashes;
-
     auto len = 10000000;
+    std::vector<std::string> hashes;
+    hashes.reserve(len);
 
     std::cout << std::scientific;
 
