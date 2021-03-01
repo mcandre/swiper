@@ -2,6 +2,7 @@
 unset IFS
 set -euf
 
+rm -f crash-* || :
 rm -rf html || :
 rm -rf latex || :
 rm -f debug.log || :
