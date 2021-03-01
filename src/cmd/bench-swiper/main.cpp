@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <atomic>
 #include <charconv>
 #include <chrono>
 #include <iostream>
@@ -54,8 +55,9 @@ int main(int argc, const char **argv) {
     const auto password = gen_password(prng_seed);
     const auto hash = swiper::Encrypt(prng_seed, password);
 
-    volatile unsigned long long successes = 0;
-    volatile time_t start = time(nullptr);
+    std::atomic<unsigned long long> successes = 0;
+    time_t start = time(nullptr);
+
     std::thread t([&]() {
         std::this_thread::sleep_for(std::chrono::seconds(max_time_sec));
         auto elapsed = time(nullptr) - start;
