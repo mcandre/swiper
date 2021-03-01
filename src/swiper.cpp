@@ -15,7 +15,7 @@
 
 #include "swiper/swiper.hpp"
 
-static const std::array<std::array<uint8_t, 11>, 16> xlats = {{
+static const uint8_t xlats[16][11] = {
     {
         0x64, 0x73, 0x66, 0x64,
         0x3b, 0x6b, 0x66, 0x6f,
@@ -96,7 +96,7 @@ static const std::array<std::array<uint8_t, 11>, 16> xlats = {{
         0x4a, 0x4b, 0x44, 0x48,
         0x53, 0x55, 0x42
     }
-}};
+};
 
 std::string swiper::Encrypt(unsigned int prng_seed, const std::string &password) {
     std::uniform_int_distribution distribution(0, 15);
@@ -109,12 +109,12 @@ std::string swiper::Encrypt(unsigned int prng_seed, const std::string &password)
     hash.fill('0');
     hash << seed;
 
-    auto xlat = xlats.at(seed);
+    auto xlat = xlats[seed];
     seed = 0;
 
     for (size_t i = 0; i < password.length() && i < 12; i++) {
         const auto p = uint8_t(password.at(i));
-        const auto c = p ^ xlat.at(seed++);
+        const auto c = p ^ xlat[seed++];
         hash.setf(std::ios::hex, std::ios::basefield);
         hash.width(2);
         hash.fill('0');
@@ -127,7 +127,7 @@ std::string swiper::Encrypt(unsigned int prng_seed, const std::string &password)
 std::string swiper::Decrypt(const std::string &hash) {
     auto seed_int = std::stoi(hash.substr(0, 2), nullptr, 10);
     auto seed = size_t(seed_int);
-    auto xlat = xlats.at(seed);
+    auto xlat = xlats[seed];
     seed = 0;
 
     auto password = std::stringstream();
@@ -136,7 +136,7 @@ std::string swiper::Decrypt(const std::string &hash) {
 
     for (size_t i = 2; i < len; i += 2) {
         const auto c = std::stoi(hash.substr(i, 2), nullptr, 16);
-        password << char(c ^ xlat.at(seed++));
+        password << char(c ^ xlat[seed++]);
     }
 
     return password.str();
