@@ -14,9 +14,8 @@
 
 static std::string gen_password(uint *prng_seed) {
     std::string s;
-    s.reserve(11);
 
-    for (size_t i = 0; i < s.capacity(); i++) {
+    for (size_t i = 0; i < 11; i++) {
         auto p = char(rand_r(prng_seed) % 128);
         s += p;
     }
@@ -30,10 +29,7 @@ volatile time_t end = 0;
 
 void handle_alarm(int sig) {
     if (sig == SIGALRM) {
-        if (end == 0) {
-            end = time(nullptr);
-        }
-
+        end = time(nullptr);
         auto elapsed = end - start;
         std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
         exit(EXIT_SUCCESS);
@@ -91,8 +87,6 @@ int main(int argc, const char **argv) {
             successes++;
         }
     }
-
-    end = time(nullptr);
 
     for (;;) {
         sleep(1);
