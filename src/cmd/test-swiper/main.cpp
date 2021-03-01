@@ -6,6 +6,7 @@
 
 #include <cstring>
 #include <iostream>
+#include <random>
 #include <sstream>
 #include <stdbool.h>
 #include <stddef.h>
@@ -16,9 +17,10 @@
 
 #include "swiper/swiper.hpp"
 
+#ifdef __SANITIZE_ADDRESS__
 static bool PropReversible(const std::string &password) {
-    auto prng_seed = uint(time(nullptr));
-    const auto hash = swiper::Encrypt(&prng_seed, password);
+    auto prng_seed = (unsigned int)(time(nullptr));
+    const auto hash = swiper::Encrypt(prng_seed, password);
     const auto password2 = swiper::Decrypt(hash);
     return password.compare(password2) == 0;
 }
@@ -38,3 +40,4 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     PropReversible(password);
     return 0;
 }
+#endif

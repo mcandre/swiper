@@ -26,7 +26,7 @@ namespace swiper {
      *
      * @returns Cisco IOSv7 hash
      */
-    std::string Encrypt(uint *prng_seed, const std::string &password);
+    std::string Encrypt(unsigned int prng_seed, const std::string &password);
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.

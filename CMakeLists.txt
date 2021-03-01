@@ -39,9 +39,14 @@ endif()
 include_directories(include)
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-add_custom_target(bench COMMAND bin/bench-swiper)
 
-add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -I include src)
+if(NOT MSVC)
+    target_link_libraries(bench-swiper pthread)
+endif()
+
+add_custom_target(bench COMMAND $<TARGET_FILE:bench-swiper>)
+
+add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND sail include src | xargs -n 1 cpplint)
 add_custom_target(vera++ COMMAND sail include src | xargs -n 1 vera++)
 
@@ -70,6 +75,7 @@ if(
         RUNTIME_OUTPUT_DIRECTORY "debug"
         COMPILE_FLAGS "-g ${SANITIZE_FLAGS}"
         LINK_FLAGS "${SANITIZE_FLAGS}"
+        COMPILE_DEFINITIONS "__SANITIZE_ADDRESS__"
     )
 
     add_custom_target(fuzz COMMAND debug/test-swiper "${FUZZER_RUNTIME_FLAGS}")

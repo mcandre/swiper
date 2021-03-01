@@ -4,7 +4,12 @@
 
 #include <array>
 #include <cstdint>
+#ifdef _WIN32
+#define _CRT_RAND_S
+#include <cstdlib>
+#endif
 #include <iostream>
+#include <random>
 #include <sstream>
 #include <string>
 
@@ -93,8 +98,10 @@ static const std::array<std::array<uint8_t, 11>, 16> xlats = {{
     }
 }};
 
-std::string swiper::Encrypt(uint *prng_seed, const std::string &password) {
-    auto seed = size_t(rand_r(prng_seed) % 16);
+std::string swiper::Encrypt(unsigned int prng_seed, const std::string &password) {
+    std::uniform_int_distribution distribution(0, 15);
+    std::default_random_engine rng(prng_seed);
+    auto seed = size_t(distribution(rng));
 
     auto hash = std::stringstream();
     hash.setf(std::ios::dec, std::ios::basefield);
