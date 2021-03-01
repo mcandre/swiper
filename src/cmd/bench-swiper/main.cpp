@@ -14,18 +14,13 @@
 
 #include "swiper/swiper.hpp"
 
-static std::string gen_password(unsigned int prng_seed) {
-    std::string s;
-
+static void gen_password(char *password, unsigned int prng_seed) {
     std::uniform_int_distribution distribution(0, 127);
     std::default_random_engine rng(prng_seed);
 
     for (size_t i = 0; i < 11; i++) {
-        auto p = char(distribution(rng));
-        s += p;
+        password[i] = char(distribution(rng));
     }
-
-    return s;
 }
 
 int main(int argc, const char **argv) {
@@ -52,9 +47,10 @@ int main(int argc, const char **argv) {
     }
 
     const auto prng_seed = (unsigned int)(time(nullptr));
-    const auto password = gen_password(prng_seed);
-    const auto hash = swiper::Encrypt(prng_seed, password);
-
+    char password[12];
+    gen_password(password, prng_seed);
+    char hash[25];
+    swiper::Encrypt(hash, prng_seed, password);
     std::atomic<unsigned long long> successes = 0;
     const time_t start = time(nullptr);
 
@@ -67,7 +63,7 @@ int main(int argc, const char **argv) {
     });
 
     for (;;) {
-        (void) swiper::Decrypt(hash);
+        swiper::Decrypt(password, hash);
         successes++;
     }
 }

@@ -21,19 +21,18 @@ namespace swiper {
     /**
      * @brief Encrypt produces Cisco IOSv7 hashes.
      *
+     * @param hash max 24 characters + null terminator
      * @param prng_seed PRNG seed
      * @param password plaintext
-     *
-     * @returns Cisco IOSv7 hash
      */
-    std::string Encrypt(unsigned int prng_seed, const std::string &password);
+    void Encrypt(char *hash, unsigned int prng_seed, const char *password);
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.
      *
+     * @param password max 11 characters + null terminator
      * @param hash Cisco IOSv7
      *
-     * @returns password
      */
-    std::string Decrypt(const std::string &hash);
+    void Decrypt(char *password, const char *hash);
 }

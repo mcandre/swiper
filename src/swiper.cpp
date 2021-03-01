@@ -4,6 +4,7 @@
 
 #include <array>
 #include <cstdint>
+#include <cstring>
 #include <iostream>
 #include <random>
 #include <sstream>
@@ -94,46 +95,87 @@ static const uint8_t xlats[16][11] = {
     }
 };
 
-std::string swiper::Encrypt(unsigned int prng_seed, const std::string &password) {
+void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
     std::uniform_int_distribution distribution(0, 15);
     std::default_random_engine rng(prng_seed);
     auto seed = size_t(distribution(rng));
 
-    auto hash = std::stringstream();
-    hash.setf(std::ios::dec, std::ios::basefield);
-    hash.width(2);
-    hash.fill('0');
-    hash << seed;
+    auto hash_buf = std::stringstream();
+    hash_buf.setf(std::ios::dec, std::ios::basefield);
+    hash_buf.width(2);
+    hash_buf.fill('0');
+    hash_buf << seed;
 
     auto xlat = xlats[seed];
     seed = 0;
 
-    hash.setf(std::ios::hex, std::ios::basefield);
-    hash.width(2);
-    hash.fill('0');
+    hash_buf.setf(std::ios::hex, std::ios::basefield);
+    hash_buf.width(2);
+    hash_buf.fill('0');
 
-    for (size_t i = 0; i < password.length() && i < 12; i++) {
-        const auto p = uint8_t(password.at(i));
-        const auto c = p ^ xlat[seed++];
-        hash << c;
+    const auto len = strlen(password);
+
+    for (size_t i = 0; i < len && i < 12; i++) {
+        hash_buf << uint8_t(password[i] ^ xlat[seed++]);
     }
 
-    return hash.str();
+    auto hash_s = hash_buf.str();
+    hash_s.copy(hash, hash_s.length(), 0);
 }
 
-std::string swiper::Decrypt(const std::string &hash) {
-    auto seed = size_t(std::stoi(hash.substr(0, 2), nullptr, 10));
+static uint8_t parse_digit(char c) {
+    switch(c) {
+    case '0':
+        return 0;
+    case '1':
+        return 1;
+    case '2':
+        return 2;
+    case '3':
+        return 3;
+    case '4':
+        return 4;
+    case '5':
+        return 5;
+    case '6':
+        return 6;
+    case '7':
+        return 7;
+    case '8':
+        return 8;
+    case '9':
+        return 9;
+    case 'a':
+        return 10;
+    case 'b':
+        return 11;
+    case 'c':
+        return 12;
+    case 'd':
+        return 13;
+    case 'e':
+        return 14;
+    default:
+        return 15;
+    }
+}
+
+static uint8_t parse_int(const char *pair) {
+    return parse_digit(pair[0]) * 10 + parse_digit(pair[1]);
+}
+
+static uint8_t parse_hex(const char *pair) {
+    return parse_digit(pair[0]) * 16 + parse_digit(pair[1]);
+}
+
+void swiper::Decrypt(char *password, const char *hash) {
+    auto seed = size_t(parse_int(hash));
     const auto xlat = xlats[seed];
-
-    auto password = std::vector<uint8_t>();
-
-    const auto len = hash.length();
+    const auto len = strlen(hash);
     seed = len/2;
 
     for (size_t i = len - 2; i > 1; i -= 2) {
-        const auto c = uint8_t(std::stoi(hash.substr(i, 2), nullptr, 16));
-        password.push_back(c ^ xlat[seed--]);
+        const auto c = parse_hex(hash + i);
+        password[seed] = char(c ^ xlat[seed--]);
     }
-
-    return std::string(password.begin(), password.end());
 }
