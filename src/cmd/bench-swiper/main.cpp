@@ -55,40 +55,21 @@ int main(int argc, const char **argv) {
     }
 
     auto prng_seed = (unsigned int)(time(nullptr));
-
-    auto len = 1000;
-    std::vector<std::string> hashes;
-    hashes.reserve(len);
-
-    std::cout << std::scientific;
-
-    std::cerr << "generating " << double(len) << " hashes" << std::endl;
-
-    for (auto i = 0; i < len; i++) {
-        const auto password = gen_password(prng_seed);
-        hashes.push_back(swiper::Encrypt(prng_seed, password));
-    }
-
-    std::cerr << "decrypting" << std::endl;
+    const auto password = gen_password(prng_seed);
+    const auto hash = swiper::Encrypt(prng_seed, password);
 
     volatile unsigned long long successes = 0;
     volatile time_t start = time(nullptr);
     std::thread t([&]() {
         std::this_thread::sleep_for(std::chrono::seconds(max_time_sec));
         auto elapsed = time(nullptr) - start;
+        std::cout << std::scientific;
         std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
         exit(EXIT_SUCCESS);
     });
 
-    size_t i = 0;
-
     for (;;) {
-        auto hash = hashes.at(i);
-        auto result = swiper::Decrypt(hash);
+        (void) swiper::Decrypt(hash);
         successes++;
-
-        if (i == hash.length()) {
-            i = 0;
-        }
     }
 }

@@ -4,5 +4,5 @@
 
 ```console
 $ bench-swiper
-1.728318e+06 hashes/sec
+1.905008e+06 hashes/sec
 ```
