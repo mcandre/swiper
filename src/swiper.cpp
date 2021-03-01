@@ -131,7 +131,7 @@ std::string swiper::Decrypt(const std::string &hash) {
     seed = len/2;
 
     for (size_t i = len - 2; i > 1; i -= 2) {
-        const auto c = std::stoi(hash.substr(i, 2), nullptr, 16);
+        const auto c = uint8_t(std::stoi(hash.substr(i, 2), nullptr, 16));
         password.push_back(c ^ xlat[seed--]);
     }
 
