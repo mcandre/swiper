@@ -1,10 +1,4 @@
-# swiper: a high performance Cisco IOSv7 password decryption library
-
-```text
- ^ ^
-<><><
- w
-```
+# swiper: a high performance Cisco password cracker
 
 # BENCHMARK
 
