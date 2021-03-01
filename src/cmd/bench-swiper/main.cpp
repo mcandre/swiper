@@ -29,7 +29,10 @@ volatile time_t end = 0;
 
 void handle_alarm(int sig) {
     if (sig == SIGALRM) {
-        end = time(nullptr);
+        if (end == 0) {
+            end = time(nullptr);
+        }
+
         auto elapsed = end - start;
         std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
         exit(EXIT_SUCCESS);
@@ -61,7 +64,7 @@ int main(int argc, const char **argv) {
 
     auto prng_seed = uint(time(nullptr));
 
-    auto len = 10000000;
+    auto len = 1000;
     std::vector<std::string> hashes;
     hashes.reserve(len);
 
@@ -80,15 +83,15 @@ int main(int argc, const char **argv) {
     signal(SIGALRM, &handle_alarm);
     alarm(max_time_sec);
 
-    for (auto hash : hashes) {
-        auto result = swiper::Decrypt(hash);
-
-        if (result.has_value()) {
-            successes++;
-        }
-    }
+    size_t i = 0;
 
     for (;;) {
-        sleep(1);
+        auto hash = hashes.at(i);
+        auto result = swiper::Decrypt(hash);
+        successes++;
+
+        if (i == hash.length()) {
+            i = 0;
+        }
     }
 }

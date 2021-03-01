@@ -33,7 +33,7 @@ namespace swiper {
      *
      * @param hash Cisco IOSv7
      *
-     * @returns password, or std::nullopt on error.
+     * @returns password
      */
-    std::optional<std::string> Decrypt(const std::string &hash);
+    std::string Decrypt(const std::string &hash);
 }

@@ -20,12 +20,7 @@ static bool PropReversible(const std::string &password) {
     auto prng_seed = uint(time(nullptr));
     const auto hash = swiper::Encrypt(&prng_seed, password);
     const auto password2 = swiper::Decrypt(hash);
-
-    if (!password2.has_value()) {
-        return false;
-    }
-
-    return password.compare(password2.value()) == 0;
+    return password.compare(password2) == 0;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
