@@ -20,6 +20,8 @@
 namespace swiper {
     /**
      * @brief Encrypt produces Cisco IOSv7 hashes.
+     * 
+     * Truncates to the first 11 characters.
      *
      * @param hash max 24 characters + null terminator
      * @param prng_seed PRNG seed
