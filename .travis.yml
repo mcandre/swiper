@@ -1,0 +1,35 @@
+---
+language: "node_js"
+node_js:
+- "14"
+
+os: "linux"
+dist: "focal"
+
+# git checkout --orphan gh-pages
+# git rm -rf .
+# touch README.md
+# git add README.md
+# git commit -m pages
+# git push -u <remote> gh-pages
+# git checkout master
+branches:
+  only:
+  - "master"
+
+addons:
+  apt:
+    packages:
+    - "doxygen"
+    - "graphviz"
+
+script:
+- "cd \"$TRAVIS_BUILD_DIR\""
+- "sh publish-docs.sh"
+
+env:
+  global:
+    # gem install travis --pre
+    # travis login --pro --github-token <personal-access-token>
+    # travis encrypt --pro "GH_REPO_TOKEN=<personal-access-token>"
+    secure: "NtVZC9f70j8P7sCe8Bb7gIRQPsZfbo5SAfAZg8khW92de8vb7RVGii9Ittat1XUzJNfAS8jCToCE94ZnzTmVeJbTrml/Sy+of4An8R0S0bJDMlcqwiazb3J6Wdh6AmSXTrSaOL4gNXRiRqMOO0phtiqdVNtwZNHpeC0xnWIzeOl1iULMvSdvU4L+tpJs2X+AAm8zK3dLI0/hKq/g0fBKAGaFjs/2S/VMXYrCaZEoAqcz6fOVQ/WpadTa34w4Yxfdi6mXnZ5nEE68eNjcBDnwnJ5rCXKjdEXgZvxub4xi39JXt4wJ8p3B2XO16/+oEzm4aY0Ofcmwi5+PfWuQxLYqhI/7DumWRG//abccOOOOHsvyl9IhrzItFNO+5qFwakLxEMG8KUpZI5NuJ2qG/8W32NzgewPjAeqOVE9PHk0PWxTsf+NAYP2MRVEZt9nrZbBkR9lQUfTp+Yil15v66Fj196kdmoPz/bGkOCxdc8UtOxMfDBhXYMXT8ieDz+4jZ50j+tbLCn/o/+Dm2uwkWGSOivCkNYvhZHVnwZvIEBWtGUk78yPPHaUTsvdgkbmtzVEyBk36BzMx+LJA789RwfvcqiGV3nnfx/y8lwNNd/WbWv81evxQXe9aEYaPmnSzaeqWrcsPCuuzcqVCW6Uu+dDv/PvQxi4dlDqUOFj3GqRp80E="
