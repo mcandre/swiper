@@ -118,13 +118,7 @@ std::string swiper::Encrypt(uint *prng_seed, const std::string &password) {
 }
 
 std::optional<std::string> swiper::Decrypt(const std::string &hash) {
-    errno = 0;
     auto seed_int = std::stoi(hash.substr(0, 2), nullptr, 10);
-
-    if (errno != 0) {
-        return nullptr;
-    }
-
     auto seed = size_t(seed_int);
     auto xlat = xlats.at(seed);
     seed = 0;
@@ -134,13 +128,7 @@ std::optional<std::string> swiper::Decrypt(const std::string &hash) {
     auto len = hash.length();
 
     for (size_t i = 2; i < len; i += 2) {
-        errno = 0;
         const auto c = std::stoi(hash.substr(i, 2), nullptr, 16);
-
-        if (errno != 0) {
-            return std::nullopt;
-        }
-
         password << char(c ^ xlat.at(seed++));
     }
 
