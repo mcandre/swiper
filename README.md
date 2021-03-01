@@ -1,6 +1,6 @@
 # swiper: high performance Cisco password cracker
 
-# EXAMPLE^1
+# EXAMPLE<sup>1</sup>
 
 ```console
 $ bench-swiper
@@ -15,4 +15,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-^1 upper bound observed on a Surface Pro 7 in WSL.
+<sup>1</sup> upper bound observed on a Surface Pro 7 in WSL.
