@@ -3,30 +3,21 @@
 # EXAMPLE<sup>1</sup>
 
 ```console
-$ /usr/bin/time --verbose bin/bench-swiper
-        Command being timed: "bin/bench-swiper"
-        User time (seconds): 12.48
-        System time (seconds): 0.00
-        Percent of CPU this job got: 100%
-        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.48
-        Average shared text size (kbytes): 0
-        Average unshared data size (kbytes): 0
-        Average stack size (kbytes): 0
-        Average total size (kbytes): 0
-        Maximum resident set size (kbytes): 3656
-        Average resident set size (kbytes): 0
-        Major (requiring I/O) page faults: 0
-        Minor (reclaiming a frame) page faults: 142
-        Voluntary context switches: 1
-        Involuntary context switches: 3
-        Swaps: 0
-        File system inputs: 0
-        File system outputs: 0
-        Socket messages sent: 0
-        Socket messages received: 0
-        Signals delivered: 0
-        Page size (bytes): 4096
-        Exit status: 0
+$ sudo perf stat -e 'cycles,instructions,cache-references,cache-misses' bench-swiper
+
+ Performance counter stats for 'bench-swiper':
+
+    65,851,151,756      cycles                    #    4.069 GHz
+
+   208,256,784,578      instructions              #    3.16  insn per cycle
+         2,619,217      cache-references          #    0.162 M/sec
+
+           155,465      cache-misses              #    5.936 % of all cache refs
+
+      16.219274669 seconds time elapsed
+
+      16.169212000 seconds user
+       0.016009000 seconds sys
 ```
 
 # DOCUMENTATION
@@ -37,4 +28,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-<sup>1</sup> upper bound observed with clang 10 on a Surface Pro 7 in WSL.
+<sup>1</sup> upper bound observed with clang 10 on a System76 Meerkat.

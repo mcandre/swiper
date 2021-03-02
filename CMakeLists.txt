@@ -44,12 +44,7 @@ if(NOT MSVC)
     target_link_libraries(bench-swiper pthread)
 endif()
 
-if (MSVC)
-    add_custom_target(bench COMMAND powershell -Command "Measure-Command { Start-Process $<TARGET_FILE:bench-swiper> -Wait }")
-else()
-    add_custom_target(bench COMMAND /usr/bin/time --verbose $<TARGET_FILE:bench-swiper>)
-endif()
-add_custom_target(perf COMMAND perf stat $<TARGET_FILE:bench-swiper>)
+add_custom_target(perf COMMAND sudo perf stat -e "cycles,instructions,cache-references,cache-misses" $<TARGET_FILE:bench-swiper>)
 
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND sail include src | xargs -n 1 cpplint)
