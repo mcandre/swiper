@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <cassert>
 #include <cstring>
 #include <random>
 
@@ -13,9 +14,7 @@
 static bool PropReversible(const char *password) {
     const auto prng_seed = (unsigned int)(time(nullptr));
     char hash[25];
-
     swiper::Encrypt(hash, prng_seed, password);
-
     char password2[12];
     swiper::Decrypt(password2, hash);
     return strcmp(password2, password) == 0;
@@ -32,7 +31,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 
     memcpy(password, Data, password_len);
     password[password_len] = '\0';
-    PropReversible(password);
+    assert(PropReversible(password));
     return 0;
 }
 #endif

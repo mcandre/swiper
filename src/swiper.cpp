@@ -1,15 +1,20 @@
 /**
- * @copyright 2021 YelloSoft
- */
+ * @copyright 2020 YelloSoft
+*/
 
 #include "swiper/swiper.hpp"
 
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
+#include <ctime>
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include <sstream>
 
-static const char xlats[16][11] = {
+static const uint8_t xlats[16][11] = {
     {
         0x64, 0x73, 0x66, 0x64,
         0x3b, 0x6b, 0x66, 0x6f,
@@ -95,7 +100,8 @@ static const char xlats[16][11] = {
 void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
     std::uniform_int_distribution distribution(0, 15);
     std::default_random_engine rng(prng_seed);
-    auto seed = size_t(distribution(rng));
+    const auto seed = int(distribution(rng));
+    const auto xlat = xlats[seed];
 
     auto hash_buf = std::stringstream();
     hash_buf.setf(std::ios::dec, std::ios::basefield);
@@ -103,49 +109,48 @@ void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
     hash_buf.fill('0');
     hash_buf << seed;
 
-    auto xlat = xlats[seed];
-    seed = 0;
-
     hash_buf.setf(std::ios::hex, std::ios::basefield);
-    hash_buf.width(2);
-    hash_buf.fill('0');
 
-    const auto len = strlen(password);
+    auto len = strlen(password);
 
-    for (size_t i = 0; i < len && i < 12; i++) {
-        hash_buf << uint8_t(xlat[seed++] ^ password[i]);
+    if (len > 11) {
+        len = 11;
+    }
+
+    for (auto i = 0u; i < len; i++) {
+        auto c = xlat[i] ^ uint8_t(password[i]);
+        hash_buf << std::setw(2) << std::setfill('0') << c;
     }
 
     auto hash_s = hash_buf.str();
     hash_s.copy(hash, hash_s.length(), 0);
+    hash[hash_s.length()] = '\0';
 }
 
-static inline char parse_digit(char c) {
+static inline uint8_t parse_digit(char c) {
     if (c >= '0' && c <= '9') {
         return c - '0';
     }
 
-    return c - 'a';
+    return c - 'a' + 10;
 }
 
-static char parse_int(const char *pair) {
+static uint8_t parse_int(const char *pair) {
     return parse_digit(pair[0]) * 10 + parse_digit(pair[1]);
 }
 
-static inline char parse_hex(const char *pair) {
+static inline uint8_t parse_hex(const char *pair) {
     return parse_digit(pair[0]) * 16 + parse_digit(pair[1]);
 }
 
 void swiper::Decrypt(char *password, const char *hash) {
-    auto seed = size_t(parse_int(hash));
-    const auto xlat = xlats[seed];
-    const auto len = strlen(hash);
-    seed = len/2;
+    const auto xlat = xlats[parse_int(hash)];
+    const auto len = int(strlen(hash)/2 - 1);
 
     #pragma unroll 8
-    for (size_t i = len - 2; i > 1; i -= 2) {
-        const auto c = parse_hex(hash + i);
-        password[seed] = xlat[seed] ^ c;
-	    seed--;
+    for (auto i = len - 1; i >= 0; i--) {
+        password[i] = xlat[i] ^ parse_hex(hash + 2 * (i + 1));
     }
+
+    password[len] = '\0';
 }
