@@ -2,13 +2,13 @@
  * @copyright 2021 YelloSoft
  */
 
+#include "swiper/swiper.hpp"
+
 #include <cstdint>
 #include <cstring>
 #include <iostream>
 #include <random>
 #include <sstream>
-
-#include "swiper/swiper.hpp"
 
 static const uint8_t xlats[16][11] = {
     {
