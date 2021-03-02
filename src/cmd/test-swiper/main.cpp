@@ -5,15 +5,7 @@
 #include "main.hpp"
 
 #include <cstring>
-#include <iostream>
 #include <random>
-#include <sstream>
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <string>
-#include <string_view>
-#include <vector>
 
 #include "swiper/swiper.hpp"
 
