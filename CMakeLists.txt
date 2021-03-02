@@ -37,13 +37,7 @@ else()
 endif()
 
 include_directories(include)
-
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-
-if(NOT MSVC)
-    target_link_libraries(bench-swiper pthread)
-endif()
-
 add_custom_target(perf COMMAND sudo perf stat -e "cycles,instructions,cache-references,cache-misses" $<TARGET_FILE:bench-swiper>)
 
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
