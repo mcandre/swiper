@@ -147,7 +147,6 @@ void swiper::Decrypt(char *password, const char *hash) {
     const char *h = hash + 2;
     const auto len = int(strlen(h)/2);
 
-    #pragma unroll 8
     for (auto i = len - 1; i >= 0; i--) {
         password[i] = xlat[i] ^ parse_hex(h + i * 2);
     }

@@ -4,10 +4,7 @@
 
 #include "main.hpp"
 
-#include <charconv>
-#include <chrono>
 #include <cstring>
-#include <iostream>
 #include <random>
 
 #include "swiper/swiper.hpp"
@@ -21,28 +18,7 @@ static void gen_password(char *password, unsigned int prng_seed) {
     }
 }
 
-int main(int argc, const char **argv) {
-    auto max_time_sec = 2;
-    const auto args = std::vector<std::string_view>{argv, argv+argc};
-
-    if (args.size() == 2) {
-        auto m_t_s = 0;
-        const auto sv = args.at(1);
-        const auto result = std::from_chars(sv.data(), sv.data() + sv.size(), m_t_s);
-
-        if (result.ec == std::errc::invalid_argument) {
-            std::cerr << "error: max time seconds must be an integer" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
-        if (m_t_s < 1) {
-            std::cerr << "error: max time seconds must be at least 1" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-
-        max_time_sec = m_t_s;
-    }
-
+int main() {
     const auto prng_seed = (unsigned int)(time(nullptr));
     char password[12];
     gen_password(password, prng_seed);
