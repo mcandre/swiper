@@ -47,7 +47,7 @@ endif()
 if (MSVC)
     add_custom_target(bench COMMAND powershell -Command "Measure-Command { Start-Process $<TARGET_FILE:bench-swiper> -Wait }")
 else()
-    add_custom_target(bench COMMAND time $<TARGET_FILE:bench-swiper>)
+    add_custom_target(bench COMMAND /usr/bin/time --verbose $<TARGET_FILE:bench-swiper>)
 endif()
 add_custom_target(perf COMMAND perf stat $<TARGET_FILE:bench-swiper>)
 
