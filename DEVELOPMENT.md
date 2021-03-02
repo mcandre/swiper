@@ -5,6 +5,7 @@
 
 ## Recommended
 
+* [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 * [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
 
 # LINT
@@ -29,6 +30,12 @@
 
 ```console
 $ cmake --build . --target bench
+```
+
+# INSPECT
+
+```console
+$ cmake --build . --target perf
 ```
 
 # DOCUMENT
