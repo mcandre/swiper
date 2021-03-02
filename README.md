@@ -4,7 +4,7 @@
 
 ```console
 $ bench-swiper
-1.294337e+08 hashes/sec
+1.428571e+08 hashes/sec
 ```
 
 # DOCUMENTATION
@@ -15,4 +15,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-<sup>1</sup> upper bound observed on a Surface Pro 7 in WSL.
+<sup>1</sup> upper bound observed with clang 10 on a Surface Pro 7 in WSL.

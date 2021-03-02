@@ -4,12 +4,10 @@
 
 #include "main.hpp"
 
-#include <atomic>
 #include <charconv>
 #include <chrono>
 #include <iostream>
 #include <random>
-#include <thread>
 
 #include "swiper/swiper.hpp"
 
@@ -23,12 +21,12 @@ static void gen_password(char *password, unsigned int prng_seed) {
 }
 
 int main(int argc, const char **argv) {
-    unsigned int max_time_sec = 2;
+    auto max_time_sec = 2;
 
     const auto args = std::vector<std::string_view>{argv, argv+argc};
 
     if (args.size() == 2) {
-        unsigned int m_t_s = 0;
+        auto m_t_s = 0;
         const auto sv = args.at(1);
         const auto result = std::from_chars(sv.data(), sv.data() + sv.size(), m_t_s);
 
@@ -50,19 +48,17 @@ int main(int argc, const char **argv) {
     gen_password(password, prng_seed);
     char hash[25];
     swiper::Encrypt(hash, prng_seed, password);
-    std::atomic<unsigned long long> successes = 0;
+
     const time_t start = time(nullptr);
 
-    std::thread t([&]() {
-        std::this_thread::sleep_for(std::chrono::seconds(max_time_sec));
-        const auto elapsed = time(nullptr) - start;
-        std::cout << std::scientific;
-        std::cout << double(successes)/elapsed << " hashes/sec" << std::endl;
-        exit(EXIT_SUCCESS);
-    });
+    auto len = 1000000000u;
 
-    for (;;) {
+    for (auto i = len; i > 0u; i--) {
         swiper::Decrypt(password, hash);
-        successes++;
     }
+
+    const auto elapsed = time(nullptr) - start;
+    std::cout << std::scientific;
+    std::cout << double(len)/elapsed << " hashes/sec" << std::endl;
+    return EXIT_SUCCESS;
 }
