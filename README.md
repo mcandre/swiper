@@ -3,21 +3,21 @@
 # EXAMPLE<sup>1</sup>
 
 ```console
-$ sudo perf stat -e 'cycles,instructions,cache-references,cache-misses' bench-swiper
+$ sudo perf stat -e 'cycles,instructions,cache-references,cache-misses' bin/bench-swiper
 
- Performance counter stats for 'bench-swiper':
+ Performance counter stats for 'bin/bench-swiper':
 
-    65,851,151,756      cycles                    #    4.069 GHz
+    18,827,871,861      cycles
 
-   208,256,784,578      instructions              #    3.16  insn per cycle
-         2,619,217      cache-references          #    0.162 M/sec
+    60,062,771,732      instructions              #    3.19  insn per cycle
+           803,219      cache-references
 
-           155,465      cache-misses              #    5.936 % of all cache refs
+            87,923      cache-misses              #   10.946 % of all cache refs
 
-      16.219274669 seconds time elapsed
+       4.644529082 seconds time elapsed
 
-      16.169212000 seconds user
-       0.016009000 seconds sys
+       4.628538000 seconds user
+       0.008000000 seconds sys
 ```
 
 # DOCUMENTATION
