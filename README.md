@@ -3,7 +3,7 @@
 # EXAMPLE<sup>1</sup>
 
 ```console
-$ sudo perf stat -e 'cycles,instructions,cache-references,cache-misses' bin/bench-swiper
+$ cmake --build . --target bench
 
  Performance counter stats for 'bin/bench-swiper':
 

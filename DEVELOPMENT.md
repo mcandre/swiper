@@ -7,6 +7,7 @@
 
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 * [time](https://linux.die.net/man/1/time)
+* [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
 
 # LINT
@@ -30,7 +31,7 @@
 # BENCHMARK
 
 ```console
-$ cmake --build . --target perf
+$ cmake --build . --target bench
 ```
 
 # DOCUMENT

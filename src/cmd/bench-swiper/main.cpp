@@ -6,6 +6,11 @@
 
 #include <cstring>
 #include <ctime>
+
+
+#include <iostream>
+
+
 #include <random>
 
 #include "swiper/swiper.hpp"
@@ -22,6 +27,7 @@ static void gen_password(char *password, unsigned int prng_seed) {
 int main() {
     const auto prng_seed = (unsigned int)(time(nullptr));
     char password[12];
+    memset(password, 0, sizeof(password));
     gen_password(password, prng_seed);
     char hash[25];
     memset(hash, 0, sizeof(hash));
