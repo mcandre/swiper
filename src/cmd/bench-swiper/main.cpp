@@ -6,17 +6,14 @@
 
 #include <cstring>
 #include <ctime>
-
-
-#include <iostream>
-
-
 #include <random>
 
 #include "swiper/swiper.hpp"
 
 static void gen_password(char *password, unsigned int prng_seed) {
+    // Traditional ASCII data
     std::uniform_int_distribution distribution(0, 127);
+
     std::default_random_engine rng(prng_seed);
 
     for (auto i = 10; i >= 0; i--) {
