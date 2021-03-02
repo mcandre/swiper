@@ -6,6 +6,7 @@
 
 #include <charconv>
 #include <chrono>
+#include <cstring>
 #include <iostream>
 #include <random>
 
@@ -15,14 +16,13 @@ static void gen_password(char *password, unsigned int prng_seed) {
     std::uniform_int_distribution distribution(0, 127);
     std::default_random_engine rng(prng_seed);
 
-    for (size_t i = 0; i < 11; i++) {
-        password[i] = char(distribution(rng));
+    for (auto i = 10; i >= 0; i--) {
+        password[i] = uint8_t(distribution(rng));
     }
 }
 
 int main(int argc, const char **argv) {
     auto max_time_sec = 2;
-
     const auto args = std::vector<std::string_view>{argv, argv+argc};
 
     if (args.size() == 2) {
@@ -47,11 +47,11 @@ int main(int argc, const char **argv) {
     char password[12];
     gen_password(password, prng_seed);
     char hash[25];
+    memset(hash, 0, sizeof(hash));
     swiper::Encrypt(hash, prng_seed, password);
+    hash[2 * (1 + strlen(password))] = '\0';
 
-    auto len = 1000000000u;
-
-    for (auto i = len; i > 0u; i--) {
+    for (auto i = 1000000000u; i > 0u; i--) {
         swiper::Decrypt(password, hash);
     }
 

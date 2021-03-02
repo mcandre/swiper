@@ -15,6 +15,8 @@ namespace swiper {
      * @brief Encrypt produces Cisco IOSv7 hashes.
      * 
      * Truncates to the first 11 characters.
+     * 
+     * Warning: Omits null terminator, to be placed at hash[2 * (1 + strlen(password))].
      *
      * @param hash max 24 characters + null terminator
      * @param prng_seed PRNG seed
@@ -24,6 +26,8 @@ namespace swiper {
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.
+     *
+     * Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].
      *
      * @param password max 11 characters + null terminator
      * @param hash Cisco IOSv7

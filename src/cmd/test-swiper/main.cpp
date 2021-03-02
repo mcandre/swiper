@@ -15,8 +15,10 @@ static bool PropReversible(const char *password) {
     const auto prng_seed = (unsigned int)(time(nullptr));
     char hash[25];
     swiper::Encrypt(hash, prng_seed, password);
+    hash[2 * (1 + strlen(password))] = '\0';
     char password2[12];
     swiper::Decrypt(password2, hash);
+    password2[strlen(hash)/2 - 1] = '\0';
     return strcmp(password2, password) == 0;
 }
 
