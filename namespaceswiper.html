@@ -110,6 +110,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Decrypt reverses Cisco IOSv7 hashes. </p>
+<p>Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">password</td><td>max 11 characters + null terminator </td></tr>
@@ -154,6 +155,7 @@ Functions</h2></td></tr>
 
 <p>Encrypt produces Cisco IOSv7 hashes. </p>
 <p>Truncates to the first 11 characters.</p>
+<p>Warning: Omits null terminator, to be placed at hash[2 * (1 + strlen(password))].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hash</td><td>max 24 characters + null terminator </td></tr>
