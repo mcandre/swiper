@@ -44,7 +44,7 @@ if(NOT MSVC)
     target_link_libraries(bench-swiper pthread)
 endif()
 
-add_custom_target(bench COMMAND $<TARGET_FILE:bench-swiper>)
+add_custom_target(bench COMMAND /usr/bin/time --verbose $<TARGET_FILE:bench-swiper>)
 add_custom_target(perf COMMAND perf stat $<TARGET_FILE:bench-swiper>)
 
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
@@ -79,7 +79,7 @@ if(
         COMPILE_DEFINITIONS "__SANITIZE_ADDRESS__"
     )
 
-    add_custom_target(fuzz COMMAND debug/test-swiper "${FUZZER_RUNTIME_FLAGS}")
+    add_custom_target(fuzz COMMAND $<TARGET_FILE:test-swiper> "${FUZZER_RUNTIME_FLAGS}")
 else()
     add_custom_target(fuzz)
 endif()

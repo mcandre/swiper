@@ -2,6 +2,7 @@
 
 * a [C++](https://www.cplusplus.com/) compiler
 * [cmake](https://cmake.org/) 3.4+
+* [time](https://linux.die.net/man/1/time)
 
 ## Recommended
 

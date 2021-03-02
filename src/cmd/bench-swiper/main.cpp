@@ -49,16 +49,11 @@ int main(int argc, const char **argv) {
     char hash[25];
     swiper::Encrypt(hash, prng_seed, password);
 
-    const time_t start = time(nullptr);
-
     auto len = 1000000000u;
 
     for (auto i = len; i > 0u; i--) {
         swiper::Decrypt(password, hash);
     }
 
-    const auto elapsed = time(nullptr) - start;
-    std::cout << std::scientific;
-    std::cout << double(len)/elapsed << " hashes/sec" << std::endl;
     return EXIT_SUCCESS;
 }
