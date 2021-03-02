@@ -174,6 +174,7 @@ void swiper::Decrypt(char *password, const char *hash) {
 
     for (size_t i = len - 2; i > 1; i -= 2) {
         const auto c = parse_hex(hash + i);
-        password[seed] = xlat[seed--] ^ c;
+        password[seed] = xlat[seed] ^ c;
+	seed--;
     }
 }

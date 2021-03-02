@@ -28,7 +28,7 @@ int main(int argc, const char **argv) {
     const auto args = std::vector<std::string_view>{argv, argv+argc};
 
     if (args.size() == 2) {
-        unsigned int m_t_s;
+        unsigned int m_t_s = 0;
         const auto sv = args.at(1);
         const auto result = std::from_chars(sv.data(), sv.data() + sv.size(), m_t_s);
 
