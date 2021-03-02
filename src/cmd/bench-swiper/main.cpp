@@ -5,6 +5,7 @@
 #include "main.hpp"
 
 #include <cstring>
+#include <ctime>
 #include <random>
 
 #include "swiper/swiper.hpp"

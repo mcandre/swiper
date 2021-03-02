@@ -44,7 +44,11 @@ if(NOT MSVC)
     target_link_libraries(bench-swiper pthread)
 endif()
 
-add_custom_target(bench COMMAND /usr/bin/time --verbose $<TARGET_FILE:bench-swiper>)
+if (MSVC)
+    add_custom_target(bench COMMAND powershell -Command "Measure-Command { Start-Process $<TARGET_FILE:bench-swiper> -Wait }")
+else()
+    add_custom_target(bench COMMAND time $<TARGET_FILE:bench-swiper>)
+endif()
 add_custom_target(perf COMMAND perf stat $<TARGET_FILE:bench-swiper>)
 
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
