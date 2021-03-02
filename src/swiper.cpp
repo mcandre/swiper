@@ -116,7 +116,7 @@ void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
     const auto len = strlen(password);
 
     for (size_t i = 0; i < len && i < 12; i++) {
-        hash_buf << uint8_t(password[i] ^ xlat[seed++]);
+        hash_buf << uint8_t(xlat[seed++] ^ password[i]);
     }
 
     auto hash_s = hash_buf.str();
@@ -176,6 +176,6 @@ void swiper::Decrypt(char *password, const char *hash) {
 
     for (size_t i = len - 2; i > 1; i -= 2) {
         const auto c = parse_hex(hash + i);
-        password[seed] = char(c ^ xlat[seed--]);
+        password[seed] = xlat[seed--] ^ c;
     }
 }
