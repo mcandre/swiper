@@ -126,7 +126,7 @@ void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
     hash_s.copy(hash, hash_s.length(), 0);
 }
 
-static inline uint8_t parse_digit(char c) {
+static char parse_digit(char c) {
     if (c >= '0' && c <= '9') {
         return c - '0';
     }
@@ -134,12 +134,12 @@ static inline uint8_t parse_digit(char c) {
     return c - 'a' + 10;
 }
 
-static inline uint8_t parse_int(const char *pair) {
-    return parse_digit(pair[0]) * 10 + parse_digit(pair[1]);
+static size_t parse_int(const char *pair) {
+    return 10 * parse_digit(pair[0]) + parse_digit(pair[1]);
 }
 
-static inline uint8_t parse_hex(const char *pair) {
-    return parse_digit(pair[0]) * 16 + parse_digit(pair[1]);
+static char parse_hex(const char *pair) {
+    return 16 * parse_digit(pair[0]) + parse_digit(pair[1]);
 }
 
 void swiper::Decrypt(char *password, const char *hash) {
