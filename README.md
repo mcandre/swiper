@@ -28,4 +28,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-<sup>1</sup> upper bound observed with clang 10 on a System76 Meerkat.
+<sup>1</sup> clang 10 on a System76 Meerkat.
