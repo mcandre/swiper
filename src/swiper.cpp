@@ -147,7 +147,7 @@ namespace swiper {
 
     void Decrypt(char *password, const char *hash) {
         const auto xlat = xlats[parse_int(hash)];
-        const char *h = hash + 2;
+        const char *h = 2 + hash;
         const auto len = int(strlen(h)/2);
 
         for (auto i = len - 1, j = 2 * (len - 1); i != -1; i--, j -= 2) {
