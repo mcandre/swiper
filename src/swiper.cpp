@@ -148,10 +148,16 @@ namespace swiper {
     void Decrypt(char *password, const char *hash) {
         const auto xlat = xlats[parse_int(hash)];
         const char *h = 2 + hash;
-        const auto len = int(strlen(h)/2);
+        const auto len = 11;
 
         for (auto i = len - 1, j = 2 * (len - 1); i != -1; i--, j -= 2) {
-            password[i] = xlat[i] ^ parse_hex(h + j);
+            const char *k = h + j;
+
+            if (*k == '\0') {
+                continue;
+            }
+
+            password[i] = xlat[i] ^ parse_hex(k);
         }
     }
 }
