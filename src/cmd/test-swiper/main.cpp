@@ -6,34 +6,40 @@
 
 #include <cassert>
 #include <cstring>
-#include <random>
 
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
-static bool PropReversible(const char *password) {
-    const auto prng_seed = (unsigned int)(time(nullptr));
+static bool PropReversible(size_t seed, const char *password) {
     char hash[25];
-    swiper::Encrypt(hash, prng_seed, password);
-    hash[2 * (1 + strlen(password))] = '\0';
+    memset(hash, 0, sizeof(hash));
+    swiper::Encrypt(hash, seed, password);
     char password2[12];
+    memset(password2, 0, sizeof(password2));
     swiper::Decrypt(password2, hash);
-    password2[strlen(hash)/2 - 1] = '\0';
     return strcmp(password2, password) == 0;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+    if (Size < 1) {
+        return 0;
+    }
+
+    const auto seed = size_t(Data[0] % 16);
+    const uint8_t *Data2 = Data + 1;
+    Size--;
+
     char password[12];
     const auto password_sz = sizeof(password);
+    memset(password, 0, password_sz);
     auto password_len = Size;
 
     if (password_len > password_sz - 1) {
         password_len = password_sz - 1;
     }
 
-    memcpy(password, Data, password_len);
-    password[password_len] = '\0';
-    assert(PropReversible(password));
+    memcpy(password, Data2, password_len);
+    assert(PropReversible(seed, password));
     return 0;
 }
 #endif

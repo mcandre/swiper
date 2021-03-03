@@ -7,6 +7,9 @@
  * @ref swiper breaks Cisco IOSv7 passwords.
  */
 
+#include <cstddef>
+#include <cstdint>
+
 /**
  * @brief swiper manages legacy Cisco passwords.
  */
@@ -19,10 +22,10 @@ namespace swiper {
      * Warning: Omits null terminator, to be placed at hash[2 * (1 + strlen(password))].
      *
      * @param hash max 24 characters + null terminator
-     * @param prng_seed PRNG seed
+     * @param seed random seed in [0, 16)
      * @param password plaintext
      */
-    void Encrypt(char *hash, unsigned int prng_seed, const char *password);
+    void Encrypt(char *hash, size_t seed, const char *password);
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.

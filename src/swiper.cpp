@@ -4,7 +4,6 @@
 
 #include "swiper/swiper.hpp"
 
-#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -108,7 +107,7 @@ namespace swiper {
         }
 
         inline size_t parse_int(const char *pair) {
-            return 10 * parse_digit(pair[0]) + parse_digit(pair[1]);
+            return size_t(10 * parse_digit(pair[0]) + parse_digit(pair[1]));
         }
 
         inline char parse_hex(const char *pair) {
@@ -116,18 +115,12 @@ namespace swiper {
         }
     }
 
-    void Encrypt(char *hash, unsigned int prng_seed, const char *password) {
-        std::uniform_int_distribution distribution(0, 15);
-        std::default_random_engine rng(prng_seed);
-        const auto seed = int(distribution(rng));
+    void Encrypt(char *hash, size_t seed, const char *password) {
         const auto xlat = xlats[seed];
 
         auto hash_buf = std::stringstream();
         hash_buf.setf(std::ios::dec, std::ios::basefield);
-        hash_buf.width(2);
-        hash_buf.fill('0');
-        hash_buf << seed;
-
+        hash_buf << std::setw(2) << std::setfill('0') << seed;
         hash_buf.setf(std::ios::hex, std::ios::basefield);
 
         auto len = strlen(password);
