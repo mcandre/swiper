@@ -16,7 +16,7 @@ static void gen_password(char *password, unsigned int prng_seed) {
 
     std::default_random_engine rng(prng_seed);
 
-    for (auto i = 10; i >= 0; i--) {
+    for (auto i = 10; i != -1; i--) {
         password[i] = uint8_t(distribution(rng));
     }
 }
@@ -31,7 +31,7 @@ int main() {
     swiper::Encrypt(hash, prng_seed, password);
     hash[2 * (1 + strlen(password))] = '\0';
 
-    for (auto i = 1000000000u; i > 0u; i--) {
+    for (auto i = 1000000000u; i != 0u; i--) {
         swiper::Decrypt(password, hash);
     }
 
