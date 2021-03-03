@@ -10,7 +10,6 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
-#include <random>
 #include <sstream>
 
 static const uint8_t xlats[16][11] = {
