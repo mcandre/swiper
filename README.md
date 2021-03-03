@@ -4,34 +4,29 @@
 
 ```console
 $ cmake --build . --target bench
-[100%] Built target bench-swiper
-
  Performance counter stats for '/home/andrew/go/src/github.com/mcandre/swiper/bin/bench-swiper':
 
-    14,142,417,288      branches                                                      (26.59%)
-        71,441,270      branch-misses             #    0.51% of all branches          (26.59%)
-    52,333,797,037      cycles                                                        (33.26%)
-   157,486,302,942      instructions              #    3.01  insn per cycle           (39.93%)
-         2,990,700      cache-references                                              (39.95%)
-           361,908      cache-misses              #   12.101 % of all cache refs      (39.98%)
-    21,111,865,364      L1-dcache-loads                                               (40.01%)
-           934,200      L1-dcache-load-misses     #    0.00% of all L1-dcache hits    (40.04%)
-           204,086      LLC-loads                                                     (26.70%)
-            22,762      LLC-load-misses           #   11.15% of all LL-cache hits     (26.73%)
+    14,051,678,020      branches                                                      (26.76%)
+         1,463,613      branch-misses             #    0.01% of all branches          (26.72%)
+    45,910,267,392      cycles                                                        (33.38%)
+   144,001,430,340      instructions              #    3.14  insn per cycle           (40.03%)
+         3,444,882      cache-references                                              (40.03%)
+           387,437      cache-misses              #   11.247 % of all cache refs      (39.99%)
+    26,003,662,473      L1-dcache-loads                                               (39.98%)
+         1,010,140      L1-dcache-load-misses     #    0.00% of all L1-dcache hits    (39.95%)
+           184,860      LLC-loads                                                     (26.61%)
+            16,435      LLC-load-misses           #    8.89% of all LL-cache hits     (26.61%)
    <not supported>      L1-icache-loads
-         2,979,717      L1-icache-load-misses                                         (26.73%)
-    21,101,510,209      dTLB-loads                                                    (26.70%)
-             1,685      dTLB-load-misses          #    0.00% of all dTLB cache hits   (26.70%)
-            47,394      iTLB-loads                                                    (26.65%)
-           169,742      iTLB-load-misses          #  358.15% of all iTLB cache hits   (26.62%)
+         4,099,645      L1-icache-load-misses                                         (26.61%)
+    26,066,513,350      dTLB-loads                                                    (26.61%)
+             8,389      dTLB-load-misses          #    0.00% of all dTLB cache hits   (26.68%)
+            48,676      iTLB-loads                                                    (26.71%)
+           796,784      iTLB-load-misses          # 1636.91% of all iTLB cache hits   (26.75%)
 
-      12.958468696 seconds time elapsed
+      11.245572632 seconds time elapsed
 
-      12.940001000 seconds user
-       0.012007000 seconds sys
-
-
-[100%] Built target bench
+      11.217501000 seconds user
+       0.007998000 seconds sys
 ```
 
 # DOCUMENTATION
@@ -42,4 +37,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-<sup>1</sup> clang 10 on a System76 Meerkat.
+<sup>1</sup> System76 Meerkat
