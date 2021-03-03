@@ -73,9 +73,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a65f5ad250e140a61bcdf4452b8881f89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a65f5ad250e140a61bcdf4452b8881f89">Encrypt</a> (char *hash, unsigned int prng_seed, const char *password)</td></tr>
-<tr class="memdesc:a65f5ad250e140a61bcdf4452b8881f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a65f5ad250e140a61bcdf4452b8881f89">More...</a><br /></td></tr>
-<tr class="separator:a65f5ad250e140a61bcdf4452b8881f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7db4f8e5d225dab723dc980cf20e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a8a7db4f8e5d225dab723dc980cf20e83">Encrypt</a> (char *hash, size_t seed, const char *password)</td></tr>
+<tr class="memdesc:a8a7db4f8e5d225dab723dc980cf20e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a8a7db4f8e5d225dab723dc980cf20e83">More...</a><br /></td></tr>
+<tr class="separator:a8a7db4f8e5d225dab723dc980cf20e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aa4c818e46d488bdaed06d6a3f4a78bae">Decrypt</a> (char *password, const char *hash)</td></tr>
 <tr class="memdesc:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOSv7 hashes.  <a href="namespaceswiper.html#aa4c818e46d488bdaed06d6a3f4a78bae">More...</a><br /></td></tr>
 <tr class="separator:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,8 +121,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a65f5ad250e140a61bcdf4452b8881f89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65f5ad250e140a61bcdf4452b8881f89">&#9670;&nbsp;</a></span>Encrypt()</h2>
+<a id="a8a7db4f8e5d225dab723dc980cf20e83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7db4f8e5d225dab723dc980cf20e83">&#9670;&nbsp;</a></span>Encrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,8 +136,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>prng_seed</em>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -159,7 +159,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hash</td><td>max 24 characters + null terminator </td></tr>
-    <tr><td class="paramname">prng_seed</td><td>PRNG seed </td></tr>
+    <tr><td class="paramname">seed</td><td>random seed in [0, 16) </td></tr>
     <tr><td class="paramname">password</td><td>plaintext </td></tr>
   </table>
   </dd>
