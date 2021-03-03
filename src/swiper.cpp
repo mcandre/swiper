@@ -127,11 +127,11 @@ void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
 }
 
 static char parse_digit(char c) {
-    if (c >= '0' && c <= '9') {
+    if (c > '/' && c < ':') {
         return c - '0';
     }
 
-    return c - 'a' + 10;
+    return 10 + c - 'a';
 }
 
 static size_t parse_int(const char *pair) {
