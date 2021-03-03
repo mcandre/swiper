@@ -4,34 +4,31 @@
 
 ```console
 $ cmake --build . --target bench
-Scanning dependencies of target bench-swiper
-[ 33%] Building CXX object CMakeFiles/bench-swiper.dir/src/cmd/bench-swiper/main.cpp.o
-[ 66%] Linking CXX executable bin/bench-swiper
 [100%] Built target bench-swiper
 
  Performance counter stats for '/home/andrew/go/src/github.com/mcandre/swiper/bin/bench-swiper':
 
-    17,180,995,987      branches                                                      (26.63%)
-        94,423,905      branch-misses             #    0.55% of all branches          (26.65%)
-    72,408,800,748      cycles                                                        (33.33%)
-   217,603,444,989      instructions              #    3.01  insn per cycle           (40.02%)
-         4,262,965      cache-references                                              (40.04%)
-           509,961      cache-misses              #   11.963 % of all cache refs      (40.07%)
-    30,265,397,497      L1-dcache-loads                                               (40.06%)
-         1,500,327      L1-dcache-load-misses     #    0.00% of all L1-dcache hits    (40.04%)
-           274,589      LLC-loads                                                     (26.65%)
-            29,007      LLC-load-misses           #   10.56% of all LL-cache hits     (26.62%)
+    14,142,417,288      branches                                                      (26.59%)
+        71,441,270      branch-misses             #    0.51% of all branches          (26.59%)
+    52,333,797,037      cycles                                                        (33.26%)
+   157,486,302,942      instructions              #    3.01  insn per cycle           (39.93%)
+         2,990,700      cache-references                                              (39.95%)
+           361,908      cache-misses              #   12.101 % of all cache refs      (39.98%)
+    21,111,865,364      L1-dcache-loads                                               (40.01%)
+           934,200      L1-dcache-load-misses     #    0.00% of all L1-dcache hits    (40.04%)
+           204,086      LLC-loads                                                     (26.70%)
+            22,762      LLC-load-misses           #   11.15% of all LL-cache hits     (26.73%)
    <not supported>      L1-icache-loads
-         3,982,462      L1-icache-load-misses                                         (26.63%)
-    30,233,681,024      dTLB-loads                                                    (26.66%)
-             4,932      dTLB-load-misses          #    0.00% of all dTLB cache hits   (26.66%)
-            84,476      iTLB-loads                                                    (26.66%)
-           329,528      iTLB-load-misses          #  390.08% of all iTLB cache hits   (26.63%)
+         2,979,717      L1-icache-load-misses                                         (26.73%)
+    21,101,510,209      dTLB-loads                                                    (26.70%)
+             1,685      dTLB-load-misses          #    0.00% of all dTLB cache hits   (26.70%)
+            47,394      iTLB-loads                                                    (26.65%)
+           169,742      iTLB-load-misses          #  358.15% of all iTLB cache hits   (26.62%)
 
-      17.925828072 seconds time elapsed
+      12.958468696 seconds time elapsed
 
-      17.887710000 seconds user
-       0.020008000 seconds sys
+      12.940001000 seconds user
+       0.012007000 seconds sys
 
 
 [100%] Built target bench

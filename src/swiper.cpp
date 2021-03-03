@@ -97,57 +97,61 @@ static const uint8_t xlats[16][11] = {
     }
 };
 
-void swiper::Encrypt(char *hash, unsigned int prng_seed, const char *password) {
-    std::uniform_int_distribution distribution(0, 15);
-    std::default_random_engine rng(prng_seed);
-    const auto seed = int(distribution(rng));
-    const auto xlat = xlats[seed];
+namespace swiper {
+    namespace {
+        inline char parse_digit(char c) {
+            if (c > '/' && c < ':') {
+                return c - '0';
+            }
 
-    auto hash_buf = std::stringstream();
-    hash_buf.setf(std::ios::dec, std::ios::basefield);
-    hash_buf.width(2);
-    hash_buf.fill('0');
-    hash_buf << seed;
+            return 10 + c - 'a';
+        }
 
-    hash_buf.setf(std::ios::hex, std::ios::basefield);
+        inline size_t parse_int(const char *pair) {
+            return 10 * parse_digit(pair[0]) + parse_digit(pair[1]);
+        }
 
-    auto len = strlen(password);
-
-    if (len > 11) {
-        len = 11;
+        inline char parse_hex(const char *pair) {
+            return 16 * parse_digit(pair[0]) + parse_digit(pair[1]);
+        }
     }
 
-    for (auto i = 0u; i < len; i++) {
-        auto c = xlat[i] ^ uint8_t(password[i]);
-        hash_buf << std::setw(2) << std::setfill('0') << c;
+    void Encrypt(char *hash, unsigned int prng_seed, const char *password) {
+        std::uniform_int_distribution distribution(0, 15);
+        std::default_random_engine rng(prng_seed);
+        const auto seed = int(distribution(rng));
+        const auto xlat = xlats[seed];
+
+        auto hash_buf = std::stringstream();
+        hash_buf.setf(std::ios::dec, std::ios::basefield);
+        hash_buf.width(2);
+        hash_buf.fill('0');
+        hash_buf << seed;
+
+        hash_buf.setf(std::ios::hex, std::ios::basefield);
+
+        auto len = strlen(password);
+
+        if (len > 11) {
+            len = 11;
+        }
+
+        for (auto i = 0u; i < len; i++) {
+            auto c = xlat[i] ^ uint8_t(password[i]);
+            hash_buf << std::setw(2) << std::setfill('0') << c;
+        }
+
+        auto hash_s = hash_buf.str();
+        hash_s.copy(hash, hash_s.length(), 0);
     }
 
-    auto hash_s = hash_buf.str();
-    hash_s.copy(hash, hash_s.length(), 0);
-}
+    void Decrypt(char *password, const char *hash) {
+        const auto xlat = xlats[parse_int(hash)];
+        const char *h = hash + 2;
+        const auto len = int(strlen(h)/2);
 
-static inline char parse_digit(char c) {
-    if (c > '/' && c < ':') {
-        return c - '0';
-    }
-
-    return 10 + c - 'a';
-}
-
-static inline size_t parse_int(const char *pair) {
-    return 10 * parse_digit(pair[0]) + parse_digit(pair[1]);
-}
-
-static inline char parse_hex(const char *pair) {
-    return 16 * parse_digit(pair[0]) + parse_digit(pair[1]);
-}
-
-void swiper::Decrypt(char *password, const char *hash) {
-    const auto xlat = xlats[parse_int(hash)];
-    const char *h = hash + 2;
-    const auto len = int(strlen(h)/2);
-
-    for (auto i = len - 1, j = 2 * (len - 1); i != -1; i--, j -= 2) {
-        password[i] = xlat[i] ^ parse_hex(h + j);
+        for (auto i = len - 1, j = 2 * (len - 1); i != -1; i--, j -= 2) {
+            password[i] = xlat[i] ^ parse_hex(h + j);
+        }
     }
 }
