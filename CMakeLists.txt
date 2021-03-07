@@ -61,6 +61,11 @@ else()
     add_custom_target(lint DEPENDS cppcheck cpplint vera++)
 endif()
 
+add_executable(test-swiper src/cmd/test-swiper/main.cpp src/swiper.cpp)
+
+enable_testing()
+add_test(NAME swiper_unit_test COMMAND $<TARGET_FILE:test-swiper>)
+
 if(
     CMAKE_C_COMPILER_ID MATCHES "Clang" AND
     NOT CMAKE_SYSTEM_NAME MATCHES "Darwin"
@@ -68,13 +73,13 @@ if(
     set(SANITIZE_TIMEOUT_SEC 10)
     set(FUZZER_RUNTIME_FLAGS "-max_total_time=${SANITIZE_TIMEOUT_SEC}")
 
-    add_executable(test-swiper src/cmd/test-swiper/main.cpp src/swiper.cpp)
+    add_executable(fuzz-swiper src/cmd/fuzz-swiper/main.cpp src/swiper.cpp)
 
     set(SANITIZE_RULES "fuzzer,address,undefined")
     set(SANITIZE_FLAGS "-fsanitize=${SANITIZE_RULES} -fno-sanitize-recover=${SANITIZE_RULES}")
 
     set_target_properties(
-        test-swiper
+        fuzz-swiper
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "debug"
         COMPILE_FLAGS "-g ${SANITIZE_FLAGS}"
@@ -82,7 +87,7 @@ if(
         COMPILE_DEFINITIONS "__SANITIZE_ADDRESS__"
     )
 
-    add_custom_target(fuzz COMMAND $<TARGET_FILE:test-swiper> "${FUZZER_RUNTIME_FLAGS}")
+    add_custom_target(fuzz COMMAND $<TARGET_FILE:fuzz-swiper> "${FUZZER_RUNTIME_FLAGS}")
 else()
     add_custom_target(fuzz)
 endif()

@@ -24,6 +24,14 @@
 
 # TEST
 
+## SPOT CHECK
+
+```console
+# CTEST_OUTPUT_ON_FAILURE=1 ctest -C Release
+```
+
+## FULL
+
 ```console
 # cmake --build . --target fuzz
 ```
