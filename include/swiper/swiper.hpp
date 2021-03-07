@@ -25,7 +25,7 @@ namespace swiper {
      * @param seed random seed in [0, 16)
      * @param password plaintext
      */
-    void Encrypt(char *hash, int seed, const char *password) noexcept;
+    void Encrypt(char *hash, short int seed, const char *password) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
