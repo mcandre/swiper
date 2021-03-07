@@ -63,9 +63,11 @@ namespace swiper {
         const char *h = 2 + hash;
         const auto len = int(strlen(h) / 2);
         auto seed = parse_int(hash) + len - 1;
+        auto j = 2 * (len - 1);
 
-        for (auto i = len - 1, j = 2 * (len - 1); i != -1; i--, j -= 2) {
+        for (auto i = len - 1; i != -1; i--) {
             password[i] = xlat[seed--] ^ parse_hex(h + j);
+            j -= 2;
         }
     }
 }

@@ -30,6 +30,8 @@ namespace swiper {
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.
      *
+     * Hexadecimal data is lowercase.
+     *
      * Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].
      *
      * @param password max 11 characters + null terminator

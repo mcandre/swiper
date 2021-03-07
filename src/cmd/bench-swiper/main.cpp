@@ -30,8 +30,11 @@ static void gen_password(char *password, unsigned int prng_seed) {
 }
 
 void warm_cache(char password[12], char hs[16][13], int hs_len, int iterations) {
-    for (auto i = iterations, j = 0; i != 0; i--, j++) {
+    auto j = 0;
+
+    for (auto i = iterations; i != 0; i--) {
         swiper::Decrypt(password, hs[j]);
+        j++;
 
         if (j == hs_len - 1) {
             j = 0;
