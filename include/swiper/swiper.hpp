@@ -23,7 +23,7 @@ namespace swiper {
      *
      * @param hash max 24 characters + null terminator
      * @param seed random seed in [0, 16)
-     * @param password plaintext
+     * @param password plaintext ASCII
      */
     void Encrypt(char *hash, short int seed, const char *password) noexcept;
 
