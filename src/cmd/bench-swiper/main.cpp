@@ -28,7 +28,7 @@ int main() {
     #endif
 
     const char *hash = "07022e42450c";
-    char password[12];
+    char password[6];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, 100);
     const auto hashes = 1000000000;
