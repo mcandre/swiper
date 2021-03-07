@@ -73,21 +73,24 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a367b62da26e3e3097630bb5ca8cd0842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a367b62da26e3e3097630bb5ca8cd0842">Encrypt</a> (char *hash, int seed, const char *password)</td></tr>
-<tr class="memdesc:a367b62da26e3e3097630bb5ca8cd0842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a367b62da26e3e3097630bb5ca8cd0842">More...</a><br /></td></tr>
-<tr class="separator:a367b62da26e3e3097630bb5ca8cd0842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aa4c818e46d488bdaed06d6a3f4a78bae">Decrypt</a> (char *password, const char *hash)</td></tr>
-<tr class="memdesc:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOSv7 hashes.  <a href="namespaceswiper.html#aa4c818e46d488bdaed06d6a3f4a78bae">More...</a><br /></td></tr>
-<tr class="separator:aa4c818e46d488bdaed06d6a3f4a78bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a994c0dd375dae4fd1e4f73bbb6e6cd74">Encrypt</a> (char *hash, int seed, const char *password) noexcept</td></tr>
+<tr class="memdesc:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a994c0dd375dae4fd1e4f73bbb6e6cd74">More...</a><br /></td></tr>
+<tr class="separator:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44449e9a1724cda79ba09564c58e259a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> (char *password, const char *hash) noexcept</td></tr>
+<tr class="memdesc:a44449e9a1724cda79ba09564c58e259a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">More...</a><br /></td></tr>
+<tr class="separator:a44449e9a1724cda79ba09564c58e259a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>swiper manages legacy Cisco passwords. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aa4c818e46d488bdaed06d6a3f4a78bae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4c818e46d488bdaed06d6a3f4a78bae">&#9670;&nbsp;</a></span>Decrypt()</h2>
+<a id="a44449e9a1724cda79ba09564c58e259a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44449e9a1724cda79ba09564c58e259a">&#9670;&nbsp;</a></span>Decrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void swiper::Decrypt </td>
@@ -107,6 +110,11 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Decrypt reverses Cisco IOSv7 hashes. </p>
@@ -122,11 +130,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a367b62da26e3e3097630bb5ca8cd0842"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a367b62da26e3e3097630bb5ca8cd0842">&#9670;&nbsp;</a></span>Encrypt()</h2>
+<a id="a994c0dd375dae4fd1e4f73bbb6e6cd74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994c0dd375dae4fd1e4f73bbb6e6cd74">&#9670;&nbsp;</a></span>Encrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void swiper::Encrypt </td>
@@ -152,6 +163,11 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Encrypt produces Cisco IOSv7 hashes. </p>
