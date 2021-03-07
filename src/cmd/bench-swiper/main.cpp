@@ -29,6 +29,16 @@ static void gen_password(char *password, unsigned int prng_seed) {
     }
 }
 
+void warm_cache(char password[12], char hs[16][13], int hs_len, int iterations) {
+    for (auto i = iterations, j = 0; i != 0; i--, j++) {
+        swiper::Decrypt(password, hs[j]);
+
+        if (j == hs_len - 1) {
+            j = 0;
+        }
+    }
+}
+
 int main() {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
@@ -40,8 +50,8 @@ int main() {
     #endif
 
     const auto prng_seed = (unsigned int)(time(nullptr));
-    const auto hs_len = 16;
-    char hs[hs_len][13];
+    char hs[16][13];
+    const auto hs_len = int(sizeof(hs)/13);
     memset(hs, 0, sizeof(hs));
     char password[12];
     memset(password, 0, sizeof(password));
@@ -51,21 +61,13 @@ int main() {
          swiper::Encrypt(hs[i], i, password);
     }
 
+    warm_cache(password, hs, hs_len, 100);
     const auto hashes = 1000000000;
     const auto start = std::chrono::high_resolution_clock::now();
-
-    for (auto i = hashes, j = 0; i != 0; i--, j++) {
-        swiper::Decrypt(password, hs[j]);
-
-        if (j == hs_len - 1) {
-            j = 0;
-        }
-    }
-
+    warm_cache(password, hs, hs_len, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
     const auto sec = std::chrono::duration_cast<std::chrono::seconds>(end-start).count();
     const auto rate = double(hashes)/sec;
     std::cout << std::scientific << rate << " hash/sec" << std::endl;
-
     return EXIT_SUCCESS;
 }
