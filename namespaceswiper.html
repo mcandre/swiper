@@ -76,9 +76,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a994c0dd375dae4fd1e4f73bbb6e6cd74">Encrypt</a> (char *hash, int seed, const char *password) noexcept</td></tr>
 <tr class="memdesc:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a994c0dd375dae4fd1e4f73bbb6e6cd74">More...</a><br /></td></tr>
 <tr class="separator:a994c0dd375dae4fd1e4f73bbb6e6cd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb993f7622ba267190ef7b479935cabb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aeb993f7622ba267190ef7b479935cabb">WarmCache</a> (char *password, char *hash, int n) noexcept</td></tr>
-<tr class="memdesc:aeb993f7622ba267190ef7b479935cabb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accelerates <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> by prepopulating the system cache.  <a href="namespaceswiper.html#aeb993f7622ba267190ef7b479935cabb">More...</a><br /></td></tr>
-<tr class="separator:aeb993f7622ba267190ef7b479935cabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ac3b83c4778be1ebdc74ab846d5a4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a93ac3b83c4778be1ebdc74ab846d5a4f">WarmCache</a> (char *password, const char *hash, int n) noexcept</td></tr>
+<tr class="memdesc:a93ac3b83c4778be1ebdc74ab846d5a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a93ac3b83c4778be1ebdc74ab846d5a4f">More...</a><br /></td></tr>
+<tr class="separator:a93ac3b83c4778be1ebdc74ab846d5a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44449e9a1724cda79ba09564c58e259a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> (char *password, const char *hash) noexcept</td></tr>
 <tr class="memdesc:a44449e9a1724cda79ba09564c58e259a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">More...</a><br /></td></tr>
 <tr class="separator:a44449e9a1724cda79ba09564c58e259a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,8 +187,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb993f7622ba267190ef7b479935cabb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb993f7622ba267190ef7b479935cabb">&#9670;&nbsp;</a></span>WarmCache()</h2>
+<a id="a93ac3b83c4778be1ebdc74ab846d5a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ac3b83c4778be1ebdc74ab846d5a4f">&#9670;&nbsp;</a></span>WarmCache()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +205,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>hash</em>, </td>
         </tr>
         <tr>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Accelerates <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> by prepopulating the system cache. </p>
+<p>WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">password</td><td>max 11 characters + null terminator </td></tr>
