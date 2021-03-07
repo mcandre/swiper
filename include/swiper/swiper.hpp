@@ -28,13 +28,14 @@ namespace swiper {
     void Encrypt(char *hash, int seed, const char *password) noexcept;
 
     /**
-     * @brief Accelerates @ref Decrypt by prepopulating the system cache.
+     * @brief WarmCache accelerates successive @ref Decrypt calls,
+     * by prepopulating the system cache.
      *
      * @param password max 11 characters + null terminator
      * @param hash Cisco IOSv7
      * @param n iterations
      */
-    void WarmCache(char *password, char *hash, int n) noexcept;
+    void WarmCache(char *password, const char *hash, int n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.
