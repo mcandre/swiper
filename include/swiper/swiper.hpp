@@ -25,7 +25,7 @@ namespace swiper {
      * @param seed random seed in [0, 16)
      * @param password plaintext
      */
-    void Encrypt(char *hash, int seed, const char *password);
+    void Encrypt(char *hash, int seed, const char *password) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.
@@ -38,5 +38,5 @@ namespace swiper {
      * @param hash Cisco IOSv7
      *
      */
-    void Decrypt(char *password, const char *hash);
+    void Decrypt(char *password, const char *hash) noexcept;
 }

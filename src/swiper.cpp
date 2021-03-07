@@ -38,7 +38,7 @@ namespace swiper {
         }
     }
 
-    void Encrypt(char *hash, int seed, const char *password) {
+    void Encrypt(char *hash, int seed, const char *password) noexcept {
         auto hash_buf = std::stringstream();
         hash_buf.setf(std::ios::dec, std::ios::basefield);
         hash_buf << std::setw(2) << std::setfill('0') << seed;
@@ -58,7 +58,7 @@ namespace swiper {
         hash_s.copy(hash, hash_s.length(), 0);
     }
 
-    void Decrypt(char *password, const char *hash) {
+    void Decrypt(char *password, const char *hash) noexcept {
         const char *h = 2 + hash;
         const auto len = int(strlen(h)) >> 1;
 
@@ -67,7 +67,7 @@ namespace swiper {
         }
 
         auto i = len - 1;
-        auto j = 2 * i;
+        auto j = i << 1;
         auto seed = parse_int(hash) + i;
 
         for (;;) {

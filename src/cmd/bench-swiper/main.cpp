@@ -29,8 +29,8 @@ static void gen_password(char *password, unsigned int prng_seed) {
     }
 }
 
-void warm_cache(char *password, char *hash, unsigned int iterations) {
-    for (auto i = iterations; i != 0u; i--) {
+void warm_cache(char *password, char *hash, int iterations) {
+    for (auto i = iterations; i != 0; i--) {
         swiper::Decrypt(password, hash);
     }
 }
@@ -53,7 +53,7 @@ int main() {
     gen_password(password, prng_seed);
     swiper::Encrypt(hash, 7, password);
     warm_cache(password, hash, 100);
-    const auto hashes = 1000000000u;
+    const auto hashes = 1000000000;
     const auto start = std::chrono::high_resolution_clock::now();
     warm_cache(password, hash, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
