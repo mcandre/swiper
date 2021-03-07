@@ -29,7 +29,7 @@ static void gen_password(char *password, unsigned int prng_seed) {
     }
 }
 
-void warm_cache(char *password, char *hash, int iterations) {
+void warm_cache(char *password, char *hash, int iterations) noexcept {
     for (auto i = iterations; i != 0; i--) {
         swiper::Decrypt(password, hash);
     }
