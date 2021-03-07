@@ -29,12 +29,6 @@ static void gen_password(char *password, unsigned int prng_seed) {
     }
 }
 
-void warm_cache(char *password, char *hash, int iterations) noexcept {
-    for (auto i = iterations; i != 0; i--) {
-        swiper::Decrypt(password, hash);
-    }
-}
-
 int main() {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
@@ -52,10 +46,10 @@ int main() {
     memset(password, 0, sizeof(password));
     gen_password(password, prng_seed);
     swiper::Encrypt(hash, 7, password);
-    warm_cache(password, hash, 100);
+    swiper::WarmCache(password, hash, 100);
     const auto hashes = 1000000000;
     const auto start = std::chrono::high_resolution_clock::now();
-    warm_cache(password, hash, hashes);
+    swiper::WarmCache(password, hash, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
     const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
     const auto rate = 1000.0 * hashes / ms;

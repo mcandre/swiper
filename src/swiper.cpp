@@ -58,6 +58,13 @@ namespace swiper {
         hash_s.copy(hash, hash_s.length(), 0);
     }
 
+    void WarmCache(char *password, char *hash, int n) noexcept {
+        while (n != 0) {
+            swiper::Decrypt(password, hash);
+            n--;
+        }
+    }
+
     void Decrypt(char *password, const char *hash) noexcept {
         const char *h = 2 + hash;
         const auto len = int(strlen(h)) >> 1;
