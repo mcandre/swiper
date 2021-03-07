@@ -10,6 +10,13 @@
 #include <iostream>
 #include <random>
 
+#if defined(_WIN32)
+#include <Windows.h>
+#elif defined(__linux__)
+#include <sched.h>
+#include <sys/sysinfo.h>
+#endif
+
 #include "swiper/swiper.hpp"
 
 static void gen_password(char *password, unsigned int prng_seed) {
@@ -23,6 +30,15 @@ static void gen_password(char *password, unsigned int prng_seed) {
 }
 
 int main() {
+    #if defined(_WIN32)
+    ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
+    #elif defined(__linux__)
+    cpu_set_t mask;
+    CPU_ZERO(&mask);
+    CPU_SET(0, &mask);
+    sched_setaffinity(0, sizeof(mask), &mask);
+    #endif
+
     const auto prng_seed = (unsigned int)(time(nullptr));
     const auto hs_len = 16;
     char hs[hs_len][13];
