@@ -4,7 +4,7 @@
 
 ```console
 $ bench-swiper
-1.984127e+08 hash/sec
+1.011225e+08 hash/sec
 ```
 
 # DOCUMENTATION
@@ -15,4 +15,4 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
-<sup>1</sup> Median report on a System76 Meerkat
+<sup>1</sup> Surface Pro 7
