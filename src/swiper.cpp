@@ -21,20 +21,20 @@ static const uint8_t xlat[28] = {
 
 namespace swiper {
     namespace {
-        inline int parse_digit(char c) {
+        inline uint8_t parse_digit(char c) {
             if (c > '/' && c < ':') {
                 return c - '0';
             }
 
-            return 10 + (c - 'a');
+            return 0x0a + (c - 'a');
         }
 
-        inline short int parse_dec(const char *pair) {
-            return 10 * parse_digit(pair[0]) + parse_digit(pair[1]);
+        inline uint8_t parse_dec(const char *pair) {
+            return uint8_t(0x0a * parse_digit(pair[0]) + parse_digit(pair[1]));
         }
 
-        inline int parse_hex(const char *pair) {
-            return 16 * parse_digit(pair[0]) + parse_digit(pair[1]);
+        inline uint8_t parse_hex(const char *pair) {
+            return uint8_t(0x10 * parse_digit(pair[0]) + parse_digit(pair[1]));
         }
     }
 
