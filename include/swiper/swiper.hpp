@@ -33,7 +33,7 @@ namespace swiper {
      *
      * @param password max 11 characters + null terminator
      * @param hash Cisco IOSv7
-     * @param n iterations
+     * @param n iterations (non-negative)
      */
     void WarmCache(char *password, const char *hash, int n) noexcept;
 
@@ -45,7 +45,7 @@ namespace swiper {
      * Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].
      *
      * @param password max 11 characters + null terminator
-     * @param hash Cisco IOSv7
+     * @param hash Cisco IOSv7 (lowercase)
      *
      */
     void Decrypt(char *password, const char *hash) noexcept;

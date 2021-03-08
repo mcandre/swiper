@@ -81,13 +81,12 @@ namespace swiper {
         auto seed = parse_dec(hash) + (short int) i;
 
         for (;;) {
-            password[i] = xlat[seed--] ^ parse_hex(h + j);
+            password[i--] = xlat[seed--] ^ parse_hex(h + j);
 
-            if (i == 0) {
+            if (i == -1) {
                 break;
             }
 
-            i--;
             j -= 2;
         }
     }
