@@ -64,7 +64,7 @@ namespace swiper {
     void WarmCache(char *password, const char *hash, int n) noexcept {
         while (n != 0) {
             swiper::Decrypt(password, hash);
-            n--;
+            --n;
         }
     }
 
@@ -78,7 +78,7 @@ namespace swiper {
 
         auto i = len - 1;
         auto j = i << 1;
-        auto seed = parse_dec(hash) + (short int) i;
+        auto seed = parse_dec(hash) + (short int)(i);
 
         for (;;) {
             password[i--] = xlat[seed--] ^ parse_hex(h + j);
