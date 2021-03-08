@@ -70,13 +70,12 @@ namespace swiper {
 
     void Decrypt(char *password, const char *hash) noexcept {
         const char *h = 2 + hash;
-        const auto len = int(strlen(h)) >> 1;
+        auto i = (int(strlen(h)) >> 1) - 1;
 
-        if (len == 0) {
+        if (i == -1) {
             return;
         }
 
-        auto i = len - 1;
         auto j = i << 1;
         auto seed = parse_dec(hash) + (short int)(i);
 
