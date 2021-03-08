@@ -9,32 +9,34 @@
 #include <iostream>
 #include <sstream>
 
-static const uint8_t xlat[28] = {
-    0x64, 0x73, 0x66, 0x64,
-    0x3b, 0x6b, 0x66, 0x6f,
-    0x41, 0x2c, 0x2e, 0x69,
-    0x79, 0x65, 0x77, 0x72,
-    0x6b, 0x6c, 0x64, 0x4a,
-    0x4b, 0x44, 0x48, 0x53,
-    0x55, 0x42, 0x73, 0x00
-};
-
 namespace swiper {
     namespace {
-        inline auto parse_digit(char c) {
-            if (c < '\x3a') {
-                return c - '0';
+        uint8_t xlat[28] = {
+            0x64, 0x73, 0x66, 0x64,
+            0x3b, 0x6b, 0x66, 0x6f,
+            0x41, 0x2c, 0x2e, 0x69,
+            0x79, 0x65, 0x77, 0x72,
+            0x6b, 0x6c, 0x64, 0x4a,
+            0x4b, 0x44, 0x48, 0x53,
+            0x55, 0x42, 0x73, 0x00
+        };
+
+        template <class T>
+        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+        parse_digit(T t) {
+            if (t < 58) {
+                return t - 48;
             }
 
-            return '\x0a' + c - 'a';
+            return t - 87;
         }
 
         inline short int parse_dec(const char *pair) {
-            return (short int)('\x0a' * parse_digit(pair[0]) + parse_digit(pair[1]));
+            return (short int)(10) * parse_digit((short int)(pair[0])) + parse_digit((short int)(pair[1]));
         }
 
         inline uint8_t parse_hex(const char *pair) {
-            return uint8_t('\x10' * parse_digit(pair[0]) + parse_digit(pair[1]));
+            return (parse_digit(pair[0]) << 4) + parse_digit(pair[1]);
         }
     }
 

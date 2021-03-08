@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <cassert>
 #include <chrono>
 #include <cstring>
 #include <iostream>
@@ -34,6 +35,7 @@ int main() {
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
+    assert(strcmp(password, "monke") == 0);
     const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
     const auto rate = 1000.0 * hashes / ms;
     std::cout << std::scientific << rate << " hash/sec" << std::endl;
