@@ -6,7 +6,6 @@
 
 #include <chrono>
 #include <cstring>
-#include <ctime>
 #include <iostream>
 #if defined(_WIN32)
 #include <Windows.h>

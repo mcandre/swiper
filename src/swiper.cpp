@@ -4,10 +4,7 @@
 
 #include "swiper/swiper.hpp"
 
-#include <cstdio>
-#include <cstdlib>
 #include <cstring>
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <sstream>

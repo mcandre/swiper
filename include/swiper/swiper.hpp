@@ -7,9 +7,6 @@
  * @ref swiper breaks Cisco IOSv7 passwords.
  */
 
-#include <cstddef>
-#include <cstdint>
-
 /**
  * @brief swiper manages legacy Cisco passwords.
  */
