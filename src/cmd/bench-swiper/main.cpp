@@ -36,8 +36,13 @@ int main() {
     swiper::WarmCache(password, hash, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
     assert(strcmp(password, "monke") == 0);
-    const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
-    const auto rate = 1000.0 * hashes / ms;
-    std::cout << std::scientific << rate << " hash/sec" << std::endl;
+    const auto elapsed = end - start;
+    const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
+    const auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
+    const auto bandwidth = 1000.0 * hashes / ms;
+    const auto latency = ns / hashes;
+    std::cout << std::scientific;
+    std::cout << bandwidth << " hash/sec" << std::endl;
+    std::cout << latency << " ns/call" << std::endl;
     return EXIT_SUCCESS;
 }
