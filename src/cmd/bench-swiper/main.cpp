@@ -42,8 +42,8 @@ int main() {
     const auto bandwidth_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
     std::cout << std::setprecision(2);
-    std::cout << "bandwidth (password/sec)\tlatency (ns)" << std::endl <<
-        std::scientific << bandwidth_sec << "\t\t\t" <<
-        std::fixed << latency_ns << std::endl;
+    std::cout << "latency (ns)\tbandwidth (password/sec)" << std::endl <<
+        std::fixed << std::setw(12) << std::left << latency_ns << "\t" <<
+        std::scientific << bandwidth_sec << std::endl;
     return EXIT_SUCCESS;
 }
