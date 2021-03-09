@@ -15,6 +15,10 @@ https://mcandre.github.io/swiper/
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
+# LICENSE
+
+FreeBSD
+
 # DISCLAIMER
 
 Intended for educational purposes only.
