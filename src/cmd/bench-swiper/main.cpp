@@ -32,7 +32,7 @@ int main() {
     char password[6];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, int32_t(100));
-    const auto trials = int32_t(100);
+    const auto trials = int32_t(1000000000);
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
@@ -42,8 +42,8 @@ int main() {
     const auto bandwidth_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
     std::cout << std::setprecision(2);
-    std::cout << "latency (ns)\tbandwidth (password/sec)" << std::endl <<
-        std::fixed << latency_ns << "\t\t" <<
-        std::scientific << bandwidth_sec << std::endl;
+    std::cout << "bandwidth (password/sec)\tlatency (ns)" << std::endl <<
+        std::scientific << bandwidth_sec << "\t\t\t" <<
+        std::fixed << latency_ns << std::endl;
     return EXIT_SUCCESS;
 }
