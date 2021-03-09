@@ -1,4 +1,4 @@
-# swiper: high performance Cisco password cracker
+# swiper: high performance Cisco IOS^tm type 7 password cracker
 
 # EXAMPLE
 
@@ -14,3 +14,7 @@ https://mcandre.github.io/swiper/
 # CONTRIBUTING
 
 For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+# DISCLAIMER
+
+Intended for educational purposes only.
