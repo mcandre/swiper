@@ -7,6 +7,7 @@
 #include <cassert>
 #include <chrono>
 #include <cstring>
+#include <iomanip>
 #include <iostream>
 #if defined(_WIN32)
 #include <Windows.h>
@@ -31,18 +32,18 @@ int main() {
     char password[6];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, int32_t(100));
-    const auto hashes = int32_t(1000000000);
+    const auto trials = int32_t(1000000000);
     const auto start = std::chrono::high_resolution_clock::now();
-    swiper::WarmCache(password, hash, hashes);
+    swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
     assert(strcmp(password, "monke") == 0);
     const auto elapsed = end - start;
-    const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
-    const auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
-    const auto bandwidth = 1000.0 * hashes / ms;
-    const auto latency = double(ns) / hashes;
-    std::cout << std::scientific;
-    std::cout << bandwidth << " hash/sec" << std::endl;
-    std::cout << latency << " ns/call" << std::endl;
+    const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
+    const auto bandwidth_sec = 1000000000.0 * trials / total_ns;
+    const auto latency_ns = double(total_ns) / trials;
+    std::cout << std::setprecision(2);
+    std::cout << "latency (ns)\tbandwidth (password/sec)" << std::endl <<
+        std::fixed << latency_ns << "\t\t" <<
+        std::scientific << bandwidth_sec << std::endl;
     return EXIT_SUCCESS;
 }

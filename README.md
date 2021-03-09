@@ -4,8 +4,8 @@
 
 ```console
 $ bench-swiper
-1.120951e+08 hash/sec
-8.921230e+00 ns/call
+latency (ns)    bandwidth (password/sec)
+9.66            1.04e+08
 ```
 
 # DOCUMENTATION
