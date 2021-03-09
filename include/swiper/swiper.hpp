@@ -14,6 +14,30 @@
  */
 namespace swiper {
     /**
+     * @brief ParseDigit reads a decimal or hexadecimal character as a number.
+     * 
+     * @param c printed representation
+     * @returns value
+     */
+    int32_t ParseDigit(char c);
+
+    /**
+     * @brief ParseDec reads a decimal string as a number.
+     * 
+     * @param pair 2 characters
+     * @returns value
+     */
+    int32_t ParseDec(const char *pair);
+
+    /**
+     * @brief ParseHex reads a hexadecimal string as a number.
+     * 
+     * @param pair 2 characters
+     * @returns value
+     */
+    int32_t ParseHex(const char *pair);
+
+    /**
      * @brief Encrypt produces Cisco IOSv7 hashes.
      * 
      * Truncates to the first 11 characters.

@@ -10,32 +10,30 @@
 #include <sstream>
 
 namespace swiper {
-    namespace {
-        uint8_t xlat[28] = {
-            0x64, 0x73, 0x66, 0x64,
-            0x3b, 0x6b, 0x66, 0x6f,
-            0x41, 0x2c, 0x2e, 0x69,
-            0x79, 0x65, 0x77, 0x72,
-            0x6b, 0x6c, 0x64, 0x4a,
-            0x4b, 0x44, 0x48, 0x53,
-            0x55, 0x42, 0x73, 0x00
-        };
+    const uint8_t Xlat[28] = {
+        0x64, 0x73, 0x66, 0x64,
+        0x3b, 0x6b, 0x66, 0x6f,
+        0x41, 0x2c, 0x2e, 0x69,
+        0x79, 0x65, 0x77, 0x72,
+        0x6b, 0x6c, 0x64, 0x4a,
+        0x4b, 0x44, 0x48, 0x53,
+        0x55, 0x42, 0x73, 0x00
+    };
 
-        inline int32_t parse_digit(char c) {
-            if (c < '\x40') {
-                return c - '\x30';
-            }
-
-            return c - '\x57';
+    int32_t ParseDigit(char c) {
+        if (c < '\x40') {
+            return c - '\x30';
         }
 
-        inline int32_t parse_dec(const char *pair) {
-            return parse_digit(pair[0]) * 10 + parse_digit(pair[1]);
-        }
+        return c - '\x57';
+    }
 
-        inline int32_t parse_hex(const char *pair) {
-            return parse_digit(pair[0]) * 16 + parse_digit(pair[1]);
-        }
+    int32_t ParseDec(const char *pair) {
+        return ParseDigit(pair[0]) * 10 + ParseDigit(pair[1]);
+    }
+
+    int32_t ParseHex(const char *pair) {
+        return ParseDigit(pair[0]) * 16 + ParseDigit(pair[1]);
     }
 
     void Encrypt(char *hash, int32_t seed, const char *password) noexcept {
@@ -50,7 +48,7 @@ namespace swiper {
         }
 
         for (auto i = 0; i < len; i++) {
-            auto c = xlat[seed++] ^ uint8_t(password[i]);
+            const auto c = Xlat[seed++] ^ uint8_t(password[i]);
             hash_buf << std::setw(2) << std::setfill('0') << c;
         }
 
@@ -60,7 +58,7 @@ namespace swiper {
 
     void WarmCache(char *password, const char *hash, int32_t n) noexcept {
         while (n != 0) {
-            swiper::Decrypt(password, hash);
+            Decrypt(password, hash);
             --n;
         }
     }
@@ -73,10 +71,10 @@ namespace swiper {
         }
 
         auto i = j / 2 - 1;
-        auto seed = i + parse_dec(hash);
+        auto seed = i + ParseDec(hash);
 
         for (;;) {
-            password[i--] = xlat[seed--] ^ uint8_t(parse_hex(hash + j));
+            password[i--] = Xlat[seed--] ^ uint8_t(ParseHex(hash + j));
 
             if (i == -1) {
                 break;
