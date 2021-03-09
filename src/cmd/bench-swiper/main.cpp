@@ -32,7 +32,7 @@ int main() {
     char password[6];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, int32_t(100));
-    const auto trials = int32_t(1000000000);
+    const auto trials = int32_t(100);
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();

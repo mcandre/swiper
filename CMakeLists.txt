@@ -41,7 +41,10 @@ add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
 find_program(PERF "perf")
 
 if(MSVC)
-    add_custom_target(bench COMMAND powershell -Command "Measure-Command { $<TARGET_FILE:bench-swiper> | Out-Default }")
+    add_custom_target(bench COMMAND
+        powershell -Command "Measure-Command { $<TARGET_FILE:bench-swiper> | Out-Default }"
+        USES_TERMINAL
+    )
 elseif(PERF)
     add_custom_target(bench COMMAND sudo perf stat -dde "branches,branch-misses,cycles,instructions,cache-references,cache-misses" $<TARGET_FILE:bench-swiper>)
 else()
