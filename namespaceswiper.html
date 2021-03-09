@@ -62,7 +62,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">swiper Namespace Reference</div>  </div>
 </div><!--header-->
@@ -73,6 +74,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:af762b52234dc8c0a458416df2f8c1ec3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">ParseDigit</a> (char c)</td></tr>
+<tr class="memdesc:af762b52234dc8c0a458416df2f8c1ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDigit reads a decimal or hexadecimal character as a number.  <a href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">More...</a><br /></td></tr>
+<tr class="separator:af762b52234dc8c0a458416df2f8c1ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">ParseDec</a> (const char *pair)</td></tr>
+<tr class="memdesc:aaf453672d84b320b1c2f76e8cf025a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDec reads a decimal string as a number.  <a href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">More...</a><br /></td></tr>
+<tr class="separator:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dd62273df44d6813e86741f8bed811f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">ParseHex</a> (const char *pair)</td></tr>
+<tr class="memdesc:a6dd62273df44d6813e86741f8bed811f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseHex reads a hexadecimal string as a number.  <a href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">More...</a><br /></td></tr>
+<tr class="separator:a6dd62273df44d6813e86741f8bed811f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6826be05aa70e068e136218b554bc54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">Encrypt</a> (char *hash, int32_t seed, const char *password) noexcept</td></tr>
 <tr class="memdesc:ae6826be05aa70e068e136218b554bc54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOSv7 hashes.  <a href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">More...</a><br /></td></tr>
 <tr class="separator:ae6826be05aa70e068e136218b554bc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -82,6 +92,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a44449e9a1724cda79ba09564c58e259a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> (char *password, const char *hash) noexcept</td></tr>
 <tr class="memdesc:a44449e9a1724cda79ba09564c58e259a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOSv7 hashes.  <a href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">More...</a><br /></td></tr>
 <tr class="separator:a44449e9a1724cda79ba09564c58e259a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:acf8a709c2997cda07939e01979a6f916"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#acf8a709c2997cda07939e01979a6f916">Xlat</a> [28]</td></tr>
+<tr class="separator:acf8a709c2997cda07939e01979a6f916"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>swiper manages legacy Cisco passwords. </p>
@@ -188,6 +203,87 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aaf453672d84b320b1c2f76e8cf025a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf453672d84b320b1c2f76e8cf025a8f">&#9670;&nbsp;</a></span>ParseDec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t swiper::ParseDec </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pair</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ParseDec reads a decimal string as a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pair</td><td>2 characters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
+
+</div>
+</div>
+<a id="af762b52234dc8c0a458416df2f8c1ec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af762b52234dc8c0a458416df2f8c1ec3">&#9670;&nbsp;</a></span>ParseDigit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t swiper::ParseDigit </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ParseDigit reads a decimal or hexadecimal character as a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>printed representation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
+
+</div>
+</div>
+<a id="a6dd62273df44d6813e86741f8bed811f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dd62273df44d6813e86741f8bed811f">&#9670;&nbsp;</a></span>ParseHex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t swiper::ParseHex </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pair</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ParseHex reads a hexadecimal string as a number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pair</td><td>2 characters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
+
+</div>
+</div>
 <a id="a5454b273ec2a80c65d11f67e398ae720"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5454b273ec2a80c65d11f67e398ae720">&#9670;&nbsp;</a></span>WarmCache()</h2>
 
@@ -238,6 +334,30 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="acf8a709c2997cda07939e01979a6f916"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf8a709c2997cda07939e01979a6f916">&#9670;&nbsp;</a></span>Xlat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t swiper::Xlat[28]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        0x64, 0x73, 0x66, 0x64,</div>
+<div class="line">        0x3b, 0x6b, 0x66, 0x6f,</div>
+<div class="line">        0x41, 0x2c, 0x2e, 0x69,</div>
+<div class="line">        0x79, 0x65, 0x77, 0x72,</div>
+<div class="line">        0x6b, 0x6c, 0x64, 0x4a,</div>
+<div class="line">        0x4b, 0x44, 0x48, 0x53,</div>
+<div class="line">        0x55, 0x42, 0x73, 0x00</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

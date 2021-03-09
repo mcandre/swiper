@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['warmcache_8',['WarmCache',['../namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720',1,'swiper']]]
+  ['swiper_8',['swiper',['../namespaceswiper.html',1,'']]],
+  ['swiper_2ecpp_9',['swiper.cpp',['../swiper_8cpp.html',1,'']]],
+  ['swiper_2ehpp_10',['swiper.hpp',['../swiper_8hpp.html',1,'']]]
 ];
