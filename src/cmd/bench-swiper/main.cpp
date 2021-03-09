@@ -40,7 +40,7 @@ int main() {
     const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
     const auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
     const auto bandwidth = 1000.0 * hashes / ms;
-    const auto latency = ns / hashes;
+    const auto latency = double(ns) / hashes;
     std::cout << std::scientific;
     std::cout << bandwidth << " hash/sec" << std::endl;
     std::cout << latency << " ns/call" << std::endl;
