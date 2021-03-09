@@ -24,19 +24,19 @@ namespace swiper {
         template <class T>
         typename std::enable_if<std::is_arithmetic<T>::value, T>::type
         parse_digit(T t) {
-            if (t < 58) {
-                return t - 48;
+            if (t < (T)(58)) {
+                return t - (T)(48);
             }
 
-            return t - 87;
+            return t - (T)(87);
         }
 
-        inline short int parse_dec(const char *pair) {
-            return (short int)(10) * parse_digit((short int)(pair[0])) + parse_digit((short int)(pair[1]));
+        inline int parse_dec(const char *pair) {
+            return 10 * parse_digit(int(pair[0])) + parse_digit(int(pair[1]));
         }
 
         inline uint8_t parse_hex(const char *pair) {
-            return (parse_digit(pair[0]) << 4) + parse_digit(pair[1]);
+            return 0x10 * parse_digit(pair[0]) + parse_digit(pair[1]);
         }
     }
 
@@ -68,18 +68,17 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const char *hash) noexcept {
-        const char *h = 2 + hash;
-        auto i = (int(strlen(h)) >> 1) - 1;
+        auto j = int(strlen(hash)) - 2;
 
-        if (i == -1) {
+        if (j == 0) {
             return;
         }
 
-        auto j = i << 1;
-        auto seed = parse_dec(hash) + (short int)(i);
+        auto i = j / 2 - 1;
+        auto seed = i + parse_dec(hash);
 
         for (;;) {
-            password[i--] = xlat[seed--] ^ parse_hex(h + j);
+            password[i--] = xlat[seed--] ^ parse_hex(hash + j);
 
             if (i == -1) {
                 break;
