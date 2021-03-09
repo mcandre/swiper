@@ -7,6 +7,8 @@
  * @ref swiper breaks Cisco IOSv7 passwords.
  */
 
+#include <cstdint>
+
 /**
  * @brief swiper manages legacy Cisco passwords.
  */
@@ -22,7 +24,7 @@ namespace swiper {
      * @param seed random seed in [0, 16)
      * @param password plaintext ASCII
      */
-    void Encrypt(char *hash, short int seed, const char *password) noexcept;
+    void Encrypt(char *hash, int32_t seed, const char *password) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
@@ -32,7 +34,7 @@ namespace swiper {
      * @param hash Cisco IOSv7
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const char *hash, int n) noexcept;
+    void WarmCache(char *password, const char *hash, int32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOSv7 hashes.

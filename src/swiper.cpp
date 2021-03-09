@@ -21,31 +21,29 @@ namespace swiper {
             0x55, 0x42, 0x73, 0x00
         };
 
-        template <class T>
-        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-        parse_digit(T t) {
-            if (t < (T)(58)) {
-                return t - (T)(48);
+        inline int32_t parse_digit(char c) {
+            if (c < '\x40') {
+                return c - '\x30';
             }
 
-            return t - (T)(87);
+            return c - '\x57';
         }
 
-        inline int parse_dec(const char *pair) {
-            return 10 * parse_digit(int(pair[0])) + parse_digit(int(pair[1]));
+        inline int32_t parse_dec(const char *pair) {
+            return parse_digit(pair[0]) * 10 + parse_digit(pair[1]);
         }
 
-        inline uint8_t parse_hex(const char *pair) {
-            return 0x10 * parse_digit(pair[0]) + parse_digit(pair[1]);
+        inline int32_t parse_hex(const char *pair) {
+            return parse_digit(pair[0]) * 16 + parse_digit(pair[1]);
         }
     }
 
-    void Encrypt(char *hash, short int seed, const char *password) noexcept {
+    void Encrypt(char *hash, int32_t seed, const char *password) noexcept {
         auto hash_buf = std::stringstream();
         hash_buf.setf(std::ios::dec, std::ios::basefield);
         hash_buf << std::setw(2) << std::setfill('0') << seed;
         hash_buf.setf(std::ios::hex, std::ios::basefield);
-        auto len = int(strlen(password));
+        auto len = int32_t(strlen(password));
 
         if (len > 11) {
             len = 11;
@@ -60,7 +58,7 @@ namespace swiper {
         hash_s.copy(hash, hash_s.length(), 0);
     }
 
-    void WarmCache(char *password, const char *hash, int n) noexcept {
+    void WarmCache(char *password, const char *hash, int32_t n) noexcept {
         while (n != 0) {
             swiper::Decrypt(password, hash);
             --n;
@@ -68,7 +66,7 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const char *hash) noexcept {
-        auto j = int(strlen(hash)) - 2;
+        auto j = int32_t(strlen(hash)) - 2;
 
         if (j == 0) {
             return;
@@ -78,7 +76,7 @@ namespace swiper {
         auto seed = i + parse_dec(hash);
 
         for (;;) {
-            password[i--] = xlat[seed--] ^ parse_hex(hash + j);
+            password[i--] = xlat[seed--] ^ uint8_t(parse_hex(hash + j));
 
             if (i == -1) {
                 break;

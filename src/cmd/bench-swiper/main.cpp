@@ -30,8 +30,8 @@ int main() {
     const char *hash = "07022e42450c";
     char password[6];
     memset(password, 0, sizeof(password));
-    swiper::WarmCache(password, hash, 100);
-    const auto hashes = 1000000000;
+    swiper::WarmCache(password, hash, int32_t(100));
+    const auto hashes = int32_t(1000000000);
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, hashes);
     const auto end = std::chrono::high_resolution_clock::now();
