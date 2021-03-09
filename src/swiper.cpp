@@ -77,7 +77,7 @@ namespace swiper {
             password[i--] = Xlat[seed--] ^ uint8_t(ParseHex(hash + j));
 
             if (i == -1) {
-                break;
+                return;
             }
 
             j -= 2;
