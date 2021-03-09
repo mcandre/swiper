@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warmcache_17',['WarmCache',['../namespaceswiper.html#a93ac3b83c4778be1ebdc74ab846d5a4f',1,'swiper']]]
+  ['warmcache_17',['WarmCache',['../namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720',1,'swiper']]]
 ];
