@@ -76,11 +76,11 @@ namespace swiper {
         for (;;) {
             password[i--] = Xlat[seed--] ^ uint8_t(ParseHex(hash + j));
 
-            if (i == -1) {
+            j -= 2;
+
+            if (j == 0) {
                 return;
             }
-
-            j -= 2;
         }
     }
 }
