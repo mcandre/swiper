@@ -4,7 +4,7 @@
 
 ```console
 $ bench-swiper
-latency (ns)    bandwidth (password/sec)
+latency (ns)    throughput (password/sec)
 8.94            1.12e+08
 ```
 
