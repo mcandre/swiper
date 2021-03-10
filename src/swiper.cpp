@@ -21,11 +21,11 @@ namespace swiper {
     };
 
     int32_t ParseDigit(char c) {
-        if (c < '\x40') {
-            return c - '\x30';
+        if (c & '\x40') {
+            return int32_t(c - '\x57');
         }
 
-        return c - '\x57';
+        return int32_t(c - '\x30');
     }
 
     int32_t ParseDec(const char *pair) {
