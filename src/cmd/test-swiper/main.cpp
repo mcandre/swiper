@@ -10,7 +10,7 @@
 #include "swiper/swiper.hpp"
 
 int main() {
-    const char *password = "monkey";
+    const char *password = "monke";
     char password2[12];
     char hash[25];
 
