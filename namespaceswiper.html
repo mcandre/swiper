@@ -74,18 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af762b52234dc8c0a458416df2f8c1ec3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">ParseDigit</a> (char c)</td></tr>
-<tr class="memdesc:af762b52234dc8c0a458416df2f8c1ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDigit reads a decimal or hexadecimal character as a number.  <a href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">More...</a><br /></td></tr>
-<tr class="separator:af762b52234dc8c0a458416df2f8c1ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">ParseDec</a> (const char *pair)</td></tr>
-<tr class="memdesc:aaf453672d84b320b1c2f76e8cf025a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDec reads a decimal string as a number.  <a href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">More...</a><br /></td></tr>
-<tr class="separator:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dd62273df44d6813e86741f8bed811f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">ParseHex</a> (const char *pair)</td></tr>
-<tr class="memdesc:a6dd62273df44d6813e86741f8bed811f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseHex reads a hexadecimal string as a number.  <a href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">More...</a><br /></td></tr>
-<tr class="separator:a6dd62273df44d6813e86741f8bed811f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6826be05aa70e068e136218b554bc54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">Encrypt</a> (char *hash, int32_t seed, const char *password) noexcept</td></tr>
-<tr class="memdesc:ae6826be05aa70e068e136218b554bc54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">More...</a><br /></td></tr>
-<tr class="separator:ae6826be05aa70e068e136218b554bc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a098835d2b17c1d3924a119f43deda723"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">Encrypt</a> (char *hash, int16_t seed, const char *password) noexcept</td></tr>
+<tr class="memdesc:a098835d2b17c1d3924a119f43deda723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">More...</a><br /></td></tr>
+<tr class="separator:a098835d2b17c1d3924a119f43deda723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5454b273ec2a80c65d11f67e398ae720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">WarmCache</a> (char *password, const char *hash, int32_t n) noexcept</td></tr>
 <tr class="memdesc:a5454b273ec2a80c65d11f67e398ae720"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">More...</a><br /></td></tr>
 <tr class="separator:a5454b273ec2a80c65d11f67e398ae720"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,8 +140,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6826be05aa70e068e136218b554bc54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6826be05aa70e068e136218b554bc54">&#9670;&nbsp;</a></span>Encrypt()</h2>
+<a id="a098835d2b17c1d3924a119f43deda723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a098835d2b17c1d3924a119f43deda723">&#9670;&nbsp;</a></span>Encrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +158,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramtype">int16_t&#160;</td>
           <td class="paramname"><em>seed</em>, </td>
         </tr>
         <tr>
@@ -200,87 +191,6 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="aaf453672d84b320b1c2f76e8cf025a8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf453672d84b320b1c2f76e8cf025a8f">&#9670;&nbsp;</a></span>ParseDec()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t swiper::ParseDec </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>pair</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>ParseDec reads a decimal string as a number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pair</td><td>2 characters </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
-
-</div>
-</div>
-<a id="af762b52234dc8c0a458416df2f8c1ec3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af762b52234dc8c0a458416df2f8c1ec3">&#9670;&nbsp;</a></span>ParseDigit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t swiper::ParseDigit </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>c</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>ParseDigit reads a decimal or hexadecimal character as a number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c</td><td>printed representation </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
-
-</div>
-</div>
-<a id="a6dd62273df44d6813e86741f8bed811f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dd62273df44d6813e86741f8bed811f">&#9670;&nbsp;</a></span>ParseHex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t swiper::ParseHex </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>pair</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>ParseHex reads a hexadecimal string as a number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pair</td><td>2 characters </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>value </dd></dl>
 
 </div>
 </div>

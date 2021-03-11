@@ -73,13 +73,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for swiper.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="swiper_8hpp__incl.png" border="0" usemap="#include_2swiper_2swiper_8hpp" alt=""/></div>
 <map name="include_2swiper_2swiper_8hpp" id="include_2swiper_2swiper_8hpp">
 <area shape="rect" title=" " alt="" coords="5,5,196,32"/>
-<area shape="rect" title=" " alt="" coords="67,80,134,107"/>
+<area shape="rect" title=" " alt="" coords="15,80,82,107"/>
+<area shape="rect" title=" " alt="" coords="107,80,199,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -103,18 +105,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af762b52234dc8c0a458416df2f8c1ec3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">swiper::ParseDigit</a> (char c)</td></tr>
-<tr class="memdesc:af762b52234dc8c0a458416df2f8c1ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDigit reads a decimal or hexadecimal character as a number.  <a href="namespaceswiper.html#af762b52234dc8c0a458416df2f8c1ec3">More...</a><br /></td></tr>
-<tr class="separator:af762b52234dc8c0a458416df2f8c1ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">swiper::ParseDec</a> (const char *pair)</td></tr>
-<tr class="memdesc:aaf453672d84b320b1c2f76e8cf025a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseDec reads a decimal string as a number.  <a href="namespaceswiper.html#aaf453672d84b320b1c2f76e8cf025a8f">More...</a><br /></td></tr>
-<tr class="separator:aaf453672d84b320b1c2f76e8cf025a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dd62273df44d6813e86741f8bed811f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">swiper::ParseHex</a> (const char *pair)</td></tr>
-<tr class="memdesc:a6dd62273df44d6813e86741f8bed811f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ParseHex reads a hexadecimal string as a number.  <a href="namespaceswiper.html#a6dd62273df44d6813e86741f8bed811f">More...</a><br /></td></tr>
-<tr class="separator:a6dd62273df44d6813e86741f8bed811f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6826be05aa70e068e136218b554bc54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">swiper::Encrypt</a> (char *hash, int32_t seed, const char *password) noexcept</td></tr>
-<tr class="memdesc:ae6826be05aa70e068e136218b554bc54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#ae6826be05aa70e068e136218b554bc54">More...</a><br /></td></tr>
-<tr class="separator:ae6826be05aa70e068e136218b554bc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a098835d2b17c1d3924a119f43deda723"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">swiper::Encrypt</a> (char *hash, int16_t seed, const char *password) noexcept</td></tr>
+<tr class="memdesc:a098835d2b17c1d3924a119f43deda723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">More...</a><br /></td></tr>
+<tr class="separator:a098835d2b17c1d3924a119f43deda723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5454b273ec2a80c65d11f67e398ae720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">swiper::WarmCache</a> (char *password, const char *hash, int32_t n) noexcept</td></tr>
 <tr class="memdesc:a5454b273ec2a80c65d11f67e398ae720"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">More...</a><br /></td></tr>
 <tr class="separator:a5454b273ec2a80c65d11f67e398ae720"><td class="memSeparator" colspan="2">&#160;</td></tr>
