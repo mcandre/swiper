@@ -20,34 +20,38 @@ namespace swiper {
         0x55, 0x42, 0x73, 0x00
     };
 
-    int32_t ParseDigit(char c) {
-        if (c & '\x40') {
-            return int32_t(c - '\x57');
+    namespace {
+        template <class T>
+        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+        ParseDigit(T t) {
+            if (t & 64) {
+                return t - 87;
+            }
+
+            return t - 48;
         }
 
-        return int32_t(c - '\x30');
+        inline int16_t ParsePairDec(const char *pair) {
+            return ParseDigit(int16_t(pair[0])) * 10 + ParseDigit(int16_t(pair[1]));
+        }
+
+        inline uint8_t ParsePairHex(const char *pair) {
+            return ParseDigit(uint8_t(pair[0])) * 16 + ParseDigit(uint8_t(pair[1]));
+        }
     }
 
-    int32_t ParseDec(const char *pair) {
-        return ParseDigit(pair[0]) * 10 + ParseDigit(pair[1]);
-    }
-
-    int32_t ParseHex(const char *pair) {
-        return ParseDigit(pair[0]) * 16 + ParseDigit(pair[1]);
-    }
-
-    void Encrypt(char *hash, int32_t seed, const char *password) noexcept {
+    void Encrypt(char *hash, int16_t seed, const char *password) noexcept {
         auto hash_buf = std::stringstream();
         hash_buf.setf(std::ios::dec, std::ios::basefield);
-        hash_buf << std::setw(2) << std::setfill('0') << seed;
+        hash_buf << std::setw(2) << std::setfill('0') << int(seed);
         hash_buf.setf(std::ios::hex, std::ios::basefield);
-        auto len = int32_t(strlen(password));
+        auto len = int16_t(strlen(password));
 
         if (len > 11) {
             len = 11;
         }
 
-        for (auto i = 0; i < len; i++) {
+        for (auto i = int16_t(0); i < len; i++) {
             const auto c = Xlat[seed++] ^ uint8_t(password[i]);
             hash_buf << std::setw(2) << std::setfill('0') << c;
         }
@@ -64,17 +68,17 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const char *hash) noexcept {
-        auto j = int32_t(strlen(hash)) - 2;
+        auto j = int16_t(strlen(hash)) - 2;
 
         if (j == 0) {
             return;
         }
 
         auto i = j / 2 - 1;
-        auto seed = i + ParseDec(hash);
+        auto seed = i + ParsePairDec(hash);
 
         for (;;) {
-            password[i--] = Xlat[seed--] ^ uint8_t(ParseHex(hash + j));
+            password[i--] = Xlat[seed--] ^ ParsePairHex(hash + j);
 
             j -= 2;
 

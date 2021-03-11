@@ -8,35 +8,12 @@
  */
 
 #include <cstdint>
+#include <type_traits>
 
 /**
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
  */
 namespace swiper {
-    /**
-     * @brief ParseDigit reads a decimal or hexadecimal character as a number.
-     *
-     * @param c printed representation
-     * @returns value
-     */
-    int32_t ParseDigit(char c);
-
-    /**
-     * @brief ParseDec reads a decimal string as a number.
-     *
-     * @param pair 2 characters
-     * @returns value
-     */
-    int32_t ParseDec(const char *pair);
-
-    /**
-     * @brief ParseHex reads a hexadecimal string as a number.
-     *
-     * @param pair 2 characters
-     * @returns value
-     */
-    int32_t ParseHex(const char *pair);
-
     /**
      * @brief Encrypt produces Cisco IOS^tm type 7 hashes.
      *
@@ -48,7 +25,7 @@ namespace swiper {
      * @param seed random seed in [0, 16)
      * @param password plaintext ASCII
      */
-    void Encrypt(char *hash, int32_t seed, const char *password) noexcept;
+    void Encrypt(char *hash, int16_t seed, const char *password) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,

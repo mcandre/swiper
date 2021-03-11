@@ -10,7 +10,7 @@
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
-static bool PropReversible(int32_t seed, const char *password) {
+static bool PropReversible(int16_t seed, const char *password) {
     char hash[25];
     memset(hash, 0, sizeof(hash));
     swiper::Encrypt(hash, seed, password);
@@ -25,7 +25,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         return 0;
     }
 
-    const auto seed = int32_t(Data[0]) % int32_t(16);
+    const auto seed = int16_t(Data[0]) % 16;
     const uint8_t *Data2 = 1 + Data;
     Size--;
 
