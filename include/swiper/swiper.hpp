@@ -8,7 +8,6 @@
  */
 
 #include <cstdint>
-#include <type_traits>
 
 /**
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
