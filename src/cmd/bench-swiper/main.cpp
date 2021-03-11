@@ -40,7 +40,8 @@ int main() {
     assert(strcmp(password, "monke") == 0);
     const auto elapsed = end - start;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
-    const auto throughput_sec = trials * 1000000000.0 / total_ns;
+
+    const auto throughput_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
     std::cout << std::setprecision(2);
     std::cout << "latency (ns)\tthroughput (password/sec)" << std::endl <<

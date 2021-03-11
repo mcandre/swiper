@@ -52,7 +52,7 @@ namespace swiper {
         }
 
         for (auto i = size_t(0); i < len; i++) {
-            const auto c = Xlat[seed++] ^ uint8_t(password[i]);
+            const auto c = uint8_t(Xlat[seed++] ^ password[i]);
             hash_buf << std::setw(2) << std::setfill('0') << int(c);
         }
 
