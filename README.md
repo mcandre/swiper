@@ -1,4 +1,4 @@
-# swiper: high performance Cisco IOS^tm type 7 password cracker
+# swiper: a high performance password cracker
 
 # EXAMPLE
 
@@ -8,9 +8,13 @@ latency (ns)    throughput (password/sec)
 8.25            1.21e+08
 ```
 
+# ABOUT
+
+swiper is a library for regenerating passwords from Cisco IOS^tm type 7 encrypted configurations.
+
 # WARNING
 
-Expect API/ABI to break as we continue to tune the project. Recommended to pin dependency at VCS commit ID.
+Expect API/ABI breakages as we continue to tune the project. Recommended to pin dependency at VCS commit ID.
 
 # DOCUMENTATION
 
