@@ -45,7 +45,7 @@ namespace swiper {
         hash_buf.setf(std::ios::dec, std::ios::basefield);
         hash_buf << std::setw(2) << std::setfill('0') << int(seed);
         hash_buf.setf(std::ios::hex, std::ios::basefield);
-        auto len = size_t(strlen(password));
+        auto len = strlen(password);
 
         if (len > 11) {
             len = 11;
@@ -53,7 +53,7 @@ namespace swiper {
 
         for (auto i = size_t(0); i < len; i++) {
             const auto c = Xlat[seed++] ^ uint8_t(password[i]);
-            hash_buf << std::setw(2) << std::setfill('0') << c;
+            hash_buf << std::setw(2) << std::setfill('0') << int(c);
         }
 
         auto hash_s = hash_buf.str();
@@ -68,7 +68,7 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const char *hash) noexcept {
-        auto j = size_t(strlen(hash)) - 2;
+        auto j = strlen(hash) - 2;
 
         if (j == 0) {
             return;
