@@ -31,8 +31,8 @@ namespace swiper {
             return t - 48;
         }
 
-        inline int16_t ParsePairDec(const char *pair) {
-            return ParseDigit(int16_t(pair[0])) * 10 + ParseDigit(int16_t(pair[1]));
+        inline size_t ParsePairDec(const char *pair) {
+            return ParseDigit(size_t(pair[0])) * 10 + ParseDigit(size_t(pair[1]));
         }
 
         inline uint8_t ParsePairHex(const char *pair) {
@@ -68,7 +68,7 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const char *hash) noexcept {
-        auto j = int16_t(strlen(hash)) - 2;
+        auto j = size_t(strlen(hash)) - 2;
 
         if (j == 0) {
             return;
