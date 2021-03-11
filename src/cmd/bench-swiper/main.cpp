@@ -18,6 +18,8 @@
 
 #include "swiper/swiper.hpp"
 
+constexpr auto trials = 1 << 30;
+
 int main() {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
@@ -32,18 +34,17 @@ int main() {
     char password[6];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, 100);
-    const auto trials = 1 << 30;
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
     assert(strcmp(password, "monke") == 0);
     const auto elapsed = end - start;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
-    const auto bandwidth_sec = 1000000000.0 * trials / total_ns;
+    const auto throughput_sec = trials * 1000000000.0 / total_ns;
     const auto latency_ns = double(total_ns) / trials;
     std::cout << std::setprecision(2);
     std::cout << "latency (ns)\tthroughput (password/sec)" << std::endl <<
         std::fixed << std::setw(12) << std::left << latency_ns << "\t" <<
-        std::scientific << bandwidth_sec << std::endl;
+        std::scientific << throughput_sec << std::endl;
     return EXIT_SUCCESS;
 }
