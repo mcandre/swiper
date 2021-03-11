@@ -24,19 +24,17 @@ namespace swiper {
         template <class T>
         typename std::enable_if<std::is_arithmetic<T>::value, T>::type
         ParseDigit(T t) {
-            if (t & 64) {
-                return t - 87;
+            if (t & T(64)) {
+                return t - T(87);
             }
 
-            return t - 48;
+            return t - T(48);
         }
 
-        inline size_t ParsePairDec(const char *pair) {
-            return ParseDigit(size_t(pair[0])) * 10 + ParseDigit(size_t(pair[1]));
-        }
-
-        inline uint8_t ParsePairHex(const char *pair) {
-            return ParseDigit(uint8_t(pair[0])) * 16 + ParseDigit(uint8_t(pair[1]));
+        template <class T>
+        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+        constexpr ParsePair(const char*pair, T base) {
+            return ParseDigit(T(pair[0])) * base + ParseDigit(T(pair[1]));
         }
     }
 
@@ -75,10 +73,10 @@ namespace swiper {
         }
 
         auto i = j / 2 - 1;
-        auto seed = i + ParsePairDec(hash);
+        auto seed = i + ParsePair(hash, size_t(10));
 
         for (;;) {
-            password[i--] = Xlat[seed--] ^ ParsePairHex(hash + j);
+            password[i--] = Xlat[seed--] ^ ParsePair(hash + j, uint8_t(16));
 
             j -= 2;
 
