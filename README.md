@@ -10,7 +10,7 @@ latency (ns)    throughput (password/sec)
 
 # WARNING
 
-Expect API/ABI to continually break as we continue to tune the project. Users interested in version pinning may apply VCS commit ID as a fallback.
+Expect API/ABI to break as we continue to tune the project. Recommended to pin dependency at VCS commit ID.
 
 # DOCUMENTATION
 
