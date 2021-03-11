@@ -7,6 +7,7 @@
  * @ref swiper breaks Cisco IOS^tm type 7 passwords.
  */
 
+#include <cstddef>
 #include <cstdint>
 
 /**
@@ -24,7 +25,7 @@ namespace swiper {
      * @param seed random seed in [0, 16)
      * @param password plaintext ASCII
      */
-    void Encrypt(char *hash, int16_t seed, const char *password) noexcept;
+    void Encrypt(char *hash, size_t seed, const char *password) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,

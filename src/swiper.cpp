@@ -40,18 +40,18 @@ namespace swiper {
         }
     }
 
-    void Encrypt(char *hash, int16_t seed, const char *password) noexcept {
+    void Encrypt(char *hash, size_t seed, const char *password) noexcept {
         auto hash_buf = std::stringstream();
         hash_buf.setf(std::ios::dec, std::ios::basefield);
         hash_buf << std::setw(2) << std::setfill('0') << int(seed);
         hash_buf.setf(std::ios::hex, std::ios::basefield);
-        auto len = int16_t(strlen(password));
+        auto len = size_t(strlen(password));
 
         if (len > 11) {
             len = 11;
         }
 
-        for (auto i = int16_t(0); i < len; i++) {
+        for (auto i = size_t(0); i < len; i++) {
             const auto c = Xlat[seed++] ^ uint8_t(password[i]);
             hash_buf << std::setw(2) << std::setfill('0') << c;
         }
