@@ -71,20 +71,21 @@ $(function() {
 <div class="contents">
 <a href="swiper_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   15</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">Encrypt</a>(<span class="keywordtype">char</span> *hash, int16_t seed, <span class="keyword">const</span> <span class="keywordtype">char</span> *password) noexcept;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">WarmCache</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> <span class="keywordtype">char</span> *hash, int32_t n) noexcept;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> <span class="keywordtype">char</span> *hash) noexcept;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   16</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a8665843a456e8c5704a5f38d2c628ecd">Encrypt</a>(<span class="keywordtype">char</span> *hash, <span class="keywordtype">size_t</span> seed, <span class="keyword">const</span> <span class="keywordtype">char</span> *password) noexcept;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">WarmCache</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> <span class="keywordtype">char</span> *hash, int32_t n) noexcept;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> <span class="keywordtype">char</span> *hash) noexcept;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:15</div></div>
+<div class="ttc" id="anamespaceswiper_html_a8665843a456e8c5704a5f38d2c628ecd"><div class="ttname"><a href="namespaceswiper.html#a8665843a456e8c5704a5f38d2c628ecd">swiper::Encrypt</a></div><div class="ttdeci">void Encrypt(char *hash, size_t seed, const char *password) noexcept</div><div class="ttdoc">Encrypt produces Cisco IOS^tm type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:43</div></div>
+<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:16</div></div>
 <div class="ttc" id="anamespaceswiper_html_a44449e9a1724cda79ba09564c58e259a"><div class="ttname"><a href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(char *password, const char *hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:70</div></div>
 <div class="ttc" id="anamespaceswiper_html_a5454b273ec2a80c65d11f67e398ae720"><div class="ttname"><a href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(char *password, const char *hash, int32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:63</div></div>
-<div class="ttc" id="anamespaceswiper_html_a098835d2b17c1d3924a119f43deda723"><div class="ttname"><a href="namespaceswiper.html#a098835d2b17c1d3924a119f43deda723">swiper::Encrypt</a></div><div class="ttdeci">void Encrypt(char *hash, int16_t seed, const char *password) noexcept</div><div class="ttdoc">Encrypt produces Cisco IOS^tm type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:43</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
