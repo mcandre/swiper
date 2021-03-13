@@ -6,7 +6,6 @@
 
 #include <cassert>
 #include <chrono>
-#include <cstring>
 #include <iomanip>
 #include <iostream>
 #if defined(_WIN32)
@@ -15,6 +14,8 @@
 #include <sched.h>
 #include <sys/sysinfo.h>
 #endif
+#include <string>
+using namespace std::string_literals;
 
 #include "swiper/swiper.hpp"
 
@@ -30,13 +31,13 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = std::string("07022e42450c");
+    const auto hash = "07022e42450c"s;
     auto password = std::string(hash.length() / 2 - 1, '\0');
     swiper::WarmCache(password, hash, 100);
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
-    assert(password == "monke");
+    assert(password == "monke"s);
     const auto elapsed = end - start;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
 

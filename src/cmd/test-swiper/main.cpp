@@ -5,12 +5,13 @@
 #include "main.hpp"
 
 #include <cassert>
-#include <cstring>
+#include <string>
+using namespace std::string_literals;
 
 #include "swiper/swiper.hpp"
 
 int main() {
-    const auto password = std::string("monke");
+    const auto password = "monke"s;
 
     for (auto i = 0; i < 16; i++) {
         auto hash = std::string(2 * (1 + password.length()), '\0');
