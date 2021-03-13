@@ -36,8 +36,7 @@ namespace swiper {
         }
 
         template <class T>
-        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-        FormatDigit(T t) {
+        uint8_t FormatDigit(T t) {
             if (t > T(9)) {
                 return  uint8_t(t) + '\x57';
             }
