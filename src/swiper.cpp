@@ -5,20 +5,19 @@
 #include "swiper/swiper.hpp"
 
 #include <cstring>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
+#include <type_traits>
 
 namespace swiper {
     namespace {
-        const uint8_t Xlat[28] = {
+        const uint8_t Xlat[32] = {
             0x64, 0x73, 0x66, 0x64,
             0x3b, 0x6b, 0x66, 0x6f,
             0x41, 0x2c, 0x2e, 0x69,
             0x79, 0x65, 0x77, 0x72,
             0x6b, 0x6c, 0x64, 0x4a,
             0x4b, 0x44, 0x48, 0x53,
-            0x55, 0x42, 0x73, 0x00
+            0x55, 0x42, 0x73, 0x00,
+            0x00, 0x00, 0x00, 0x00
         };
 
         template <class T>
@@ -33,29 +32,41 @@ namespace swiper {
 
         template <class T>
         typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-        constexpr ParsePair(const char*pair, T base) {
+        ParsePair(const char*pair, T base) {
             return ParseDigit(T(pair[0])) * base + ParseDigit(T(pair[1]));
+        }
+
+        template <class T>
+        typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+        FormatDigit(T t) {
+            if (t > T(9)) {
+                return  uint8_t(t) + '\x57';
+            }
+
+            return uint8_t(t) + '\x30';
+        }
+
+        // Warning: Omits null terminator, to be placed at buf[2].
+        template <class T>
+        void FormatPair(char *buf, T value, T base) {
+            T remainder = value % base;
+            buf[0] = FormatDigit((value - remainder) / base);
+            buf[1] = FormatDigit(remainder);
         }
     }
 
     void Encrypt(char *hash, size_t seed, const char *password) noexcept {
-        auto hash_buf = std::stringstream();
-        hash_buf.setf(std::ios::dec, std::ios::basefield);
-        hash_buf << std::setw(2) << std::setfill('0') << int(seed);
-        hash_buf.setf(std::ios::hex, std::ios::basefield);
+        FormatPair(hash, seed, size_t(10));
         auto len = strlen(password);
 
-        if (len > 11) {
-            len = 11;
+        if (len > size_t(11)) {
+            len = size_t(11);
         }
 
         for (auto i = size_t(0); i < len; i++) {
             const auto c = uint8_t(Xlat[seed++] ^ password[i]);
-            hash_buf << std::setw(2) << std::setfill('0') << int(c);
+            FormatPair(hash + 2 * (1 + i), c, uint8_t(16));
         }
-
-        auto hash_s = hash_buf.str();
-        hash_s.copy(hash, hash_s.length(), 0);
     }
 
     void WarmCache(char *password, const char *hash, int32_t n) noexcept {

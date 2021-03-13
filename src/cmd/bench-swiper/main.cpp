@@ -30,8 +30,8 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const char *hash = "07022e42450c";
-    char password[6];
+    const char hash[16] = { '0', '7', '0', '2', '2', 'e', '4', '2', '4', '5', '0', 'c', '\0', '\0', '\0', '\0' };
+    char password[16];
     memset(password, 0, sizeof(password));
     swiper::WarmCache(password, hash, 100);
     const auto start = std::chrono::high_resolution_clock::now();
