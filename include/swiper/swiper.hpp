@@ -9,6 +9,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
 
 /**
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
@@ -19,34 +20,31 @@ namespace swiper {
      *
      * Truncates to the first 11 characters.
      *
-     * Warning: Omits null terminator, to be placed at hash[2 * (1 + strlen(password))].
-     *
-     * @param hash max 24 characters + null terminator
+     * @param hash buffer (2 * (1 + password length) characters)
      * @param seed random seed in [0, 16)
      * @param password plaintext ASCII
      */
-    void Encrypt(char *hash, size_t seed, const char *password) noexcept;
+    void Encrypt(std::string& hash, size_t seed, const std::string& password) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
      * by prepopulating the system cache.
      *
-     * @param password max 11 characters + null terminator
+     * @param password (hash length / 2 - 1 characters)
      * @param hash Cisco IOS^tm type 7
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const char *hash, int32_t n) noexcept;
+    void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
      * Hexadecimal data is lowercase.
      *
-     * Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].
-     *
-     * @param password max 11 characters + null terminator
+     * @param password (hash length / 2 - 1 characters)
      * @param hash Cisco IOS^tm type 7 (lowercase)
+     * @returns password
      *
      */
-    void Decrypt(char *password, const char *hash) noexcept;
+    void Decrypt(std::string& password, const std::string& hash) noexcept;
 }

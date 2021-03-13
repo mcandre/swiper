@@ -10,14 +10,12 @@
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
-static bool PropReversible(size_t seed, const char *password) {
-    char hash[25];
-    memset(hash, 0, sizeof(hash));
+static bool PropReversible(size_t seed, const std::string& password) {
+    auto hash = std::string(2 * (1 + password.length()), '\0');
     swiper::Encrypt(hash, seed, password);
-    char password2[12];
-    memset(password2, 0, sizeof(password2));
+    auto password2 = std::string(password.length(), '\0');
     swiper::Decrypt(password2, hash);
-    return strcmp(password2, password) == 0;
+    return password2 == password;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {

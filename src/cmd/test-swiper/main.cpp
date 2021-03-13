@@ -10,15 +10,13 @@
 #include "swiper/swiper.hpp"
 
 int main() {
-    const char *password = "monke";
-    char password2[12];
-    char hash[25];
+    const auto password = "monke";
 
     for (auto i = 0; i < 16; i++) {
-        memset(hash, 0, sizeof(hash));
-        memset(password2, 0, sizeof(password2));
+        auto hash = std::string(24, '\0');
         swiper::Encrypt(hash, i, password);
+        const auto password2 = std::string(11, '\0');
         swiper::Decrypt(password2, hash);
-        assert(strcmp(password2, password) == 0);
+        assert(password2 == password);
     }
 }
