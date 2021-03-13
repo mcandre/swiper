@@ -73,22 +73,22 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8665843a456e8c5704a5f38d2c628ecd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a8665843a456e8c5704a5f38d2c628ecd">Encrypt</a> (char *hash, size_t seed, const char *password) noexcept</td></tr>
-<tr class="memdesc:a8665843a456e8c5704a5f38d2c628ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#a8665843a456e8c5704a5f38d2c628ecd">More...</a><br /></td></tr>
-<tr class="separator:a8665843a456e8c5704a5f38d2c628ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5454b273ec2a80c65d11f67e398ae720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">WarmCache</a> (char *password, const char *hash, int32_t n) noexcept</td></tr>
-<tr class="memdesc:a5454b273ec2a80c65d11f67e398ae720"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a5454b273ec2a80c65d11f67e398ae720">More...</a><br /></td></tr>
-<tr class="separator:a5454b273ec2a80c65d11f67e398ae720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44449e9a1724cda79ba09564c58e259a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> (char *password, const char *hash) noexcept</td></tr>
-<tr class="memdesc:a44449e9a1724cda79ba09564c58e259a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">More...</a><br /></td></tr>
-<tr class="separator:a44449e9a1724cda79ba09564c58e259a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88ed8959701533f0dd0f4601c127deb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">Encrypt</a> (std::string &amp;hash, size_t seed, const std::string &amp;password) noexcept</td></tr>
+<tr class="memdesc:aa88ed8959701533f0dd0f4601c127deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">More...</a><br /></td></tr>
+<tr class="separator:aa88ed8959701533f0dd0f4601c127deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42fee18b8ceeef14c5410f67739b998"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">WarmCache</a> (std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</td></tr>
+<tr class="memdesc:ae42fee18b8ceeef14c5410f67739b998"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">More...</a><br /></td></tr>
+<tr class="separator:ae42fee18b8ceeef14c5410f67739b998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3938a62735238f8bf41714eb02570b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> (std::string &amp;password, const std::string &amp;hash) noexcept</td></tr>
+<tr class="memdesc:a3938a62735238f8bf41714eb02570b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">More...</a><br /></td></tr>
+<tr class="separator:a3938a62735238f8bf41714eb02570b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>swiper manages legacy Cisco IOS^tm type 7 passwords. </p>
 <dl class="section copyright"><dt>Copyright</dt><dd>2020 YelloSoft </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a44449e9a1724cda79ba09564c58e259a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44449e9a1724cda79ba09564c58e259a">&#9670;&nbsp;</a></span>Decrypt()</h2>
+<a id="a3938a62735238f8bf41714eb02570b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3938a62735238f8bf41714eb02570b98">&#9670;&nbsp;</a></span>Decrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -99,13 +99,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void swiper::Decrypt </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>password</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>hash</em>&#160;</td>
         </tr>
         <tr>
@@ -123,19 +123,19 @@ Functions</h2></td></tr>
 
 <p>Decrypt reverses Cisco IOS type 7 hashes. </p>
 <p>Hexadecimal data is lowercase.</p>
-<p>Warning: Omits null terminator, to be placed at password[strlen(hash)/2 - 1].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">password</td><td>max 11 characters + null terminator </td></tr>
+    <tr><td class="paramname">password</td><td>(hash length / 2 - 1 characters) </td></tr>
     <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (lowercase) </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>password </dd></dl>
 
 </div>
 </div>
-<a id="a8665843a456e8c5704a5f38d2c628ecd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8665843a456e8c5704a5f38d2c628ecd">&#9670;&nbsp;</a></span>Encrypt()</h2>
+<a id="aa88ed8959701533f0dd0f4601c127deb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88ed8959701533f0dd0f4601c127deb">&#9670;&nbsp;</a></span>Encrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +146,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void swiper::Encrypt </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>hash</em>, </td>
         </tr>
         <tr>
@@ -158,7 +158,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>password</em>&#160;</td>
         </tr>
         <tr>
@@ -176,10 +176,9 @@ Functions</h2></td></tr>
 
 <p>Encrypt produces Cisco IOS^tm type 7 hashes. </p>
 <p>Truncates to the first 11 characters.</p>
-<p>Warning: Omits null terminator, to be placed at hash[2 * (1 + strlen(password))].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hash</td><td>max 24 characters + null terminator </td></tr>
+    <tr><td class="paramname">hash</td><td>buffer (2 * (1 + password length) characters) </td></tr>
     <tr><td class="paramname">seed</td><td>random seed in [0, 16) </td></tr>
     <tr><td class="paramname">password</td><td>plaintext ASCII </td></tr>
   </table>
@@ -188,8 +187,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5454b273ec2a80c65d11f67e398ae720"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5454b273ec2a80c65d11f67e398ae720">&#9670;&nbsp;</a></span>WarmCache()</h2>
+<a id="ae42fee18b8ceeef14c5410f67739b998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42fee18b8ceeef14c5410f67739b998">&#9670;&nbsp;</a></span>WarmCache()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,13 +199,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void swiper::WarmCache </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>password</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>hash</em>, </td>
         </tr>
         <tr>
@@ -228,10 +227,10 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a44449e9a1724cda79ba09564c58e259a">Decrypt</a> calls, by prepopulating the system cache. </p>
+<p>WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> calls, by prepopulating the system cache. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">password</td><td>max 11 characters + null terminator </td></tr>
+    <tr><td class="paramname">password</td><td>(hash length / 2 - 1 characters) </td></tr>
     <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 </td></tr>
     <tr><td class="paramname">n</td><td>iterations (non-negative) </td></tr>
   </table>
