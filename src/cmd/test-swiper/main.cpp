@@ -10,12 +10,12 @@
 #include "swiper/swiper.hpp"
 
 int main() {
-    const auto password = "monke";
+    const auto password = std::string("monke");
 
     for (auto i = 0; i < 16; i++) {
-        auto hash = std::string(24, '\0');
+        auto hash = std::string(2 * (1 + password.length()), '\0');
         swiper::Encrypt(hash, i, password);
-        const auto password2 = std::string(11, '\0');
+        auto password2 = std::string(hash.length() / 2 - 1, '\0');
         swiper::Decrypt(password2, hash);
         assert(password2 == password);
     }
