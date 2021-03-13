@@ -21,7 +21,7 @@ namespace swiper {
 
         template <class T>
         typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-        ParseDigit(T t) {
+        ParseDigit(T t) noexcept {
             if (t & T(64)) {
                 return t - T(87);
             }
@@ -31,12 +31,12 @@ namespace swiper {
 
         template <class T>
         typename std::enable_if<std::is_arithmetic<T>::value, T>::type
-        ParsePair(const std::string& pair, size_t offset, T base) {
+        ParsePair(const std::string& pair, size_t offset, T base) noexcept {
             return ParseDigit(T(pair[offset])) * base + ParseDigit(T(pair[1 + offset]));
         }
 
         template <class T>
-        uint8_t FormatDigit(T t) {
+        uint8_t FormatDigit(T t) noexcept {
             if (t > T(9)) {
                 return  uint8_t(t) + '\x57';
             }
@@ -46,7 +46,7 @@ namespace swiper {
 
         // Warning: Omits null terminator, to be placed at buf[2].
         template <class T>
-        void FormatPair(std::string& result, size_t offset, T value, T base) {
+        void FormatPair(std::string& result, size_t offset, T value, T base) noexcept {
             T remainder = value % base;
             result[offset] = FormatDigit((value - remainder) / base);
             result[1 + offset]= FormatDigit(remainder);
