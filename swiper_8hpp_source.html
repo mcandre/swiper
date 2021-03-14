@@ -76,17 +76,26 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   17</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">Encrypt</a>(std::string&amp; hash, <span class="keywordtype">size_t</span> seed, <span class="keyword">const</span> std::string&amp; password) noexcept;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">WarmCache</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash, int32_t n) noexcept;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash) noexcept;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">   21</a></span>&#160;    <span class="keyword">const</span> uint8_t <a class="code" href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">Xlat</a>[32] = {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        0x64, 0x73, 0x66, 0x64,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        0x3b, 0x6b, 0x66, 0x6f,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        0x41, 0x2c, 0x2e, 0x69,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        0x79, 0x65, 0x77, 0x72,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        0x6b, 0x6c, 0x64, 0x4a,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        0x4b, 0x44, 0x48, 0x53,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        0x55, 0x42, 0x73, 0x00,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        0x00, 0x00, 0x00, 0x00</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">WarmCache</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash, int32_t n) noexcept;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash) noexcept;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:17</div></div>
-<div class="ttc" id="anamespaceswiper_html_a3938a62735238f8bf41714eb02570b98"><div class="ttname"><a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(std::string &amp;password, const std::string &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:78</div></div>
-<div class="ttc" id="anamespaceswiper_html_ae42fee18b8ceeef14c5410f67739b998"><div class="ttname"><a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:72</div></div>
-<div class="ttc" id="anamespaceswiper_html_aa88ed8959701533f0dd0f4601c127deb"><div class="ttname"><a href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">swiper::Encrypt</a></div><div class="ttdeci">void Encrypt(std::string &amp;hash, size_t seed, const std::string &amp;password) noexcept</div><div class="ttdoc">Encrypt produces Cisco IOS^tm type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:56</div></div>
+<div class="ttc" id="anamespaceswiper_html_a3938a62735238f8bf41714eb02570b98"><div class="ttname"><a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(std::string &amp;password, const std::string &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:41</div></div>
+<div class="ttc" id="anamespaceswiper_html_ae42fee18b8ceeef14c5410f67739b998"><div class="ttname"><a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:35</div></div>
+<div class="ttc" id="anamespaceswiper_html_ab43dcb17f7a89d96bf9cc54ebe6862ee"><div class="ttname"><a href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">swiper::Xlat</a></div><div class="ttdeci">const uint8_t Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:21</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -62,7 +62,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">swiper Namespace Reference</div>  </div>
 </div><!--header-->
@@ -73,15 +74,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa88ed8959701533f0dd0f4601c127deb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">Encrypt</a> (std::string &amp;hash, size_t seed, const std::string &amp;password) noexcept</td></tr>
-<tr class="memdesc:aa88ed8959701533f0dd0f4601c127deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypt produces Cisco IOS^tm type 7 hashes.  <a href="namespaceswiper.html#aa88ed8959701533f0dd0f4601c127deb">More...</a><br /></td></tr>
-<tr class="separator:aa88ed8959701533f0dd0f4601c127deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae42fee18b8ceeef14c5410f67739b998"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">WarmCache</a> (std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</td></tr>
 <tr class="memdesc:ae42fee18b8ceeef14c5410f67739b998"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">More...</a><br /></td></tr>
 <tr class="separator:ae42fee18b8ceeef14c5410f67739b998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3938a62735238f8bf41714eb02570b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> (std::string &amp;password, const std::string &amp;hash) noexcept</td></tr>
 <tr class="memdesc:a3938a62735238f8bf41714eb02570b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">More...</a><br /></td></tr>
 <tr class="separator:a3938a62735238f8bf41714eb02570b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab43dcb17f7a89d96bf9cc54ebe6862ee"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">Xlat</a> [32]</td></tr>
+<tr class="memdesc:ab43dcb17f7a89d96bf9cc54ebe6862ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Xlat is a fixed XOR key.  <a href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">More...</a><br /></td></tr>
+<tr class="separator:ab43dcb17f7a89d96bf9cc54ebe6862ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>swiper manages legacy Cisco IOS^tm type 7 passwords. </p>
@@ -134,59 +138,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa88ed8959701533f0dd0f4601c127deb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa88ed8959701533f0dd0f4601c127deb">&#9670;&nbsp;</a></span>Encrypt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void swiper::Encrypt </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>hash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>seed</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>password</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Encrypt produces Cisco IOS^tm type 7 hashes. </p>
-<p>Truncates to the first 11 characters.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">hash</td><td>buffer (2 * (1 + password length) characters) </td></tr>
-    <tr><td class="paramname">seed</td><td>random seed in [0, 16) </td></tr>
-    <tr><td class="paramname">password</td><td>plaintext ASCII </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ae42fee18b8ceeef14c5410f67739b998"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae42fee18b8ceeef14c5410f67739b998">&#9670;&nbsp;</a></span>WarmCache()</h2>
 
@@ -236,6 +187,33 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ab43dcb17f7a89d96bf9cc54ebe6862ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43dcb17f7a89d96bf9cc54ebe6862ee">&#9670;&nbsp;</a></span>Xlat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t swiper::Xlat[32]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        0x64, 0x73, 0x66, 0x64,</div>
+<div class="line">        0x3b, 0x6b, 0x66, 0x6f,</div>
+<div class="line">        0x41, 0x2c, 0x2e, 0x69,</div>
+<div class="line">        0x79, 0x65, 0x77, 0x72,</div>
+<div class="line">        0x6b, 0x6c, 0x64, 0x4a,</div>
+<div class="line">        0x4b, 0x44, 0x48, 0x53,</div>
+<div class="line">        0x55, 0x42, 0x73, 0x00,</div>
+<div class="line">        0x00, 0x00, 0x00, 0x00</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Xlat is a fixed XOR key. </p>
 
 </div>
 </div>
