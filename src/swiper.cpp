@@ -37,9 +37,9 @@ namespace swiper {
     }
 
     void Decrypt(std::string& password, const std::string& hash) noexcept {
+        const auto xlat_seeded = Xlat + ParseDecPair(hash, 0);
         auto j = hash.length();
         auto i = j / 2 - 1;
-        auto xlat_seeded = Xlat + ParseDecPair(hash, 0);
 
         for (;;) {
             --i;
