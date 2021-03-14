@@ -126,11 +126,10 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Decrypt reverses Cisco IOS type 7 hashes. </p>
-<p>Hexadecimal data is lowercase.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">password</td><td>(hash length / 2 - 1 characters) </td></tr>
-    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (lowercase) </td></tr>
+    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (lowercase, even length, min length 4). </td></tr>
   </table>
   </dd>
 </dl>
@@ -182,7 +181,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">password</td><td>(hash length / 2 - 1 characters) </td></tr>
-    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 </td></tr>
+    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (lowercase, even length, min length 4). </td></tr>
     <tr><td class="paramname">n</td><td>iterations (non-negative) </td></tr>
   </table>
   </dd>
