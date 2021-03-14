@@ -49,7 +49,7 @@ namespace swiper {
         void FormatPair(std::string& result, size_t offset, T value, T base) noexcept {
             T remainder = value % base;
             result[offset] = FormatDigit((value - remainder) / base);
-            result[1 + offset]= FormatDigit(remainder);
+            result[offset + 1]= FormatDigit(remainder);
         }
     }
 
@@ -61,17 +61,17 @@ namespace swiper {
         }
 
         FormatPair(hash, 0, seed, size_t(10));
+        auto xlat_seeded = Xlat + seed;
 
-        for (auto i = size_t(0); i < len; i++) {
-            const auto c = uint8_t(Xlat[seed++] ^ password[i]);
-            FormatPair(hash, 2 * (1 + i), c, uint8_t(16));
+        for (auto i = size_t(0), j = size_t(2); i < len; i++, j += 2) {
+            const auto c = uint8_t(password[i] ^ xlat_seeded[i]);
+            FormatPair(hash, j, c, uint8_t(16));
         }
     }
 
     void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept {
-        while (n != 0) {
+        while (--n != 0) {
             Decrypt(password, hash);
-            --n;
         }
     }
 
@@ -82,14 +82,15 @@ namespace swiper {
             return;
         }
 
-        auto i = j / 2 - 1;
-        auto seed = i + ParsePair(hash, 0, size_t(10));
+        auto i = j / 2;
+        auto xlat_seeded = Xlat + ParsePair(hash, 0, size_t(10));
 
         for (;;) {
-            password[i--] = Xlat[seed--] ^ ParsePair(hash, j, uint8_t(16));
+            --i;
+            password[i] = xlat_seeded[i] ^ ParsePair(hash, j, uint8_t(16));
             j -= 2;
 
-            if (j == 0) {
+            if (i == 0) {
                 return;
             }
         }
