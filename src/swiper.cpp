@@ -4,13 +4,7 @@
 
 #include "swiper/swiper.hpp"
 
-
-
-
-
-#include <iostream>
-
-
+#include <cstddef>
 #include <type_traits>
 
 namespace swiper {

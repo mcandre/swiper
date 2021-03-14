@@ -7,7 +7,6 @@
  * @ref swiper breaks Cisco IOS^tm type 7 passwords.
  */
 
-#include <cstddef>
 #include <cstdint>
 #include <string>
 
