@@ -33,7 +33,7 @@ namespace swiper {
      * by prepopulating the system cache.
      *
      * @param password (hash length / 2 - 1 characters)
-     * @param hash Cisco IOS^tm type 7
+     * @param hash Cisco IOS^tm type 7 (lowercase, even length, min length 4).
      * @param n iterations (non-negative)
      */
     void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept;
@@ -41,10 +41,8 @@ namespace swiper {
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
-     * Hexadecimal data is lowercase.
-     *
      * @param password (hash length / 2 - 1 characters)
-     * @param hash Cisco IOS^tm type 7 (lowercase)
+     * @param hash Cisco IOS^tm type 7 (lowercase, even length, min length 4).
      * @returns password
      *
      */

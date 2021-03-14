@@ -43,6 +43,10 @@ static void Encrypt(std::string& hash, size_t seed, const std::string& password)
 }
 
 static bool PropReversible(size_t seed, const std::string& password) {
+    if (password == "") {
+        return true;
+    }
+
     auto hash = std::string(2 * (1 + password.length()), '\0');
     Encrypt(hash, seed, password);
     auto password2 = std::string(password.length(), '\0');
