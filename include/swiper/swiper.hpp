@@ -16,15 +16,18 @@
  */
 namespace swiper {
     /**
-     * @brief Encrypt produces Cisco IOS^tm type 7 hashes.
-     *
-     * Truncates to the first 11 characters.
-     *
-     * @param hash buffer (2 * (1 + password length) characters)
-     * @param seed random seed in [0, 16)
-     * @param password plaintext ASCII
+     * @brief Xlat is a fixed XOR key.
      */
-    void Encrypt(std::string& hash, size_t seed, const std::string& password) noexcept;
+    const uint8_t Xlat[32] = {
+        0x64, 0x73, 0x66, 0x64,
+        0x3b, 0x6b, 0x66, 0x6f,
+        0x41, 0x2c, 0x2e, 0x69,
+        0x79, 0x65, 0x77, 0x72,
+        0x6b, 0x6c, 0x64, 0x4a,
+        0x4b, 0x44, 0x48, 0x53,
+        0x55, 0x42, 0x73, 0x00,
+        0x00, 0x00, 0x00, 0x00
+    };
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
