@@ -9,11 +9,11 @@
 
 namespace swiper {
     namespace {
-        inline size_t ParseDecDigit(size_t v) noexcept {
+        ALWAYS_INLINE size_t ParseDecDigit(size_t v) noexcept {
             return v - 48;
         }
 
-        inline uint8_t ParseHexDigit(uint8_t v) noexcept {
+        ALWAYS_INLINE uint8_t ParseHexDigit(uint8_t v) noexcept {
             if (v & 64) {
                 return v - 87;
             }
@@ -21,11 +21,11 @@ namespace swiper {
             return v - 48;
         }
 
-        inline size_t ParseDecPair(const std::string& pair, size_t offset) noexcept {
+        ALWAYS_INLINE size_t ParseDecPair(const std::string& pair, size_t offset) noexcept {
             return ParseDecDigit(size_t(pair[offset])) * 10 + ParseDecDigit(size_t(pair[offset + 1]));
         }
 
-        inline uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
+        ALWAYS_INLINE uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
             return ParseHexDigit(uint8_t(pair[offset])) * 16 + ParseHexDigit(uint8_t(pair[offset + 1]));
         }
     }
