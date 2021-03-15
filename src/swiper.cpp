@@ -30,6 +30,12 @@ namespace swiper {
         }
     }
 
+    void Spin(std::string& password __attribute__((unused)), const std::string& hash __attribute__((unused)), int32_t n) noexcept {
+        while (--n != 0) {
+            __asm("");
+        }
+    }
+
     void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept {
         while (--n != 0) {
             Decrypt(password, hash);

@@ -40,6 +40,15 @@ namespace swiper {
     };
 
     /**
+     * @brief Spin performs n NOP's, useful for reducing benchmark noise.
+     *
+     * @param password (unused)
+     * @param hash (unused)
+     * @param n iterations (non-negative)
+     */
+    void Spin(std::string& password __attribute__((unused)), const std::string& hash __attribute__((unused)), int32_t n) noexcept;
+
+    /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
      * by prepopulating the system cache.
      *

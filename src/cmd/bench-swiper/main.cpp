@@ -33,12 +33,16 @@ int main() {
 
     const auto hash = "07022e42450c"s;
     auto password = std::string(hash.length() / 2 - 1, '\0');
-    swiper::WarmCache(password, hash, 100);
+    const auto nop_start = std::chrono::high_resolution_clock::now();
+    swiper::Spin(password, hash, trials);
+    const auto nop_end = std::chrono::high_resolution_clock::now();
+    swiper::WarmCache(password, hash, 1000);
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
     assert(password == "monke"s);
-    const auto elapsed = end - start;
+    const auto nop_elapsed = nop_end - nop_start;
+    const auto elapsed = end - start - nop_elapsed;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
 
     const auto throughput_sec = 1000000000.0 * trials / total_ns;
