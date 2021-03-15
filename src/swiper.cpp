@@ -9,24 +9,24 @@
 
 namespace swiper {
     namespace {
-        inline size_t ParseDecDigit(size_t v) noexcept {
-            return v - size_t(48);
+        inline size_t ParseDecDigit(char c) noexcept {
+            return size_t(c - '\x30');
         }
 
-        inline uint8_t ParseHexDigit(uint8_t v) noexcept {
-            if (v & uint8_t(64)) {
-                return v - uint8_t(87);
+        inline uint8_t ParseHexDigit(char c) noexcept {
+            if (c & '\x40') {
+                return uint8_t(c - '\x57');
             }
 
-            return v - uint8_t(48);
+            return uint8_t(c - '\x30');
         }
 
         inline size_t ParseDecPair(const std::string& pair, size_t offset) noexcept {
-            return ParseDecDigit(size_t(pair[offset])) * size_t(10) + ParseDecDigit(size_t(pair[offset + 1]));
+            return ParseDecDigit(pair[offset]) * size_t(10) + ParseDecDigit(pair[offset + 1]);
         }
 
         inline uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
-            return ParseHexDigit(uint8_t(pair[offset])) * uint8_t(16) + ParseHexDigit(uint8_t(pair[offset + 1]));
+            return ParseHexDigit(pair[offset]) * uint8_t(16) + ParseHexDigit(pair[offset + 1]);
         }
     }
 
