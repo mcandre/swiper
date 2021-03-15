@@ -9,24 +9,24 @@
 
 namespace swiper {
     namespace {
-        inline size_t ParseDecDigit(char c) noexcept {
-            return size_t(c - '\x30');
+        inline size_t ParseDecDigit(size_t v) noexcept {
+            return v - 48;
         }
 
-        inline uint8_t ParseHexDigit(char c) noexcept {
-            if (c & '\x40') {
-                return uint8_t(c - '\x57');
+        inline uint8_t ParseHexDigit(uint8_t v) noexcept {
+            if (v & 64) {
+                return v - 87;
             }
 
-            return uint8_t(c - '\x30');
+            return v - 48;
         }
 
         inline size_t ParseDecPair(const std::string& pair, size_t offset) noexcept {
-            return ParseDecDigit(pair[offset]) * size_t(10) + ParseDecDigit(pair[offset + 1]);
+            return ParseDecDigit(size_t(pair[offset])) * 10 + ParseDecDigit(size_t(pair[offset + 1]));
         }
 
         inline uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
-            return ParseHexDigit(pair[offset]) * uint8_t(16) + ParseHexDigit(pair[offset + 1]);
+            return ParseHexDigit(uint8_t(pair[offset])) * 16 + ParseHexDigit(uint8_t(pair[offset + 1]));
         }
     }
 
@@ -47,7 +47,7 @@ namespace swiper {
             password[i] = xlat_seeded[i] ^ ParseHexPair(hash, j);
 
             if (i == 0) {
-                return;
+                break;
             }
         }
     }
