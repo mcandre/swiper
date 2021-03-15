@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "admnswx",
   1: "s",
   2: "ms",
-  3: "dmw",
+  3: "dmsw",
   4: "x",
   5: "an"
 };
