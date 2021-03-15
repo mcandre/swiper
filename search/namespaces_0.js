@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['swiper_9',['swiper',['../namespaceswiper.html',1,'']]]
+  ['swiper_11',['swiper',['../namespaceswiper.html',1,'']]]
 ];
