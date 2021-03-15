@@ -34,7 +34,7 @@ int main() {
     const auto hash = "07022e42450c"s;
     auto password = std::string(hash.length() / 2 - 1, '\0');
     const auto nop_start = std::chrono::high_resolution_clock::now();
-    swiper::Spin(password, hash, trials);
+    swiper::Spin(trials);
     const auto nop_end = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, 1000);
     const auto start = std::chrono::high_resolution_clock::now();
