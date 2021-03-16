@@ -21,8 +21,8 @@ namespace swiper {
             return v - 48;
         }
 
-        ALWAYS_INLINE size_t ParseDecPair(const std::string& pair, size_t offset) noexcept {
-            return ParseDecDigit(size_t(pair[offset])) * 10 + ParseDecDigit(size_t(pair[offset + 1]));
+        ALWAYS_INLINE size_t ParseDecPair(const std::string& pair) noexcept {
+            return ParseDecDigit(size_t(pair[0])) * 10 + ParseDecDigit(size_t(pair[1]));
         }
 
         ALWAYS_INLINE uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
@@ -43,14 +43,13 @@ namespace swiper {
     }
 
     void Decrypt(std::string& password, const std::string& hash) noexcept {
-        const auto xlat_seeded = Xlat + ParseDecPair(hash, 0);
         auto j = hash.length();
         auto i = j / 2 - 1;
+        auto k = Xlat + ParseDecPair(hash) + i;
 
         for (;;) {
-            --i;
             j -= 2;
-            password[i] = xlat_seeded[i] ^ ParseHexPair(hash, j);
+            password[--i] = *--k ^ ParseHexPair(hash, j);
 
             if (i == 0) {
                 break;

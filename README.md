@@ -5,7 +5,7 @@
 ```console
 $ bench-swiper
 latency (ns)    throughput (password/sec)
-5.37            1.86e+08
+5.36            1.87e+08
 ```
 
 # ABOUT
