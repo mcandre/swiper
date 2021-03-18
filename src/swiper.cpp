@@ -44,14 +44,14 @@ namespace swiper {
 
     void Decrypt(char *password, const std::string_view& hash) noexcept {
         auto j = hash.length() - 2;
-        auto i = j / 2;
-        auto k = Xlat + ParseDecPair(hash) + i - 1;
-        auto p = password + i - 1;
+        auto i = j / 2 - 1;
+        auto k = Xlat + ParseDecPair(hash) + i;
+        auto p = password + i;
 
         for (;;) {
             *p-- = *k-- ^ ParseHexPair(hash, j);
 
-            if (--i == 0) {
+            if (i-- == 0) {
                 break;
             }
 
