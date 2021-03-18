@@ -43,7 +43,7 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const std::string_view& hash) noexcept {
-        auto i = (hash.length() - 2) / 2 - 1;
+        auto i = hash.length() / 2 - 2;
         auto j = 2;
         auto k = Xlat + ParseDecPair(hash);
 
