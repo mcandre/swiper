@@ -32,7 +32,7 @@ namespace swiper {
 
     void Spin(int32_t n) noexcept {
         while (--n != 0) {
-            __asm("");
+            NOP;
         }
     }
 

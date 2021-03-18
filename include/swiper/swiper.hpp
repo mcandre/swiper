@@ -21,6 +21,12 @@
 #define NEVER_INLINE __attribute__ ((__noinline__))
 #endif
 
+#if defined(_WIN32)
+#define NOP __asm{}
+#else
+#define NOP __asm("")
+#endif
+
 /**
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
  */
