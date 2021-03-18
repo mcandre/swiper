@@ -72,7 +72,7 @@ $(function() {
 <a href="swiper_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#if defined(_WIN32)</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define ALWAYS_INLINE __forceinline</span></div>
@@ -96,15 +96,15 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ac858a6550f91c1f9d279ff62956abbc2">Spin</a>(int32_t n) noexcept;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">WarmCache</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash, int32_t n) noexcept;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a>(std::string&amp; password, <span class="keyword">const</span> std::string&amp; hash) noexcept;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ae7cba442c68e5b3d9eeb4e994800b43d">WarmCache</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash, int32_t n) noexcept;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash) noexcept;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespaceswiper_html_ac858a6550f91c1f9d279ff62956abbc2"><div class="ttname"><a href="namespaceswiper.html#ac858a6550f91c1f9d279ff62956abbc2">swiper::Spin</a></div><div class="ttdeci">void Spin(int32_t n) noexcept</div><div class="ttdoc">Spin performs n NOP's, useful for reducing benchmark noise.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:33</div></div>
 <div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:27</div></div>
-<div class="ttc" id="anamespaceswiper_html_a3938a62735238f8bf41714eb02570b98"><div class="ttname"><a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(std::string &amp;password, const std::string &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:45</div></div>
-<div class="ttc" id="anamespaceswiper_html_ae42fee18b8ceeef14c5410f67739b998"><div class="ttname"><a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:39</div></div>
+<div class="ttc" id="anamespaceswiper_html_a31bf3c2415b5b36b6fef855352c54c1b"><div class="ttname"><a href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(char *password, const std::string_view &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:45</div></div>
+<div class="ttc" id="anamespaceswiper_html_ae7cba442c68e5b3d9eeb4e994800b43d"><div class="ttname"><a href="namespaceswiper.html#ae7cba442c68e5b3d9eeb4e994800b43d">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(char *password, const std::string_view &amp;hash, int32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:39</div></div>
 <div class="ttc" id="anamespaceswiper_html_ab43dcb17f7a89d96bf9cc54ebe6862ee"><div class="ttname"><a href="namespaceswiper.html#ab43dcb17f7a89d96bf9cc54ebe6862ee">swiper::Xlat</a></div><div class="ttdeci">const uint8_t Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:31</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

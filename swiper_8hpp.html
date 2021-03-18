@@ -75,15 +75,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for swiper.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="swiper_8hpp__incl.png" border="0" usemap="#include_2swiper_2swiper_8hpp" alt=""/></div>
 <map name="include_2swiper_2swiper_8hpp" id="include_2swiper_2swiper_8hpp">
 <area shape="rect" title=" " alt="" coords="5,5,196,32"/>
-<area shape="rect" title=" " alt="" coords="25,80,91,107"/>
-<area shape="rect" title=" " alt="" coords="115,80,174,107"/>
+<area shape="rect" title=" " alt="" coords="14,80,81,107"/>
+<area shape="rect" title=" " alt="" coords="105,80,203,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -117,12 +117,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac858a6550f91c1f9d279ff62956abbc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ac858a6550f91c1f9d279ff62956abbc2">swiper::Spin</a> (int32_t n) noexcept</td></tr>
 <tr class="memdesc:ac858a6550f91c1f9d279ff62956abbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spin performs n NOP's, useful for reducing benchmark noise.  <a href="namespaceswiper.html#ac858a6550f91c1f9d279ff62956abbc2">More...</a><br /></td></tr>
 <tr class="separator:ac858a6550f91c1f9d279ff62956abbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae42fee18b8ceeef14c5410f67739b998"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">swiper::WarmCache</a> (std::string &amp;password, const std::string &amp;hash, int32_t n) noexcept</td></tr>
-<tr class="memdesc:ae42fee18b8ceeef14c5410f67739b998"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#ae42fee18b8ceeef14c5410f67739b998">More...</a><br /></td></tr>
-<tr class="separator:ae42fee18b8ceeef14c5410f67739b998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3938a62735238f8bf41714eb02570b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">swiper::Decrypt</a> (std::string &amp;password, const std::string &amp;hash) noexcept</td></tr>
-<tr class="memdesc:a3938a62735238f8bf41714eb02570b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a3938a62735238f8bf41714eb02570b98">More...</a><br /></td></tr>
-<tr class="separator:a3938a62735238f8bf41714eb02570b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7cba442c68e5b3d9eeb4e994800b43d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ae7cba442c68e5b3d9eeb4e994800b43d">swiper::WarmCache</a> (char *password, const std::string_view &amp;hash, int32_t n) noexcept</td></tr>
+<tr class="memdesc:ae7cba442c68e5b3d9eeb4e994800b43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#ae7cba442c68e5b3d9eeb4e994800b43d">More...</a><br /></td></tr>
+<tr class="separator:ae7cba442c68e5b3d9eeb4e994800b43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31bf3c2415b5b36b6fef855352c54c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">swiper::Decrypt</a> (char *password, const std::string_view &amp;hash) noexcept</td></tr>
+<tr class="memdesc:a31bf3c2415b5b36b6fef855352c54c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">More...</a><br /></td></tr>
+<tr class="separator:a31bf3c2415b5b36b6fef855352c54c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
