@@ -8,7 +8,7 @@
  */
 
 #include <cstdint>
-#include <string>
+#include <string_view>
 
 /**
  * Credit: Andrei Alexandrescu "Mo' Hustle Mo' Problems"
@@ -50,19 +50,23 @@ namespace swiper {
      * @brief WarmCache accelerates successive @ref Decrypt calls,
      * by prepopulating the system cache.
      *
-     * @param password (hash length / 2 - 1 characters)
-     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4).
+     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
+     *
+     * @param password out buffer (hash length / 2 characters)
+     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept;
+    void WarmCache(char *password, const std::string_view& hash, int32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
-     * @param password (hash length / 2 - 1 characters)
-     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4).
+     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
+     *
+     * @param password out buffer (hash length / 2 characters)
+     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @returns password
      *
      */
-    void Decrypt(std::string& password, const std::string& hash) noexcept;
+    void Decrypt(char *password, const std::string_view& hash) noexcept;
 }

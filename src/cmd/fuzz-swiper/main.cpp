@@ -5,6 +5,8 @@
 #include "main.hpp"
 
 #include <cassert>
+#include <cstring>
+#include <string>
 
 #include "swiper/swiper.hpp"
 
@@ -18,7 +20,6 @@ static uint8_t FormatDigit(T t) noexcept {
     return uint8_t(t) + '\x30';
 }
 
-// Warning: Omits null terminator, to be placed at buf[2].
 template <class T>
 static void FormatPair(std::string& result, size_t offset, T value, T base) noexcept {
     T remainder = value % base;
@@ -26,7 +27,7 @@ static void FormatPair(std::string& result, size_t offset, T value, T base) noex
     result[offset + 1]= FormatDigit(remainder);
 }
 
-static void Encrypt(std::string& hash, size_t seed, const std::string& password) noexcept {
+static void Encrypt(std::string& hash, size_t seed, const std::string_view& password) noexcept {
     auto len = password.length();
 
     if (len > size_t(11)) {
@@ -42,20 +43,21 @@ static void Encrypt(std::string& hash, size_t seed, const std::string& password)
     }
 }
 
-static bool PropReversible(size_t seed, const std::string& password) {
+static bool PropReversible(size_t seed, const std::string_view& password) {
     if (password == "") {
         return true;
     }
 
     auto hash = std::string(2 * (1 + password.length()), '\0');
     Encrypt(hash, seed, password);
-    auto password2 = std::string(password.length(), '\0');
-    swiper::Decrypt(password2, hash);
-    return password2 == password;
+    char password2[12];
+    memset(password2, 0, sizeof(password2));
+    swiper::Decrypt(password2, std::string_view(hash));
+    return std::string(password2) == password;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
-    if (Size == size_t(0)) {
+    if (Size < size_t(2) || Data[1] == '\0') {
         return 0;
     }
 
@@ -67,8 +69,15 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         password_len = size_t(11);
     }
 
+    for (auto i = size_t(1); i < password_len; i++) {
+        if (Data2[i] == '\0') {
+            password_len = i - 1;
+            break;
+        }
+    }
+
     auto password = std::string(Data2, password_len);
-    assert(PropReversible(seed, password));
+    assert(PropReversible(seed, std::string_view(password)));
     return 0;
 }
 #endif

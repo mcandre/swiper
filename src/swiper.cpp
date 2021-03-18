@@ -21,11 +21,11 @@ namespace swiper {
             return v - 48;
         }
 
-        ALWAYS_INLINE size_t ParseDecPair(const std::string& pair) noexcept {
+        ALWAYS_INLINE size_t ParseDecPair(const std::string_view& pair) noexcept {
             return ParseDecDigit(size_t(pair[0])) * 10 + ParseDecDigit(size_t(pair[1]));
         }
 
-        ALWAYS_INLINE uint8_t ParseHexPair(const std::string& pair, size_t offset) noexcept {
+        ALWAYS_INLINE uint8_t ParseHexPair(const std::string_view& pair, size_t offset) noexcept {
             return (ParseHexDigit(uint8_t(pair[offset])) << 4) + ParseHexDigit(uint8_t(pair[offset + 1]));
         }
     }
@@ -36,21 +36,22 @@ namespace swiper {
         }
     }
 
-    void WarmCache(std::string& password, const std::string& hash, int32_t n) noexcept {
+    void WarmCache(char *password, const std::string_view& hash, int32_t n) noexcept {
         while (--n != 0) {
             Decrypt(password, hash);
         }
     }
 
-    void Decrypt(std::string& password, const std::string& hash) noexcept {
+    void Decrypt(char *password, const std::string_view& hash) noexcept {
         auto j = hash.length() - 2;
         auto i = j >> 1;
         auto k = Xlat + ParseDecPair(hash) + i - 1;
+        auto p = password + i - 1;
 
         for (;;) {
-            password[--i] = *k-- ^ ParseHexPair(hash, j);
+            *p-- = *k-- ^ ParseHexPair(hash, j);
 
-            if (i == 0) {
+            if (--i == 0) {
                 break;
             }
 
