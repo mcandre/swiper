@@ -9,6 +9,7 @@ rm -f debug.log || :
 rm -rf bin || :
 rm -rf debug || :
 rm -rf Testing || :
+rm -rf build || :
 rm -rf Makefile || :
 rm -rf *.vcxproj || :
 rm -rf *.vcxproj.filters || :

@@ -5,6 +5,7 @@ bin/
 debug/
 CTestTestfile.cmake
 Testing/
+build/
 crash-*
 *.data
 *.data.old
