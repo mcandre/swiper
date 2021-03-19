@@ -13,11 +13,7 @@ namespace swiper {
         }
 
         ALWAYS_INLINE auto ParseHexDigit(char v) noexcept {
-            if (v & 64) {
-                return v - 87;
-            }
-
-            return v - 48;
+            return v & 64 ? v - 87 : v - 48;
         }
 
         ALWAYS_INLINE auto ParseHexPair(const char *pair) noexcept {
