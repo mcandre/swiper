@@ -6,7 +6,6 @@
 
 #include <cassert>
 #include <cstring>
-#include <string>
 
 #include "swiper/swiper.hpp"
 
@@ -21,13 +20,13 @@ static uint8_t FormatDigit(T t) noexcept {
 }
 
 template <class T>
-static void FormatPair(std::string& result, size_t offset, T value, T base) noexcept {
+static void FormatPair(char *result, size_t offset, T value, T base) noexcept {
     T remainder = value % base;
     result[offset] = FormatDigit((value - remainder) / base);
     result[offset + 1]= FormatDigit(remainder);
 }
 
-static void Encrypt(std::string& hash, size_t seed, const std::string_view& password) noexcept {
+static void Encrypt(char *hash, size_t seed, const std::string_view& password) noexcept {
     auto len = password.length();
 
     if (len > size_t(11)) {
@@ -48,12 +47,13 @@ static bool PropReversible(size_t seed, const std::string_view& password) {
         return true;
     }
 
-    auto hash = std::string(2 * (1 + password.length()), '\0');
+    char hash[25];
+    memset(hash, 0, sizeof(hash));
     Encrypt(hash, seed, password);
     char password2[12];
     memset(password2, 0, sizeof(password2));
     swiper::Decrypt(password2, std::string_view(hash));
-    return std::string(password2) == password;
+    return password == password2;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
@@ -76,8 +76,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         }
     }
 
-    auto password = std::string(Data2, password_len);
-    assert(PropReversible(seed, std::string_view(password)));
+    assert(PropReversible(seed, std::string_view(Data2, password_len)));
     return 0;
 }
 #endif

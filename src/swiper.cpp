@@ -4,8 +4,6 @@
 
 #include "swiper/swiper.hpp"
 
-#include <type_traits>
-
 namespace swiper {
     namespace {
         ALWAYS_INLINE auto ParseDecPair(const char *pair) noexcept {

@@ -4,9 +4,7 @@
 
 #include "main.hpp"
 
-#include <cassert>
 #include <chrono>
-#include <cstring>
 #include <iomanip>
 #include <iostream>
 #if defined(_WIN32)
@@ -34,7 +32,6 @@ int main() {
 
     const auto hash = "07022e42450c"sv;
     char password[12];
-    memset(password, 0, sizeof(password));
     const auto nop_start = std::chrono::high_resolution_clock::now();
     swiper::Spin(trials);
     const auto nop_end = std::chrono::high_resolution_clock::now();
@@ -42,11 +39,9 @@ int main() {
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
-    assert(password == "monke"sv);
     const auto nop_elapsed = nop_end - nop_start;
     const auto elapsed = end - start - nop_elapsed;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
-
     const auto throughput_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
     std::cout << std::setprecision(2);
