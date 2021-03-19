@@ -8,8 +8,8 @@
 
 namespace swiper {
     namespace {
-        ALWAYS_INLINE auto ParseDecDigit(char v) noexcept {
-            return v - 48;
+        ALWAYS_INLINE auto ParseDecPair(const char *pair) noexcept {
+            return 10 * pair[0] + pair[1] - 528;
         }
 
         ALWAYS_INLINE auto ParseHexDigit(char v) noexcept {
@@ -20,12 +20,8 @@ namespace swiper {
             return v - 48;
         }
 
-        ALWAYS_INLINE auto ParseDecPair(const std::string_view& pair) noexcept {
-            return ParseDecDigit(pair[0]) * 10 + ParseDecDigit(pair[1]);
-        }
-
         ALWAYS_INLINE auto ParseHexPair(const char *pair) noexcept {
-            return ParseHexDigit(pair[0]) * 16 + ParseHexDigit(pair[1]);
+            return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
 
@@ -44,7 +40,7 @@ namespace swiper {
     void Decrypt(char *password, const std::string_view& hash) noexcept {
         auto i = hash.length() / 2 - 2;
         auto c = hash.data();
-        auto k = Xlat + ParseDecPair(hash);
+        auto k = Xlat + ParseDecPair(c);
 
         for (;;) {
             c += 2;
