@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spin_20',['Spin',['../namespaceswiper.html#ac858a6550f91c1f9d279ff62956abbc2',1,'swiper']]]
+  ['spin_20',['Spin',['../namespaceswiper.html#aebebfcffb1d79f4c6117ab98502454b9',1,'swiper']]]
 ];
