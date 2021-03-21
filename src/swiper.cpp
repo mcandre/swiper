@@ -32,17 +32,18 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const std::string_view& hash) noexcept {
+        auto c = hash.substr(2, 22).data();
         auto i = hash.length() / 2 - 2;
-        auto c = hash.data();
-        auto k = Xlat + ParseDecPair(c);
+        auto k = Xlat + ParseDecPair(hash.data());
 
         for (;;) {
-            c += 2;
             *password++ = *k++ ^ ParseHexPair(c);
 
             if (i-- == 0) {
                 break;
             }
+
+            c += 2;
         }
     }
 }
