@@ -7,6 +7,7 @@
  * @ref swiper breaks Cisco IOS^tm type 7 passwords.
  */
 
+#include <cstdint>
 #include <string_view>
 
 /**
@@ -33,7 +34,7 @@ namespace swiper {
     /**
      * @brief Xlat is a fixed XOR key.
      */
-    const char Xlat[32] = {
+    const uint_fast8_t Xlat[32] = {
         0x64, 0x73, 0x66, 0x64,
         0x3b, 0x6b, 0x66, 0x6f,
         0x41, 0x2c, 0x2e, 0x69,
@@ -49,7 +50,7 @@ namespace swiper {
      *
      * @param n iterations (non-negative)
      */
-    void Spin(int n) noexcept;
+    void Spin(int_fast32_t n) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
@@ -61,7 +62,7 @@ namespace swiper {
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const std::string_view& hash, int n) noexcept;
+    void WarmCache(char *password, const std::string_view& hash, int_fast32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
