@@ -48,11 +48,11 @@ static bool PropReversible(size_t seed, const std::string_view& password) {
     }
 
     char hash[25];
-    memset(hash, 0, sizeof(hash));
     Encrypt(hash, seed, password);
+    hash[2 * (password.length() + 1)] = '\0';
     char password2[12];
-    memset(password2, 0, sizeof(password2));
     swiper::Decrypt(password2, std::string_view(hash));
+    password2[strlen(hash) / 2 - 1] = '\0';
     return password == password2;
 }
 

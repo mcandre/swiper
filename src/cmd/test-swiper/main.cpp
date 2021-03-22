@@ -5,7 +5,6 @@
 #include "main.hpp"
 
 #include <cassert>
-#include <cstring>
 #include <string>
 using namespace std::string_view_literals;
 
@@ -33,9 +32,9 @@ int main() {
 
     char password[12];
 
-    for (const auto& h : hashes) {
-        memset(password, 0, sizeof(password));
-        swiper::Decrypt(password, h);
+    for (const auto& hash : hashes) {
+        swiper::Decrypt(password, hash);
+        password[hash.length() / 2 - 1] = '\0';
         assert(password == "monke"sv);
     }
 }
