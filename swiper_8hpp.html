@@ -74,14 +74,16 @@ $(function() {
 <div class="title">swiper.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string_view&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for swiper.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="swiper_8hpp__incl.png" border="0" usemap="#include_2swiper_2swiper_8hpp" alt=""/></div>
 <map name="include_2swiper_2swiper_8hpp" id="include_2swiper_2swiper_8hpp">
 <area shape="rect" title=" " alt="" coords="5,5,196,32"/>
-<area shape="rect" title=" " alt="" coords="52,80,149,107"/>
+<area shape="rect" title=" " alt="" coords="14,80,81,107"/>
+<area shape="rect" title=" " alt="" coords="105,80,203,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -114,21 +116,21 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aebebfcffb1d79f4c6117ab98502454b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#aebebfcffb1d79f4c6117ab98502454b9">swiper::Spin</a> (int n) noexcept</td></tr>
-<tr class="memdesc:aebebfcffb1d79f4c6117ab98502454b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spin performs n NOP's, useful for reducing benchmark noise.  <a href="namespaceswiper.html#aebebfcffb1d79f4c6117ab98502454b9">More...</a><br /></td></tr>
-<tr class="separator:aebebfcffb1d79f4c6117ab98502454b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a007ec3a3e168bc928b2d85820efa4774"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a007ec3a3e168bc928b2d85820efa4774">swiper::WarmCache</a> (char *password, const std::string_view &amp;hash, int n) noexcept</td></tr>
-<tr class="memdesc:a007ec3a3e168bc928b2d85820efa4774"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a007ec3a3e168bc928b2d85820efa4774">More...</a><br /></td></tr>
-<tr class="separator:a007ec3a3e168bc928b2d85820efa4774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace393c174ac16d54fa8043e32ee95105"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ace393c174ac16d54fa8043e32ee95105">swiper::Spin</a> (int_fast32_t n) noexcept</td></tr>
+<tr class="memdesc:ace393c174ac16d54fa8043e32ee95105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spin performs n NOP's, useful for reducing benchmark noise.  <a href="namespaceswiper.html#ace393c174ac16d54fa8043e32ee95105">More...</a><br /></td></tr>
+<tr class="separator:ace393c174ac16d54fa8043e32ee95105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abf19af22ea5c8c76953a2e90620029"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">swiper::WarmCache</a> (char *password, const std::string_view &amp;hash, int_fast32_t n) noexcept</td></tr>
+<tr class="memdesc:a7abf19af22ea5c8c76953a2e90620029"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">More...</a><br /></td></tr>
+<tr class="separator:a7abf19af22ea5c8c76953a2e90620029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31bf3c2415b5b36b6fef855352c54c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">swiper::Decrypt</a> (char *password, const std::string_view &amp;hash) noexcept</td></tr>
 <tr class="memdesc:a31bf3c2415b5b36b6fef855352c54c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">More...</a><br /></td></tr>
 <tr class="separator:a31bf3c2415b5b36b6fef855352c54c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a0e5a5404a5aaf5ab2bdc034346d402d0"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">swiper::Xlat</a> [32]</td></tr>
-<tr class="memdesc:a0e5a5404a5aaf5ab2bdc034346d402d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Xlat is a fixed XOR key.  <a href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">More...</a><br /></td></tr>
-<tr class="separator:a0e5a5404a5aaf5ab2bdc034346d402d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e41e6b1ecc8896c0c1a93fcdeef007"><td class="memItemLeft" align="right" valign="top">const uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">swiper::Xlat</a> [32]</td></tr>
+<tr class="memdesc:ad0e41e6b1ecc8896c0c1a93fcdeef007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Xlat is a fixed XOR key.  <a href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">More...</a><br /></td></tr>
+<tr class="separator:ad0e41e6b1ecc8896c0c1a93fcdeef007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aa1dec568e79152c892dcf63f445cbd7a"></a>
