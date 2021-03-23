@@ -82,35 +82,29 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="swiper_8hpp.html#a5251990c23668b067a282c9c3a8ef84a">   21</a></span>&#160;<span class="preprocessor">#define NEVER_INLINE __attribute__ ((__noinline__))</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if defined(_WIN32)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define NOP __asm{}</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="swiper_8hpp.html#a700f88377bf36711b711f69b06c52f5d">   27</a></span>&#160;<span class="preprocessor">#define NOP __asm(&quot;&quot;)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   33</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">   37</a></span>&#160;    <span class="keyword">const</span> uint_fast8_t <a class="code" href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">Xlat</a>[32] = {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        0x64, 0x73, 0x66, 0x64,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        0x3b, 0x6b, 0x66, 0x6f,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        0x41, 0x2c, 0x2e, 0x69,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        0x79, 0x65, 0x77, 0x72,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        0x6b, 0x6c, 0x64, 0x4a,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        0x4b, 0x44, 0x48, 0x53,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        0x55, 0x42, 0x73, 0x00,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        0x00, 0x00, 0x00, 0x00</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ace393c174ac16d54fa8043e32ee95105">Spin</a>(int_fast32_t n) noexcept;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">WarmCache</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash, int_fast32_t n) noexcept;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash) noexcept;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   27</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">   31</a></span>&#160;    <span class="keyword">const</span> uint_fast8_t <a class="code" href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">Xlat</a>[32] = {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        0x64, 0x73, 0x66, 0x64,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        0x3b, 0x6b, 0x66, 0x6f,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        0x41, 0x2c, 0x2e, 0x69,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        0x79, 0x65, 0x77, 0x72,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        0x6b, 0x6c, 0x64, 0x4a,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        0x4b, 0x44, 0x48, 0x53,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        0x55, 0x42, 0x73, 0x00,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        0x00, 0x00, 0x00, 0x00</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#ace393c174ac16d54fa8043e32ee95105">Spin</a>(int_fast32_t n) noexcept;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">WarmCache</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash, int_fast32_t n) noexcept;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">Decrypt</a>(<span class="keywordtype">char</span> *password, <span class="keyword">const</span> std::string_view&amp; hash) noexcept;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:33</div></div>
-<div class="ttc" id="anamespaceswiper_html_a31bf3c2415b5b36b6fef855352c54c1b"><div class="ttname"><a href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(char *password, const std::string_view &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:34</div></div>
-<div class="ttc" id="anamespaceswiper_html_a7abf19af22ea5c8c76953a2e90620029"><div class="ttname"><a href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(char *password, const std::string_view &amp;hash, int_fast32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:28</div></div>
-<div class="ttc" id="anamespaceswiper_html_ad0e41e6b1ecc8896c0c1a93fcdeef007"><div class="ttname"><a href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">swiper::Xlat</a></div><div class="ttdeci">const uint_fast8_t Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:37</div></div>
+<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:27</div></div>
+<div class="ttc" id="anamespaceswiper_html_a31bf3c2415b5b36b6fef855352c54c1b"><div class="ttname"><a href="namespaceswiper.html#a31bf3c2415b5b36b6fef855352c54c1b">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(char *password, const std::string_view &amp;hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:32</div></div>
+<div class="ttc" id="anamespaceswiper_html_a7abf19af22ea5c8c76953a2e90620029"><div class="ttname"><a href="namespaceswiper.html#a7abf19af22ea5c8c76953a2e90620029">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(char *password, const std::string_view &amp;hash, int_fast32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:26</div></div>
+<div class="ttc" id="anamespaceswiper_html_ad0e41e6b1ecc8896c0c1a93fcdeef007"><div class="ttname"><a href="namespaceswiper.html#ad0e41e6b1ecc8896c0c1a93fcdeef007">swiper::Xlat</a></div><div class="ttdeci">const uint_fast8_t Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:31</div></div>
 <div class="ttc" id="anamespaceswiper_html_ace393c174ac16d54fa8043e32ee95105"><div class="ttname"><a href="namespaceswiper.html#ace393c174ac16d54fa8043e32ee95105">swiper::Spin</a></div><div class="ttdeci">void Spin(int_fast32_t n) noexcept</div><div class="ttdoc">Spin performs n NOP's, useful for reducing benchmark noise.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:22</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
