@@ -14,7 +14,7 @@
  * Credit: Andrei Alexandrescu "Mo' Hustle Mo' Problems"
  */
 #if defined(_WIN32)
-#define ALWAYS_INLINE __forceinline
+#define ALWAYS_INLINE inline __forceinline
 #define NEVER_INLINE __declspec(noinline)
 #else
 #define ALWAYS_INLINE inline __attribute((__always_inline__))
