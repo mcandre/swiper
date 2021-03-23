@@ -30,7 +30,7 @@ int main() {
 
     const auto hash = "07022e42450c"sv;
     char password[12];
-    constexpr auto trials = uint_fast32_t(1) << 30;
+    constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::high_resolution_clock::now();
     swiper::Spin(trials);
     const auto nop_end = std::chrono::high_resolution_clock::now();
