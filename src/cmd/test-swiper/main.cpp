@@ -30,11 +30,13 @@ int main() {
         "151f04020f2f"sv
     };
 
-    char password[12];
+    auto password_s = std::string(11, '\0');
+    auto password = swiper::cord(password_s);
 
-    for (const auto& hash : hashes) {
+    for (const auto& hash_sv : hashes) {
+        const auto hash = swiper::cord(hash_sv);
         swiper::Decrypt(password, hash);
-        password[hash.length() / 2 - 1] = '\0';
-        assert(password == "monke"sv);
+        password.Fuse(hash.len / 2 - 1);
+        assert(password.ToStringView() == "monke"sv);
     }
 }

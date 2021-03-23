@@ -23,20 +23,21 @@ namespace swiper {
         while (n-- != 0) {}
     }
 
-    void WarmCache(char *password, const std::string_view& hash, volatile uint_fast32_t n) noexcept {
+    void WarmCache(cord& password, const cord& hash, volatile uint_fast32_t n) noexcept {
         while (n-- != 0) {
             Decrypt(password, hash);
         }
     }
 
-    void Decrypt(char *password, const std::string_view& hash) noexcept {
-        auto i = uint_fast8_t(hash.length()) / 2 - 2;
-        auto h = (const uint_fast8_t*)(hash.data());
-        auto k = Xlat + ParseDecPair(h);
-        auto c = h + 2;
+    void Decrypt(cord& password, const cord& hash) noexcept {
+        const auto [len, buf] = hash;
+        auto i = uint_fast8_t(len) / 2 - 2;
+        auto p = password.buf;
+        auto k = Xlat + ParseDecPair(buf);
+        auto c = buf + 2;
 
         for (;;) {
-            *password++ = *k++ ^ ParseHexPair(c);
+            *p++ = *k++ ^ ParseHexPair(c);
 
             if (i-- == 0) {
                 break;

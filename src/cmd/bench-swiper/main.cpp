@@ -28,8 +28,10 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = "082c4340021c"sv;
-    char password[12];
+    const auto hash_s = "082c4340021c"sv;
+    const auto hash = swiper::cord(hash_s);
+    uint_fast8_t password_s[12];
+    auto password = swiper::cord(sizeof(password_s) - 1, password_s);
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::high_resolution_clock::now();
     swiper::Spin(trials);

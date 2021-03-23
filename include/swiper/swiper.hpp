@@ -8,6 +8,7 @@
  */
 
 #include <cstdint>
+#include <string>
 #include <string_view>
 
 /**
@@ -25,6 +26,55 @@
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
  */
 namespace swiper {
+    /**
+     * @brief cord_t provides raw fields instead of std::string_view function calls.
+     *
+     * Warning: The user is responsible for amending len and buf with @ref Fuse.
+     */
+    struct cord {
+        /**
+         * @brief len marks length.
+         */
+        size_t len;
+
+        /**
+         * @brief buf marks contents.
+         */
+        uint_fast8_t *buf;
+
+        /**
+         * @brief cord constructs a new cord from a std::string_view.
+         */
+        cord(const std::string_view& sv) : len(sv.length()), buf((uint_fast8_t*)(sv.data())) {}
+
+        /**
+         * @brief cord constructs a new cord from a fixed sized original buffer.
+         */
+        cord(size_t count, uint_fast8_t *s) : len(count), buf(s) {}
+
+        /**
+         * @brief Fuse updates null terminator and length.
+         */
+        void Fuse(size_t count) {
+            buf[count] = '\0';
+            len = count;
+        }
+
+        /**
+         * ToString produces a std::string.
+         */
+        std::string_view ToString() {
+            return std::string_view((const char*)(buf));
+        }
+
+        /**
+         * ToStringView produces a std::string_view.
+         */
+        std::string_view ToStringView() {
+            return std::string_view(ToString());
+        }
+    };
+
     /**
      * @brief Xlat is a fixed XOR key.
      */
@@ -50,23 +100,23 @@ namespace swiper {
      * @brief WarmCache accelerates successive @ref Decrypt calls,
      * by prepopulating the system cache.
      *
-     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
+     * Warning: Missing @ref Fuse for length at hash.length() / 2 - 1.
      *
      * @param password out buffer (hash length / 2 characters)
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const std::string_view& hash, uint_fast32_t n) noexcept;
+    void WarmCache(cord& password, const cord& hash, uint_fast32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
-     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
+     * Warning: Missing @ref Fuse for hash.length() / 2 - 1.
      *
      * @param password out buffer (hash length / 2 characters)
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @returns password
      *
      */
-    void Decrypt(char *password, const std::string_view& hash) noexcept;
+    void Decrypt(cord& password, const cord& hash) noexcept;
 }
