@@ -17,8 +17,8 @@
 using namespace std::string_view_literals;
 
 #include "swiper/swiper.hpp"
-
-constexpr auto trials = int_fast32_t(1 << 30);
+;
+constexpr auto trials = uint_fast32_t(1) << 30;
 
 int main() {
     #if defined(_WIN32)

@@ -44,7 +44,7 @@ namespace swiper {
      *
      * @param n iterations (non-negative)
      */
-    void Spin(int_fast32_t n) noexcept;
+    void Spin(uint_fast32_t n) noexcept;
 
     /**
      * @brief WarmCache accelerates successive @ref Decrypt calls,
@@ -56,7 +56,7 @@ namespace swiper {
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const std::string_view& hash, int_fast32_t n) noexcept;
+    void WarmCache(char *password, const std::string_view& hash, uint_fast32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
