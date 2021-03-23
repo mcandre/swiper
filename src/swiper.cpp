@@ -7,15 +7,15 @@
 namespace swiper {
     namespace {
         ALWAYS_INLINE size_t ParseDecPair(const uint_fast8_t *pair) noexcept {
-            return size_t(pair[0] == '\x30' ? pair[1] - '\x30' : pair[1] - '\x26');
+            return size_t(pair[0] & 1 ? pair[1] - 38 : pair[1] - 48);
         }
 
         ALWAYS_INLINE uint_fast8_t ParseHexDigit(uint_fast8_t v) noexcept {
-            return v & '\x40' ? v - '\x57' : v - '\x30';
+            return v & 64 ? v - 87 : v - 48;
         }
 
         ALWAYS_INLINE uint_fast8_t ParseHexPair(const uint_fast8_t *pair) noexcept {
-            return '\x10' * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
+            return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
 
