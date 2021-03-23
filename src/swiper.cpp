@@ -20,11 +20,11 @@ namespace swiper {
     }
 
     void Spin(volatile uint_fast32_t n) noexcept {
-        while (--n != 0) {}
+        while (n-- != 0) {}
     }
 
     void WarmCache(char *password, const std::string_view& hash, volatile uint_fast32_t n) noexcept {
-        while (--n != 0) {
+        while (n-- != 0) {
             Decrypt(password, hash);
         }
     }
