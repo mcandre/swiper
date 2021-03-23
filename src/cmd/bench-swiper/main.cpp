@@ -28,7 +28,7 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = "07022e42450c"sv;
+    const auto hash = "082c4340021c"sv;
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::high_resolution_clock::now();
