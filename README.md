@@ -1,11 +1,11 @@
 # swiper: a high performance password cracker
 
-# EXAMPLE
+# EXAMPLE†
 
 ```console
 $ bench-swiper
 latency (ns)    throughput (password/sec)
-5.24            1.91e+08
+3.75            2.66e+08
 ```
 
 # ABOUT
@@ -31,3 +31,5 @@ For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.m
 # DISCLAIMER
 
 Intended for educational purposes only.
+
+†: Windows Subsystem for Linux on Microsoft Surface Pro 7, Intel Core i7
