@@ -35,7 +35,7 @@ int main() {
     const auto nop_start = std::chrono::high_resolution_clock::now();
     swiper::Spin(trials);
     const auto nop_end = std::chrono::high_resolution_clock::now();
-    swiper::WarmCache(password, hash, 1000);
+    swiper::WarmCache(password, hash, int_fast32_t(1000));
     const auto start = std::chrono::high_resolution_clock::now();
     swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();

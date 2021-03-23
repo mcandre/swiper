@@ -10,22 +10,20 @@ namespace swiper {
             return size_t(10 * pair[0] + pair[1] - 528);
         }
 
-        ALWAYS_INLINE auto ParseHexDigit(char v) noexcept {
+        ALWAYS_INLINE uint_fast8_t ParseHexDigit(char v) noexcept {
             return v & '\x40' ? v - '\x57' : v - '\x30';
         }
 
-        ALWAYS_INLINE auto ParseHexPair(const char *pair) noexcept {
+        ALWAYS_INLINE uint_fast8_t ParseHexPair(const char *pair) noexcept {
             return '\x10' * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
 
-    void Spin(int_fast32_t n) noexcept {
-        while (--n != 0) {
-            NOP;
-        }
+    void Spin(volatile int_fast32_t n) noexcept {
+        while (--n != 0) {}
     }
 
-    void WarmCache(char *password, const std::string_view& hash, int_fast32_t n) noexcept {
+    void WarmCache(char *password, const std::string_view& hash, volatile int_fast32_t n) noexcept {
         while (--n != 0) {
             Decrypt(password, hash);
         }
