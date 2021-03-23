@@ -29,7 +29,7 @@ namespace swiper {
     /**
      * @brief cord_t provides raw fields instead of std::string_view function calls.
      *
-     * Warning: The user is responsible for amending len and buf with @ref Fuse.
+     * Warning: The user is responsible for amending len and buf with @ref cord.Fuse.
      */
     struct cord {
         /**
@@ -100,9 +100,9 @@ namespace swiper {
      * @brief WarmCache accelerates successive @ref Decrypt calls,
      * by prepopulating the system cache.
      *
-     * Warning: Missing @ref Fuse for length at hash.length() / 2 - 1.
+     * Warning: Missing @ref cord.Fuse with count: hash.length() / 2 - 1.
      *
-     * @param password out buffer (hash length / 2 characters)
+     * @param password out buffer (count: hash.len / 2)
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
@@ -111,9 +111,9 @@ namespace swiper {
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
-     * Warning: Missing @ref Fuse for hash.length() / 2 - 1.
+     * Warning: Missing @ref cord.Fuse with count: hash.length() / 2 - 1.
      *
-     * @param password out buffer (hash length / 2 characters)
+     * @param password out buffer (count: hash.len / 2)
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @returns password
      *
