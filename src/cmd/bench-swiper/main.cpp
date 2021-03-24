@@ -13,8 +13,6 @@
 #include <sched.h>
 #include <sys/sysinfo.h>
 #endif
-#include <string>
-using namespace std::string_view_literals;
 
 #include "swiper/swiper.hpp"
 
@@ -28,15 +26,16 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = "082c4340021c"sv;
+    const auto hash = "082c4340021c";
+    const auto hash_len = 12;
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::high_resolution_clock::now();
     swiper::Spin(trials);
     const auto nop_end = std::chrono::high_resolution_clock::now();
-    swiper::WarmCache(password, hash, trials);
+    swiper::WarmCache(password, hash_len, hash, trials);
     const auto start = std::chrono::high_resolution_clock::now();
-    swiper::WarmCache(password, hash, trials);
+    swiper::WarmCache(password, hash_len, hash, trials);
     const auto end = std::chrono::high_resolution_clock::now();
     const auto nop_elapsed = nop_end - nop_start;
     const auto elapsed = end - start - nop_elapsed;

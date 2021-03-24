@@ -7,8 +7,8 @@
  * @ref swiper breaks Cisco IOS^tm type 7 passwords.
  */
 
+#include <cstddef>
 #include <cstdint>
-#include <string_view>
 
 /**
  * Credit: Andrei Alexandrescu "Mo' Hustle Mo' Problems"
@@ -53,10 +53,11 @@ namespace swiper {
      * Warning: Missing null terminator at password[hash.length() / 2 - 1].
      *
      * @param password out buffer (hash length / 2 characters)
+     * @param hash_len string length of hash
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, const std::string_view& hash, uint_fast32_t n) noexcept;
+    void WarmCache(char *password, size_t hash_len, const char *hash, uint_fast32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
@@ -64,9 +65,10 @@ namespace swiper {
      * Warning: Missing null terminator at password[hash.length() / 2 - 1].
      *
      * @param password out buffer (hash length / 2 characters)
+     * @param hash_len string length of hash
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @returns password
      *
      */
-    void Decrypt(char *password, const std::string_view& hash) noexcept;
+    void Decrypt(char *password, size_t hash_len, const char *hash) noexcept;
 }

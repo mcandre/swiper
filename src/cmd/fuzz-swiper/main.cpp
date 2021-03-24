@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <cstring>
 
@@ -26,34 +27,33 @@ static void FormatHexPair(char *result, size_t offset, char v) noexcept {
     result[offset + 1]= FormatHexDigit(remainder);
 }
 
-static void Encrypt(char *hash, size_t seed, const std::string_view& password) noexcept {
-    auto len = password.length();
-
-    if (len > 11) {
-        len = 11;
+static void Encrypt(char *hash, size_t seed, size_t password_len, const char *password) noexcept {
+    if (password_len > 11) {
+        password_len = 11;
     }
 
     FormatDecPair(hash, 0, seed);
     auto xlat_seeded = swiper::Xlat + seed;
 
-    for (auto i = size_t(0), j = size_t(2); i < len; i++, j += 2) {
+    for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
         const auto c = char(password[i] ^ xlat_seeded[i]);
         FormatHexPair(hash, j, c);
     }
 }
 
-static bool PropReversible(size_t seed, const std::string_view& password) {
-    if (password == "") {
+static bool PropReversible(size_t seed, size_t password_len, const char *password) {
+    if (password_len == 0) {
         return true;
     }
 
     char hash[25];
-    Encrypt(hash, seed, password);
-    hash[2 * (password.length() + 1)] = '\0';
+    Encrypt(hash, seed, password_len, password);
+    const auto hash_len = 2 * (password_len + 1);
+    hash[hash_len] = '\0';
     char password2[12];
-    swiper::Decrypt(password2, std::string_view(hash));
+    swiper::Decrypt(password2, hash_len, hash);
     password2[strlen(hash) / 2 - 1] = '\0';
-    return password == password2;
+    return strcmp(password2, password) == 0;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
@@ -69,14 +69,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         password_len = 11;
     }
 
-    for (auto i = size_t(1); i < password_len; i++) {
-        if (Data2[i] == '\0') {
-            password_len = i - 1;
-            break;
-        }
-    }
-
-    assert(PropReversible(seed, std::string_view(Data2, password_len)));
+    char password[12];
+    std::copy(Data2, Data2 + password_len, password);
+    password[password_len] = '\0';
+    assert(PropReversible(seed, password_len, password));
     return 0;
 }
 #endif
