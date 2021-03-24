@@ -5,7 +5,7 @@
 
 ## Recommended
 
-* [clang](https://clang.llvm.org/) (macOS users will want to [update](https://gist.github.com/mcandre/6ad2edee00c693b057743aafba20f1df) llvm)
+* [clang](https://clang.llvm.org/)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 * [time](https://linux.die.net/man/1/time)
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils

@@ -10,11 +10,11 @@ namespace swiper {
             return size_t(pair[0] & 1 ? pair[1] - 38 : pair[1] - 48);
         }
 
-        ALWAYS_INLINE uint_fast8_t ParseHexDigit(uint_fast8_t v) noexcept {
+        ALWAYS_INLINE char ParseHexDigit(char v) noexcept {
             return v & 64 ? v - 87 : v - 48;
         }
 
-        ALWAYS_INLINE uint_fast8_t ParseHexPair(const uint_fast8_t *pair) noexcept {
+        ALWAYS_INLINE char ParseHexPair(const char *pair) noexcept {
             return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
@@ -30,9 +30,9 @@ namespace swiper {
     }
 
     void Decrypt(char *password, const std::string_view& hash) noexcept {
-        auto i = uint_fast8_t(hash.length()) / 2 - 2;
+        auto i = hash.length() / 2 - 2;
         auto k = Xlat + ParseDecPair(hash.data());
-        auto c = (const uint_fast8_t*)(hash.substr(2, 22).data());
+        auto c = hash.substr(2, 22).data();
 
         for (;;) {
             *password++ = *k++ ^ ParseHexPair(c);

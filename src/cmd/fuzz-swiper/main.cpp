@@ -10,35 +10,35 @@
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
-template <class T>
-static uint8_t FormatDigit(T t) noexcept {
-    if (t > T(9)) {
-        return  uint8_t(t) + '\x57';
-    }
-
-    return uint8_t(t) + '\x30';
+static void FormatDecPair(char *result, size_t offset, size_t v) noexcept {
+    char remainder = v % 10;
+    result[offset] = (v - remainder) / 10 + 48;
+    result[offset + 1]= remainder + 48;
 }
 
-template <class T>
-static void FormatPair(char *result, size_t offset, T value, T base) noexcept {
-    T remainder = value % base;
-    result[offset] = FormatDigit((value - remainder) / base);
-    result[offset + 1]= FormatDigit(remainder);
+static char FormatHexDigit(char v) noexcept {
+    return v < 10 ? v + 48 : v + 87;
+}
+
+static void FormatHexPair(char *result, size_t offset, char v) noexcept {
+    char remainder = v % 16;
+    result[offset] = FormatHexDigit((v - remainder) / 16);
+    result[offset + 1]= FormatHexDigit(remainder);
 }
 
 static void Encrypt(char *hash, size_t seed, const std::string_view& password) noexcept {
     auto len = password.length();
 
-    if (len > size_t(11)) {
-        len = size_t(11);
+    if (len > 11) {
+        len = 11;
     }
 
-    FormatPair(hash, 0, seed, size_t(10));
+    FormatDecPair(hash, 0, seed);
     auto xlat_seeded = swiper::Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < len; i++, j += 2) {
-        const auto c = uint8_t(password[i] ^ xlat_seeded[i]);
-        FormatPair(hash, j, c, uint8_t(16));
+        const auto c = char(password[i] ^ xlat_seeded[i]);
+        FormatHexPair(hash, j, c);
     }
 }
 
@@ -57,16 +57,16 @@ static bool PropReversible(size_t seed, const std::string_view& password) {
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
-    if (Size < size_t(2) || Data[1] == '\0') {
+    if (Size < 2 || Data[1] == '\0') {
         return 0;
     }
 
     const auto seed = size_t(Data[0]) % 16;
-    const char *Data2 = 1 + (char*) Data;
+    const char *Data2 = (char*)(Data) + 1;
     auto password_len = size_t(Size - 1);
 
-    if (password_len > size_t(11)) {
-        password_len = size_t(11);
+    if (password_len > 11) {
+        password_len = 11;
     }
 
     for (auto i = size_t(1); i < password_len; i++) {
