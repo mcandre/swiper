@@ -32,4 +32,4 @@ For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.m
 
 Intended for educational purposes only.
 
-†: Windows Subsystem for Linux on Microsoft Surface Pro 7, Intel Core i7
+†: clang v10 on Windows Subsystem for Linux on Microsoft Surface Pro 7, Intel Core i7
