@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['never_5finline_5',['NEVER_INLINE',['../swiper_8hpp.html#a5251990c23668b067a282c9c3a8ef84a',1,'swiper.hpp']]]
+  ['warmcache_8',['WarmCache',['../namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2',1,'swiper']]]
 ];

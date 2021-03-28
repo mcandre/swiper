@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['main_2',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp_3',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['main_2ehpp_4',['main.hpp',['../main_8hpp.html',1,'']]]
+  ['spin_4',['Spin',['../namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e',1,'swiper']]],
+  ['swiper_5',['swiper',['../namespaceswiper.html',1,'']]],
+  ['swiper_2ecpp_6',['swiper.cpp',['../swiper_8cpp.html',1,'']]],
+  ['swiper_2ehpp_7',['swiper.hpp',['../swiper_8hpp.html',1,'']]]
 ];

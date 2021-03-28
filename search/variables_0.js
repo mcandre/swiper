@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xlat_21',['Xlat',['../namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0',1,'swiper']]]
+  ['xlat_19',['Xlat',['../namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0',1,'swiper']]]
 ];

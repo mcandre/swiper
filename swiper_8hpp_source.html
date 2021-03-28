@@ -74,37 +74,29 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#if defined(_WIN32)</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define ALWAYS_INLINE inline __forceinline</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define NEVER_INLINE __declspec(noinline)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="swiper_8hpp.html#aa1dec568e79152c892dcf63f445cbd7a">   20</a></span>&#160;<span class="preprocessor">#define ALWAYS_INLINE inline __attribute((__always_inline__))</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="swiper_8hpp.html#a5251990c23668b067a282c9c3a8ef84a">   21</a></span>&#160;<span class="preprocessor">#define NEVER_INLINE __attribute__ ((__noinline__))</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   27</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">   31</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">Xlat</a>[32] = {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        0x64, 0x73, 0x66, 0x64,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        0x3b, 0x6b, 0x66, 0x6f,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        0x41, 0x2c, 0x2e, 0x69,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        0x79, 0x65, 0x77, 0x72,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        0x6b, 0x6c, 0x64, 0x4a,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        0x4b, 0x44, 0x48, 0x53,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        0x55, 0x42, 0x73, 0x00,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        0x00, 0x00, 0x00, 0x00</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e">Spin</a>(uint_fast32_t n) noexcept;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2">WarmCache</a>(<span class="keywordtype">char</span>* password, <span class="keywordtype">size_t</span> hash_len, <span class="keyword">const</span> <span class="keywordtype">char</span>* hash, uint_fast32_t n) noexcept;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a>(<span class="keywordtype">char</span>* password, <span class="keywordtype">size_t</span> hash_len, <span class="keyword">const</span> <span class="keywordtype">char</span>* hash) noexcept;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespaceswiper.html">   16</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceswiper.html">swiper</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">   20</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">Xlat</a>[32] = {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        0x64, 0x73, 0x66, 0x64,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        0x3b, 0x6b, 0x66, 0x6f,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        0x41, 0x2c, 0x2e, 0x69,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        0x79, 0x65, 0x77, 0x72,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        0x6b, 0x6c, 0x64, 0x4a,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        0x4b, 0x44, 0x48, 0x53,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        0x55, 0x42, 0x73, 0x00,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        0x00, 0x00, 0x00, 0x00</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e">Spin</a>(uint_fast32_t n) noexcept;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2">WarmCache</a>(<span class="keywordtype">char</span>* password, <span class="keywordtype">size_t</span> hash_len, <span class="keyword">const</span> <span class="keywordtype">char</span>* hash, uint_fast32_t n) noexcept;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a>(<span class="keywordtype">char</span>* password, <span class="keywordtype">size_t</span> hash_len, <span class="keyword">const</span> <span class="keywordtype">char</span>* hash) noexcept;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespaceswiper_html_a310674d83e4cf5220e18f6983cfaab87"><div class="ttname"><a href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">swiper::Decrypt</a></div><div class="ttdeci">void Decrypt(char *password, size_t hash_len, const char *hash) noexcept</div><div class="ttdoc">Decrypt reverses Cisco IOS type 7 hashes.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:32</div></div>
 <div class="ttc" id="anamespaceswiper_html_a3dbd56f1b79952bcaebe53de028f95e2"><div class="ttname"><a href="namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2">swiper::WarmCache</a></div><div class="ttdeci">void WarmCache(char *password, size_t hash_len, const char *hash, uint_fast32_t n) noexcept</div><div class="ttdoc">WarmCache accelerates successive Decrypt calls, by prepopulating the system cache.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:26</div></div>
-<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:27</div></div>
-<div class="ttc" id="anamespaceswiper_html_a0e5a5404a5aaf5ab2bdc034346d402d0"><div class="ttname"><a href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">swiper::Xlat</a></div><div class="ttdeci">const char Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:31</div></div>
+<div class="ttc" id="anamespaceswiper_html"><div class="ttname"><a href="namespaceswiper.html">swiper</a></div><div class="ttdoc">swiper manages legacy Cisco IOS^tm type 7 passwords.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:16</div></div>
+<div class="ttc" id="anamespaceswiper_html_a0e5a5404a5aaf5ab2bdc034346d402d0"><div class="ttname"><a href="namespaceswiper.html#a0e5a5404a5aaf5ab2bdc034346d402d0">swiper::Xlat</a></div><div class="ttdeci">const char Xlat[32]</div><div class="ttdoc">Xlat is a fixed XOR key.</div><div class="ttdef"><b>Definition:</b> swiper.hpp:20</div></div>
 <div class="ttc" id="anamespaceswiper_html_a9fc0daa3bed5f7da055d9b4efc17758e"><div class="ttname"><a href="namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e">swiper::Spin</a></div><div class="ttdeci">void Spin(uint_fast32_t n) noexcept</div><div class="ttdoc">Spin performs n NOP's, useful for reducing benchmark noise.</div><div class="ttdef"><b>Definition:</b> swiper.cpp:22</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

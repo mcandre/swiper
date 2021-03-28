@@ -1,11 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "admnswx",
+  0: "dmswx",
   1: "s",
   2: "ms",
   3: "dmsw",
-  4: "x",
-  5: "an"
+  4: "x"
 };
 
 var indexSectionNames =
@@ -14,8 +13,7 @@ var indexSectionNames =
   1: "namespaces",
   2: "files",
   3: "functions",
-  4: "variables",
-  5: "defines"
+  4: "variables"
 };
 
 var indexSectionLabels =
@@ -24,7 +22,6 @@ var indexSectionLabels =
   1: "Namespaces",
   2: "Files",
   3: "Functions",
-  4: "Variables",
-  5: "Macros"
+  4: "Variables"
 };
 
