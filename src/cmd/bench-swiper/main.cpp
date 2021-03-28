@@ -30,13 +30,13 @@ int main() {
     const auto hash_len = static_cast<size_t>(12);
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
-    const auto nop_start = std::chrono::high_resolution_clock::now();
+    const auto nop_start = std::chrono::steady_clock::now();
     swiper::Spin(trials);
-    const auto nop_end = std::chrono::high_resolution_clock::now();
+    const auto nop_end = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
-    const auto start = std::chrono::high_resolution_clock::now();
+    const auto start = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
-    const auto end = std::chrono::high_resolution_clock::now();
+    const auto end = std::chrono::steady_clock::now();
     const auto nop_elapsed = nop_end - nop_start;
     const auto elapsed = end - start - nop_elapsed;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
