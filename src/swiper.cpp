@@ -35,7 +35,7 @@ namespace swiper {
         auto c = hash + 2;
 
         for (;;) {
-            *password++ = *k++ ^ ParseHexPair(c);
+            *password++ = static_cast<char>(*k++ ^ ParseHexPair(c));
 
             if (i-- == 0) {
                 return;
