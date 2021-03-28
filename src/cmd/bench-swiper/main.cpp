@@ -26,7 +26,7 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = "082c4340021c";
+    const auto hash = "00091c080f5e";
     const auto hash_len = static_cast<size_t>(12);
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
