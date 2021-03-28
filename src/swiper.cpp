@@ -6,15 +6,15 @@
 
 namespace swiper {
     namespace {
-        ALWAYS_INLINE size_t ParseDecPair(const char *pair) noexcept {
-            return size_t(pair[0] & 1 ? pair[1] - 38 : pair[1] - 48);
+        ALWAYS_INLINE auto ParseDecPair(const char* pair) noexcept {
+            return static_cast<size_t>(pair[0] & 1 ? pair[1] - 38 : pair[1] - 48);
         }
 
-        ALWAYS_INLINE char ParseHexDigit(char v) noexcept {
+        ALWAYS_INLINE auto ParseHexDigit(char v) noexcept {
             return v & 64 ? v - 87 : v - 48;
         }
 
-        ALWAYS_INLINE char ParseHexPair(const char *pair) noexcept {
+        ALWAYS_INLINE auto ParseHexPair(const char* pair) noexcept {
             return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
@@ -23,13 +23,13 @@ namespace swiper {
         while (n-- != 0) {}
     }
 
-    void WarmCache(char *password, size_t hash_len, const char *hash, volatile uint_fast32_t n) noexcept {
+    void WarmCache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
         while (n-- != 0) {
             Decrypt(password, hash_len, hash);
         }
     }
 
-    void Decrypt(char *password, size_t hash_len, const char *hash) noexcept {
+    void Decrypt(char* password, size_t hash_len, const char* hash) noexcept {
         auto i = hash_len / 2 - 2;
         auto k = Xlat + ParseDecPair(hash);
         auto c = hash + 2;

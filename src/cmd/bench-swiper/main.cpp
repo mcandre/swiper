@@ -27,7 +27,7 @@ int main() {
     #endif
 
     const auto hash = "082c4340021c";
-    const auto hash_len = 12;
+    const auto hash_len = static_cast<size_t>(12);
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::high_resolution_clock::now();

@@ -11,7 +11,7 @@
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
-static void FormatDecPair(char *result, size_t offset, size_t v) noexcept {
+static void FormatDecPair(char* result, size_t offset, size_t v) noexcept {
     char remainder = v % 10;
     result[offset] = (v - remainder) / 10 + 48;
     result[offset + 1]= remainder + 48;
@@ -21,13 +21,13 @@ static char FormatHexDigit(char v) noexcept {
     return v < 10 ? v + 48 : v + 87;
 }
 
-static void FormatHexPair(char *result, size_t offset, char v) noexcept {
+static void FormatHexPair(char* result, size_t offset, char v) noexcept {
     char remainder = v % 16;
     result[offset] = FormatHexDigit((v - remainder) / 16);
     result[offset + 1]= FormatHexDigit(remainder);
 }
 
-static void Encrypt(char *hash, size_t seed, size_t password_len, const char *password) noexcept {
+static void Encrypt(char* hash, size_t seed, size_t password_len, const char* password) noexcept {
     if (password_len > 11) {
         password_len = 11;
     }
@@ -41,7 +41,7 @@ static void Encrypt(char *hash, size_t seed, size_t password_len, const char *pa
     }
 }
 
-static bool PropReversible(size_t seed, size_t password_len, const char *password) {
+static bool PropReversible(size_t seed, size_t password_len, const char* password) {
     if (password_len == 0) {
         return true;
     }

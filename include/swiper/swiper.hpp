@@ -57,7 +57,7 @@ namespace swiper {
      * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
      * @param n iterations (non-negative)
      */
-    void WarmCache(char *password, size_t hash_len, const char *hash, uint_fast32_t n) noexcept;
+    void WarmCache(char* password, size_t hash_len, const char* hash, uint_fast32_t n) noexcept;
 
     /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
@@ -70,5 +70,5 @@ namespace swiper {
      * @returns password
      *
      */
-    void Decrypt(char *password, size_t hash_len, const char *hash) noexcept;
+    void Decrypt(char* password, size_t hash_len, const char* hash) noexcept;
 }
