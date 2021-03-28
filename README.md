@@ -1,6 +1,6 @@
 # swiper: a high performance password cracker
 
-# EXAMPLE†
+# EXAMPLE
 
 ```console
 $ bench-swiper
@@ -31,5 +31,3 @@ For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.m
 # DISCLAIMER
 
 Intended for educational purposes only.
-
-†: clang v10 on Windows Subsystem for Linux on Microsoft Surface Pro 7, Intel Core i7
