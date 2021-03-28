@@ -38,7 +38,7 @@ namespace swiper {
             *password++ = *k++ ^ ParseHexPair(c);
 
             if (i-- == 0) {
-                break;
+                return;
             }
 
             c += 2;
