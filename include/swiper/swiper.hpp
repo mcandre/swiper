@@ -11,17 +11,6 @@
 #include <cstdint>
 
 /**
- * Credit: Andrei Alexandrescu "Mo' Hustle Mo' Problems"
- */
-#if defined(_WIN32)
-#define ALWAYS_INLINE inline __forceinline
-#define NEVER_INLINE __declspec(noinline)
-#else
-#define ALWAYS_INLINE inline __attribute((__always_inline__))
-#define NEVER_INLINE __attribute__ ((__noinline__))
-#endif
-
-/**
  * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
  */
 namespace swiper {

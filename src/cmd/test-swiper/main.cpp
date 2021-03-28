@@ -29,7 +29,7 @@ int main() {
         "151f04020f2f"
     };
 
-    constexpr auto hash_len = 12;
+    const auto hash_len = static_cast<size_t>(12);
     char password[12];
 
     for (auto i = 0; i < 16; i++) {
