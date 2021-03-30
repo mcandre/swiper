@@ -37,8 +37,7 @@ namespace swiper {
 
         #pragma clang loop vectorize(enable) interleave(enable)
         for (auto i = 0; i < 11; i++) {
-            password[i] = ParseHexDigit(hash[i * 2]);
-            password[i] *= 16;
+            password[i] = ParseHexDigit(hash[i * 2]) * 16;
         }
 
         hash++;
