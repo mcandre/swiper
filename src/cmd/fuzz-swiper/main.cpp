@@ -46,12 +46,11 @@ static bool PropReversible(size_t seed, size_t password_len, const char* passwor
         return true;
     }
 
-    char hash[25];
+    char hash[34] __attribute__((aligned (16)));
+    memset(hash, 0, sizeof(hash));
     Encrypt(hash, seed, password_len, password);
-    const auto hash_len = 2 * (password_len + 1);
-    hash[hash_len] = '\0';
-    char password2[12];
-    swiper::Decrypt(password2, hash_len, hash);
+    char password2[16] __attribute__((aligned (16)));
+    swiper::Decrypt(password2, hash);
     password2[strlen(hash) / 2 - 1] = '\0';
     return strcmp(password2, password) == 0;
 }
@@ -69,9 +68,9 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         password_len = 11;
     }
 
-    char password[12];
+    char password[16] __attribute__((aligned (16)));
+    memset(password, 0, sizeof(password));
     std::copy(Data2, Data2 + password_len, password);
-    password[password_len] = '\0';
     assert(PropReversible(seed, password_len, password));
     return 0;
 }

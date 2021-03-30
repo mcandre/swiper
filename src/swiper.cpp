@@ -4,6 +4,8 @@
 
 #include "swiper/swiper.hpp"
 
+#include <cstring>
+
 namespace swiper {
     namespace {
         inline auto ParseDecPair(const char* pair) noexcept {
@@ -14,34 +16,40 @@ namespace swiper {
             return v & 64 ? v - 87 : v - 48;
         }
 
-        inline auto ParseHexPair(const char* pair) noexcept {
-            return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
-        }
+        // inline auto ParseHexPair(const char* pair) noexcept {
+        //     return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
+        // }
     }
 
     void Spin(volatile uint_fast32_t n) noexcept {
         while (n-- != 0) {}
     }
 
-    void WarmCache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
+    void WarmCache(char* password, const char* hash, volatile uint_fast32_t n) noexcept {
         while (n-- != 0) {
-            Decrypt(password, hash_len, hash);
+            Decrypt(password, hash);
         }
     }
 
-    void Decrypt(char* password, size_t hash_len, const char* hash) noexcept {
-        auto i = hash_len / 2 - 2;
-        auto k = Xlat + ParseDecPair(hash);
-        auto c = hash + 2;
+    void Decrypt(char* password, const char* hash) noexcept {
+        const auto key = Xlat + ParseDecPair(hash);
 
-        for (;;) {
-            *password++ = static_cast<char>(*k++ ^ ParseHexPair(c));
+        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+            password[i] = ParseHexDigit(hash[i * 2 + 2]);
+        }
 
-            if (i-- == 0) {
-                return;
-            }
+        #pragma clang loop vectorize(enable) interleave(enable)
+        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+            password[i] *= 16;
+        }
 
-            c += 2;
+        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+            password[i] += ParseHexDigit(hash[i * 2 + 3]);
+        }
+
+        #pragma clang loop vectorize(enable) interleave(enable)
+        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+            password[i] ^= key[i];
         }
     }
 }

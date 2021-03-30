@@ -26,16 +26,15 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash_len = static_cast<size_t>(12);
-    const auto hash = "00091c080f5e";
-    char password[12];
+    const auto hash __attribute__((aligned (16))) = "00091c080f5e\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+    char password[16] __attribute__((aligned (16)));
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::steady_clock::now();
     swiper::Spin(trials);
     const auto nop_end = std::chrono::steady_clock::now();
-    swiper::WarmCache(password, hash_len, hash, trials);
+    swiper::WarmCache(password, hash, trials);
     const auto start = std::chrono::steady_clock::now();
-    swiper::WarmCache(password, hash_len, hash, trials);
+    swiper::WarmCache(password, hash, trials);
     const auto end = std::chrono::steady_clock::now();
     const auto nop_elapsed = nop_end - nop_start;
     const auto elapsed = end - start - nop_elapsed;
