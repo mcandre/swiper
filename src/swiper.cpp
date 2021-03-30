@@ -35,17 +35,15 @@ namespace swiper {
         const auto key = Xlat + ParseDecPair(hash);
         hash += 2;
 
-        for (auto i = 0; i < 11; i++) {
-            password[i] = ParseHexDigit(hash[i * 2]);
-        }
-
         #pragma clang loop vectorize(enable) interleave(enable)
         for (auto i = 0; i < 11; i++) {
+            password[i] = ParseHexDigit(hash[i * 2]);
             password[i] *= 16;
         }
 
-        hash += 1;
+        hash++;
 
+        #pragma clang loop vectorize(enable) interleave(enable)
         for (auto i = 0; i < 11; i++) {
             password[i] += ParseHexDigit(hash[i * 2]);
         }
