@@ -33,22 +33,25 @@ namespace swiper {
 
     void Decrypt(char* password, const char* hash) noexcept {
         const auto key = Xlat + ParseDecPair(hash);
+        hash += 2;
 
-        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
-            password[i] = ParseHexDigit(hash[i * 2 + 2]);
+        for (auto i = 0; i < 11; i++) {
+            password[i] = ParseHexDigit(hash[i * 2]);
         }
 
         #pragma clang loop vectorize(enable) interleave(enable)
-        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+        for (auto i = 0; i < 11; i++) {
             password[i] *= 16;
         }
 
-        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
-            password[i] += ParseHexDigit(hash[i * 2 + 3]);
+        hash += 1;
+
+        for (auto i = 0; i < 11; i++) {
+            password[i] += ParseHexDigit(hash[i * 2]);
         }
 
         #pragma clang loop vectorize(enable) interleave(enable)
-        for (auto i = static_cast<size_t>(0); i < static_cast<size_t>(16); i++) {
+        for (auto i = 0; i < 11; i++) {
             password[i] ^= key[i];
         }
     }

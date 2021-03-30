@@ -26,8 +26,8 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash __attribute__((aligned (16))) = "00091c080f5e\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
-    char password[16] __attribute__((aligned (16)));
+    const auto hash __attribute__((aligned (16))) = "00091c080f5e\0\0\0\0\0\0\0\0\0\0\0\0";
+    char password[12] __attribute__((aligned (16)));
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::steady_clock::now();
     swiper::Spin(trials);

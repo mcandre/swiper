@@ -46,10 +46,10 @@ static bool PropReversible(size_t seed, size_t password_len, const char* passwor
         return true;
     }
 
-    char hash[34] __attribute__((aligned (16)));
+    char hash[25] __attribute__((aligned (16)));
     memset(hash, 0, sizeof(hash));
     Encrypt(hash, seed, password_len, password);
-    char password2[16] __attribute__((aligned (16)));
+    char password2[12] __attribute__((aligned (16)));
     swiper::Decrypt(password2, hash);
     password2[strlen(hash) / 2 - 1] = '\0';
     return strcmp(password2, password) == 0;

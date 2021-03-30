@@ -7,14 +7,10 @@
 #include <cassert>
 #include <cstring>
 
-
-
-#include <iostream>
-
 #include "swiper/swiper.hpp"
 
 int main() {
-    const char hashes[16][34] __attribute__((aligned (16))) = {
+    const char hashes[16][13] __attribute__((aligned (16))) = {
         "00091c080f5e",
         "011e090a500e",
         "020b0b550003",
@@ -33,18 +29,12 @@ int main() {
         "151f04020f2f"
     };
 
-    char password[16] __attribute__((aligned (16)));
+    char password[12] __attribute__((aligned (16)));
 
     for (auto i = 0; i < 16; i++) {
         const auto hash = hashes[i];
         swiper::Decrypt(password, hash);
         password[strlen(hash) / 2 - 1] = '\0';
-
-
-
-        std::cerr << "Hash: " << hash << std::endl;
-        std::cerr << "Password: " << password << std::endl;
-
         assert(strcmp(password, "monke") == 0);
     }
 }
