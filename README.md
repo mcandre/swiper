@@ -8,6 +8,10 @@ latency (ns)    throughput (password/sec)
 3.54            2.82e+08
 ```
 
+# TECH TALK SLIDES
+
+[The Road to Gigacracking](https://app.box.com/s/w5n4h9gxhgdzo85e5zvlv1w0e71y2ti3)
+
 # ABOUT
 
 swiper is a library for regenerating passwords from Cisco IOS^tm type 7 encrypted configurations.
