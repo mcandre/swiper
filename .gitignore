@@ -6,6 +6,8 @@ debug/
 CTestTestfile.cmake
 Testing/
 build/
+*.profraw
+*.profdata
 crash-*
 leak-*
 *.data

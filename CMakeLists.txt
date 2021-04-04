@@ -36,7 +36,30 @@ endif()
 
 include_directories(include)
 
+add_executable(bench-swiper-instrument src/cmd/bench-swiper/main.cpp src/swiper.cpp)
+set(PGO_GENERATE_FLAGS "-fprofile-generate")
+set_target_properties(
+    bench-swiper-instrument
+    PROPERTIES
+    COMPILE_FLAGS "${PGO_GENERATE_FLAGS}"
+    LINK_FLAGS "${PGO_GENERATE_FLAGS}"
+)
+
+add_custom_target(swiper.profraw COMMAND "${CMAKE_COMMAND}" -E env LLVM_PROFILE_FILE=swiper.profraw $<TARGET_FILE:bench-swiper-instrument>)
+add_dependencies(swiper.profraw bench-swiper-instrument)
+
+add_custom_target(swiper.profdata COMMAND llvm-profdata merge -output swiper.profdata swiper.profraw)
+add_dependencies(swiper.profdata swiper.profraw)
+
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
+add_dependencies(bench-swiper swiper.profdata)
+set(PGO_USE_FLAGS "-fprofile-use=swiper.profdata")
+set_target_properties(
+    bench-swiper
+    PROPERTIES
+    COMPILE_FLAGS "${PGO_USE_FLAGS}"
+    LINK_FLAGS "${PGO_USE_FLAGS}"
+)
 
 find_program(PERF "perf")
 

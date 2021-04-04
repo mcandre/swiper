@@ -2,6 +2,8 @@
 unset IFS
 set -euf
 
+rm -f *.profdata || :
+rm -f *.profraw || :
 rm -f crash-* || :
 rm -rf html || :
 rm -rf latex || :
