@@ -1,11 +1,11 @@
-html/
-latex/
+html
+latex
 debug.log
-bin/
-debug/
+bin
+debug
 CTestTestfile.cmake
-Testing/
-build/
+Testing
+build
 *.profraw
 *.profdata
 crash-*
@@ -15,7 +15,7 @@ leak-*
 *.vcxproj
 *.vcxproj.filters
 *.sln
-*.dir/
+*.dir
 # Created by https://www.toptal.com/developers/gitignore/api/c,cmake,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,cmake,visualstudio
 
