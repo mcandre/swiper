@@ -52,14 +52,17 @@ add_custom_target(swiper.profdata COMMAND llvm-profdata merge -output swiper.pro
 add_dependencies(swiper.profdata swiper.profraw)
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
+
 add_dependencies(bench-swiper swiper.profdata)
-set(PGO_USE_FLAGS "-fprofile-use=swiper.profdata")
-set_target_properties(
-    bench-swiper
-    PROPERTIES
-    COMPILE_FLAGS "${PGO_USE_FLAGS}"
-    LINK_FLAGS "${PGO_USE_FLAGS}"
-)
+if(NOT MSVC)
+    set(PGO_USE_FLAGS "-fprofile-use=swiper.profdata")
+    set_target_properties(
+        bench-swiper
+        PROPERTIES
+        COMPILE_FLAGS "${PGO_USE_FLAGS}"
+        LINK_FLAGS "${PGO_USE_FLAGS}"
+    )
+endif()
 
 find_program(PERF "perf")
 
