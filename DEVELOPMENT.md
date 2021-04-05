@@ -6,14 +6,16 @@
 ## Recommended
 
 * [clang](https://clang.llvm.org/) + [llvm](https://llvm.org/)
-
-macOS users may need to correct [Xcode PATH](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh).
-
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 * [time](https://linux.die.net/man/1/time)
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
+
+macOS users may need additional patches:
+
+* [Grow](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh) Xcode PATH
+* [Update](https://gist.github.com/mcandre/6ad2edee00c693b057743aafba20f1df) llvm
 
 # LINT
 

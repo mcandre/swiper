@@ -96,8 +96,7 @@ enable_testing()
 add_test(NAME swiper_unit_test COMMAND $<TARGET_FILE:test-swiper>)
 
 if(
-    CMAKE_C_COMPILER_ID MATCHES "Clang" AND
-    NOT CMAKE_SYSTEM_NAME MATCHES "Darwin"
+    CMAKE_C_COMPILER_ID MATCHES "Clang"
 )
     set(SANITIZE_TIMEOUT_SEC 10)
     set(FUZZER_RUNTIME_FLAGS "-max_total_time=${SANITIZE_TIMEOUT_SEC}")
