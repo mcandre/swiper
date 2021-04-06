@@ -27,7 +27,7 @@ int main() {
     #endif
 
     constexpr auto hash_len = static_cast<size_t>(12);
-    constexpr auto hash = "00091c080f5e";
+    constexpr auto hash = "00091C080F5E";
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::steady_clock::now();

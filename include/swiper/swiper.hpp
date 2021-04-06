@@ -43,7 +43,7 @@ namespace swiper {
      *
      * @param password out buffer (hash length / 2 characters)
      * @param hash_len string length of hash
-     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
+     * @param hash Cisco IOS^tm type 7 (uppercase, min length 4)
      * @param n iterations (non-negative)
      */
     void WarmCache(char* password, size_t hash_len, const char* hash, uint_fast32_t n) noexcept;
@@ -55,7 +55,7 @@ namespace swiper {
      *
      * @param password out buffer (hash length / 2 characters)
      * @param hash_len string length of hash
-     * @param hash Cisco IOS^tm type 7 (lowercase, min length 4)
+     * @param hash Cisco IOS^tm type 7 (uppercase, min length 4)
      * @returns password
      *
      */

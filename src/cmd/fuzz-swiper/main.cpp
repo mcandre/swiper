@@ -18,7 +18,7 @@ static void FormatDecPair(char* result, size_t offset, size_t v) noexcept {
 }
 
 static char FormatHexDigit(char v) noexcept {
-    return v < 10 ? v + 48 : v + 87;
+    return v < 10 ? v + 48 : v + 55;
 }
 
 static void FormatHexPair(char* result, size_t offset, char v) noexcept {
@@ -52,7 +52,7 @@ static bool PropReversible(size_t seed, size_t password_len, const char* passwor
     hash[hash_len] = '\0';
     char password2[12];
     swiper::Decrypt(password2, hash_len, hash);
-    password2[strlen(hash) / 2 - 1] = '\0';
+    password2[hash_len / 2 - 1] = '\0';
     return strcmp(password2, password) == 0;
 }
 
