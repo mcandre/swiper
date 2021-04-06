@@ -6,16 +6,19 @@
 
 namespace swiper {
     namespace {
-        inline auto ParseDecPair(const char* pair) noexcept {
-            return static_cast<size_t>(pair[0] & 1 ? pair[1] - 38 : pair[1] - 48);
+        template<class T>
+        auto ParseDecPair(const T* pair) noexcept {
+            return pair[0] & static_cast<T>(1) ? pair[1] - static_cast<T>(38) : pair[1] - static_cast<T>(48);
         }
 
-        inline auto ParseHexDigit(char v) noexcept {
-            return v & 64 ? v - 55 : v - 48;
+        template<class T>
+        auto ParseHexDigit(T v) noexcept {
+            return v & static_cast<T>(64) ? v - static_cast<T>(55) : v - static_cast<T>(48);
         }
 
-        inline auto ParseHexPair(const char* pair) noexcept {
-            return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
+        template<class T>
+        auto ParseHexPair(const T* pair) noexcept {
+            return static_cast<T>(16) * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
         }
     }
 
