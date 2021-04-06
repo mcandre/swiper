@@ -5,6 +5,7 @@
 #include "main.hpp"
 
 #include <chrono>
+#include <cstring>
 #include <iomanip>
 #include <iostream>
 #if defined(_WIN32)
@@ -16,7 +17,16 @@
 
 #include "swiper/swiper.hpp"
 
-int main() {
+static void usage(const char* program) {
+    std::cerr << "Usage: " << program << " <hash>" << std::endl;
+}
+
+int main(int argc, const char** argv) {
+    if (argc < 2) {
+        usage(argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
     #elif defined(__linux__)
@@ -26,19 +36,22 @@ int main() {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    constexpr auto hash_len = static_cast<size_t>(12);
-    constexpr auto hash = "00091C080F5E";
+    const auto hash = argv[1];
+
+    auto hash_len = strlen(hash);
+
+    if (hash_len > 24) {
+        hash_len = 24;
+    }
+
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
-    const auto nop_start = std::chrono::steady_clock::now();
-    swiper::Spin(trials);
-    const auto nop_end = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
     const auto start = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
     const auto end = std::chrono::steady_clock::now();
-    const auto nop_elapsed = nop_end - nop_start;
-    const auto elapsed = end - start - nop_elapsed;
+    password[hash_len / 2 - 1] = '\0';
+    const auto elapsed = end - start;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
     const auto throughput_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;

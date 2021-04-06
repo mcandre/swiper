@@ -50,7 +50,7 @@ if(NOT MSVC)
         LINK_FLAGS "${PGO_GENERATE_FLAGS}"
     )
 
-    add_custom_target(swiper.profraw COMMAND "${CMAKE_COMMAND}" -E env LLVM_PROFILE_FILE=swiper.profraw $<TARGET_FILE:bench-swiper-instrument>)
+    add_custom_target(swiper.profraw COMMAND "${CMAKE_COMMAND}" -E env LLVM_PROFILE_FILE=swiper.profraw $<TARGET_FILE:bench-swiper-instrument> "00091C080F5E")
     add_dependencies(swiper.profraw bench-swiper-instrument)
 
     add_custom_target(swiper.profdata COMMAND llvm-profdata merge -output swiper.profdata swiper.profraw)
@@ -60,8 +60,8 @@ if(NOT MSVC)
     set_target_properties(
         bench-swiper
         PROPERTIES
-        COMPILE_FLAGS "${PGO_USE_FLAGS}"
-        LINK_FLAGS "${PGO_USE_FLAGS}"
+        COMPILE_FLAGS "-flto ${PGO_USE_FLAGS}"
+        LINK_FLAGS "-flto ${PGO_USE_FLAGS}"
     )
 endif()
 
@@ -104,7 +104,7 @@ if(
     add_executable(fuzz-swiper src/cmd/fuzz-swiper/main.cpp src/swiper.cpp)
 
     set(SANITIZE_RULES "fuzzer,address,undefined")
-    set(SANITIZE_FLAGS "-fsanitize=${SANITIZE_RULES} -fno-sanitize-recover=${SANITIZE_RULES}")
+    set(SANITIZE_FLAGS "-flto -fsanitize=${SANITIZE_RULES} -fno-sanitize-recover=${SANITIZE_RULES}")
 
     set_target_properties(
         fuzz-swiper
