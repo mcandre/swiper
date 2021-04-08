@@ -46,17 +46,22 @@ int main(int argc, const char** argv) {
 
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
+    const auto nop_start = std::chrono::steady_clock::now();
+    swiper::Spin(trials);
+    const auto nop_end = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
     const auto start = std::chrono::steady_clock::now();
     swiper::WarmCache(password, hash_len, hash, trials);
     const auto end = std::chrono::steady_clock::now();
-    password[hash_len / 2 - 1] = '\0';
-    const auto elapsed = end - start;
+    const auto nop_elapsed = nop_end - nop_start;
+    const auto elapsed = end - start - nop_elapsed;
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
     const auto throughput_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
-    std::cout << std::setprecision(2);
-    std::cout << "latency (ns)\tthroughput (password/sec)" << std::endl <<
+    password[hash_len / 2 - 1] = '\0';
+    std::cout << password << std::endl;
+    std::cerr << std::setprecision(2);
+    std::cerr << "latency (ns)\tthroughput (password/sec)" << std::endl <<
         std::fixed << std::setw(12) << std::left << latency_ns << "\t" <<
         std::scientific << throughput_sec << std::endl;
     return EXIT_SUCCESS;

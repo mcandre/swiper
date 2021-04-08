@@ -3,7 +3,8 @@
 # EXAMPLE
 
 ```console
-$ bench-swiper
+$ bench-swiper "00091C080F5E"
+monke
 latency (ns)    throughput (password/sec)
 2.70            3.70e+08
 ```
