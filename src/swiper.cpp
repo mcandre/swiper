@@ -8,7 +8,7 @@ namespace swiper {
     namespace {
         template<class T>
         auto ParseDecPair(const T* pair) noexcept {
-            return pair[0] & 1 ? pair[1] - 38 : pair[1] - 48;
+            return pair[1] - 48 + 10 * (pair[0] & 1);
         }
 
         template<class T>
