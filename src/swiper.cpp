@@ -22,16 +22,6 @@ namespace swiper {
         }
     }
 
-    void Spin(volatile uint_fast32_t n) noexcept {
-        while (n-- != 0) {}
-    }
-
-    void WarmCache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
-        while (n-- != 0) {
-            Decrypt(password, hash_len, hash);
-        }
-    }
-
     void Decrypt(char* password, size_t hash_len, const char* hash) noexcept {
         auto i = hash_len / 2 - 2;
         auto k = Xlat + ParseDecPair(hash);

@@ -21,6 +21,16 @@ static void usage(const char* program) {
     std::cerr << "Usage: " << program << " <hash>" << std::endl;
 }
 
+static void spin(volatile uint_fast32_t n) noexcept {
+    while (n-- != 0) {}
+}
+
+static void warm_cache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
+    while (n-- != 0) {
+        swiper::Decrypt(password, hash_len, hash);
+    }
+}
+
 int main(int argc, const char** argv) {
     if (argc < 2) {
         usage(argv[0]);
@@ -47,11 +57,11 @@ int main(int argc, const char** argv) {
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::steady_clock::now();
-    swiper::Spin(trials);
+    spin(trials);
     const auto nop_end = std::chrono::steady_clock::now();
-    swiper::WarmCache(password, hash_len, hash, trials);
+    warm_cache(password, hash_len, hash, trials);
     const auto start = std::chrono::steady_clock::now();
-    swiper::WarmCache(password, hash_len, hash, trials);
+    warm_cache(password, hash_len, hash, trials);
     const auto end = std::chrono::steady_clock::now();
     const auto nop_elapsed = nop_end - nop_start;
     const auto elapsed = end - start - nop_elapsed;

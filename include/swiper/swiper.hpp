@@ -29,26 +29,6 @@ namespace swiper {
     };
 
     /**
-     * @brief Spin performs n NOP's, useful for reducing benchmark noise.
-     *
-     * @param n iterations (non-negative)
-     */
-    void Spin(uint_fast32_t n) noexcept;
-
-    /**
-     * @brief WarmCache accelerates successive @ref Decrypt calls,
-     * by prepopulating the system cache.
-     *
-     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
-     *
-     * @param password out buffer (hash length / 2 characters)
-     * @param hash_len string length of hash
-     * @param hash Cisco IOS^tm type 7 (/^[0-9]{2}([0-9A-F]{2})+$/)
-     * @param n iterations (non-negative)
-     */
-    void WarmCache(char* password, size_t hash_len, const char* hash, uint_fast32_t n) noexcept;
-
-    /**
      * @brief Decrypt reverses Cisco IOS type 7 hashes.
      *
      * Warning: Missing null terminator at password[hash.length() / 2 - 1].
