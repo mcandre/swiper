@@ -29,14 +29,13 @@ int main() {
         "151F04020F2F"
     };
 
-    constexpr auto hash_len = static_cast<size_t>(12);
     char password[12];
-    constexpr auto password_len = hash_len / 2 - 1;
 
     for (auto i = 0; i < 16; i++) {
         const auto hash = hashes[i];
+        const auto hash_len = strlen(hash);
         swiper::Decrypt(password, hash_len, hash);
-        password[password_len] = '\0';
+        password[hash_len / 2 - 1] = '\0';
         assert(strcmp(password, "monke") == 0);
     }
 }
