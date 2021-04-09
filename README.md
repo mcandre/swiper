@@ -15,7 +15,7 @@ latency (ns)    throughput (password/sec)
 
 # ABOUT
 
-swiper is a library for regenerating passwords from Cisco IOS^tm type 7 encrypted configurations.
+swiper is a library for regenerating passwords from Cisco type 7 encrypted configurations.
 
 # WARNING
 

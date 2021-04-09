@@ -9,6 +9,13 @@
 
 #include "swiper/swiper.hpp"
 
+/**
+ * @brief main is the entrypoint.
+ *
+ * Usage: test-swiper
+ *
+ * @returns CLI exit code
+ */
 int main() {
     const char hashes[16][13] = {
         "00091C080F5E",

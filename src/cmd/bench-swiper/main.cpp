@@ -17,10 +17,23 @@
 
 #include "swiper/swiper.hpp"
 
+/**
+ * @brief spin presents an empty loop for overhead measurement.
+ *
+ * @param n iterations
+ */
 static void spin(volatile uint_fast32_t n) noexcept {
     while (n-- != 0) {}
 }
 
+/**
+ * @brief warm_cache promotes application code to icache.
+ *
+ * @param password out buffer, min hash_len / 2 characters
+ * @param hash_len string length of hash
+ * @param hash Cisco type 7, uppercase, min length 4
+ * @param n iterations
+ */
 static void warm_cache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
     while (n-- != 0) {
         swiper::Decrypt(password, hash_len, hash);
