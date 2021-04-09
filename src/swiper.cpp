@@ -2,18 +2,29 @@
  * @copyright 2020 YelloSoft
 */
 
+
+
+
+#include <iostream>
+
+
+
 #include "swiper/swiper.hpp"
 
 namespace swiper {
     namespace {
         template<class T>
         auto ParseDecPair(const T* pair) noexcept {
-            return pair[1] - 48 + 10 * (pair[0] & 1);
+            // Branching benchmarks faster here than multiplication
+            // return 10 * (pair[0] & 1) + (pair[1] & 0x0f);
+            return pair[0] & 1 ? pair[1] - 38 : pair[1] - 48;
         }
 
         template<class T>
-        auto ParseHexDigit(T v) noexcept {
-            return v & 64 ? v - 55 : v - 48;
+        auto ParseHexDigit(const T v) noexcept {
+            // Branching benchmarks faster here than multiplication
+            // return (v & 0x0f) + 9 * (v >> 6);
+            return (v & 64) ? v - 55 : v - 48;
         }
 
         template<class T>

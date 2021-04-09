@@ -17,12 +17,12 @@ static void FormatDecPair(char* result, size_t offset, size_t v) noexcept {
     result[offset + 1]= remainder + 48;
 }
 
-static char FormatHexDigit(char v) noexcept {
-    return v < 10 ? v + 48 : v + 55;
+static auto FormatHexDigit(unsigned char v) noexcept {
+    return v + 48 + 7 * (v > 9);
 }
 
-static void FormatHexPair(char* result, size_t offset, char v) noexcept {
-    char remainder = v % 16;
+static void FormatHexPair(char* result, size_t offset, unsigned char v) noexcept {
+    auto remainder = v % 16;
     result[offset] = FormatHexDigit((v - remainder) / 16);
     result[offset + 1]= FormatHexDigit(remainder);
 }
@@ -36,7 +36,7 @@ static void Encrypt(char* hash, size_t seed, size_t password_len, const char* pa
     auto xlat_seeded = swiper::Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
-        const auto c = char(password[i] ^ xlat_seeded[i]);
+        const auto c = static_cast<unsigned char>(password[i] ^ xlat_seeded[i]);
         FormatHexPair(hash, j, c);
     }
 }
