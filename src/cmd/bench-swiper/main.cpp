@@ -17,26 +17,40 @@
 
 #include "swiper/swiper.hpp"
 
-static void usage(const char* program) {
-    std::cerr << "Usage: " << program << " <hash>" << std::endl;
-}
-
+/**
+ * @brief spin presents an empty loop for overhead measurement.
+ *
+ * @param n iterations
+ */
 static void spin(volatile uint_fast32_t n) noexcept {
     while (n-- != 0) {}
 }
 
+/**
+ * @brief warm_cache promotes application code to icache.
+ *
+ * @param password out buffer, min hash_len / 2 characters
+ * @param hash_len string length of hash
+ * @param hash Cisco type 7, uppercase, min length 4
+ * @param n iterations
+ */
 static void warm_cache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
     while (n-- != 0) {
         swiper::Decrypt(password, hash_len, hash);
     }
 }
 
-int main(int argc, const char** argv) {
-    if (argc < 2) {
-        usage(argv[0]);
-        exit(EXIT_FAILURE);
-    }
-
+/**
+ * @brief main is the entrypoint.
+ *
+ * Usage: bench-swiper <Cisco type 7 hash>
+ *
+ * @param argc argument count
+ * @param argv CLI arguments
+ *
+ * @returns CLI exit code
+ */
+int main(int argc __attribute__((unused)), const char** argv) {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
     #elif defined(__linux__)
@@ -47,13 +61,7 @@ int main(int argc, const char** argv) {
     #endif
 
     const auto hash = argv[1];
-
     auto hash_len = strlen(hash);
-
-    if (hash_len > 24) {
-        hash_len = 24;
-    }
-
     char password[12];
     constexpr auto trials = uint_fast32_t(1 << 30);
     const auto nop_start = std::chrono::steady_clock::now();

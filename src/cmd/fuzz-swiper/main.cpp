@@ -11,22 +11,49 @@
 #include "swiper/swiper.hpp"
 
 #ifdef __SANITIZE_ADDRESS__
+/**
+ * @brief FormatDecPair renders decimal pairs.
+ *
+ * @param result out buffer, min 3 characters
+ * @param offset buffer write index
+ * @param v value
+ */
 static void FormatDecPair(char* result, size_t offset, size_t v) noexcept {
     char remainder = v % 10;
     result[offset] = (v - remainder) / 10 + 48;
     result[offset + 1]= remainder + 48;
 }
 
+/**
+ * @brief FormatHexDigit renders a hexadecimal digit.
+ *
+ * @param v value
+ */
 static auto FormatHexDigit(unsigned char v) noexcept {
     return v + 48 + 7 * (v > 9);
 }
 
+/**
+ * @brief FormatHexPair renders hexadecimal pairs.
+ *
+ * @param result out buffer, min 3 characters
+ * @param offset buffer write index
+ * @param v value
+ */
 static void FormatHexPair(char* result, size_t offset, unsigned char v) noexcept {
     auto remainder = v % 16;
     result[offset] = FormatHexDigit((v - remainder) / 16);
     result[offset + 1]= FormatHexDigit(remainder);
 }
 
+/**
+ * @brief Encrypt generates Cisco type 7 hashes.
+ *
+ * @param hash out buffer, min 2 * (1 + password_len), non-null termated
+ * @param seed key index in [0, 16)
+ * @param password_len string length of password
+ * @param password ASCII, max length 11
+ */
 static void Encrypt(char* hash, size_t seed, size_t password_len, const char* password) noexcept {
     if (password_len > 11) {
         password_len = 11;
@@ -41,6 +68,13 @@ static void Encrypt(char* hash, size_t seed, size_t password_len, const char* pa
     }
 }
 
+/**
+ * @brief PropReversible tests the symmetric nature of the Cisco type 7 cryptographic algorithm.
+ *
+ * @param seed key index in [0, 16)
+ * @param password_len string length of password
+ * @param password ASCII, max length 11
+ */
 static bool PropReversible(size_t seed, size_t password_len, const char* password) {
     if (password_len == 0) {
         return true;

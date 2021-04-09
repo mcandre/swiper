@@ -4,14 +4,14 @@
  * @copyright 2021 YelloSoft
  * @mainpage
  *
- * @ref swiper breaks Cisco IOS^tm type 7 passwords.
+ * @ref swiper breaks Cisco type 7 passwords.
  */
 
 #include <cstddef>
 #include <cstdint>
 
 /**
- * @brief swiper manages legacy Cisco IOS^tm type 7 passwords.
+ * @brief swiper manages legacy Cisco type 7 passwords.
  */
 namespace swiper {
     /**
@@ -29,13 +29,11 @@ namespace swiper {
     };
 
     /**
-     * @brief Decrypt reverses Cisco IOS type 7 hashes.
+     * @brief Decrypt reverses Cisco type 7 hashes.
      *
-     * Warning: Missing null terminator at password[hash.length() / 2 - 1].
-     *
-     * @param password out buffer (hash length / 2 characters)
+     * @param password out buffer, min hash_len / 2 - 2 characters, non-null terminated
      * @param hash_len string length of hash
-     * @param hash Cisco IOS^tm type 7 (uppercase, min length 4)
+     * @param hash Cisco Itype 7 hash, uppercase, min length 4
      *
      */
     void Decrypt(char* password, size_t hash_len, const char* hash) noexcept;

@@ -15,7 +15,6 @@
 macOS users may need additional patches:
 
 * [Grow](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh) Xcode PATH
-* [Update](https://gist.github.com/mcandre/6ad2edee00c693b057743aafba20f1df) llvm
 
 # LINT
 
