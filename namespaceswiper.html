@@ -74,12 +74,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9fc0daa3bed5f7da055d9b4efc17758e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e">Spin</a> (uint_fast32_t n) noexcept</td></tr>
-<tr class="memdesc:a9fc0daa3bed5f7da055d9b4efc17758e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spin performs n NOP's, useful for reducing benchmark noise.  <a href="namespaceswiper.html#a9fc0daa3bed5f7da055d9b4efc17758e">More...</a><br /></td></tr>
-<tr class="separator:a9fc0daa3bed5f7da055d9b4efc17758e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dbd56f1b79952bcaebe53de028f95e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2">WarmCache</a> (char *password, size_t hash_len, const char *hash, uint_fast32_t n) noexcept</td></tr>
-<tr class="memdesc:a3dbd56f1b79952bcaebe53de028f95e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a> calls, by prepopulating the system cache.  <a href="namespaceswiper.html#a3dbd56f1b79952bcaebe53de028f95e2">More...</a><br /></td></tr>
-<tr class="separator:a3dbd56f1b79952bcaebe53de028f95e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a310674d83e4cf5220e18f6983cfaab87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a> (char *password, size_t hash_len, const char *hash) noexcept</td></tr>
 <tr class="memdesc:a310674d83e4cf5220e18f6983cfaab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">More...</a><br /></td></tr>
 <tr class="separator:a310674d83e4cf5220e18f6983cfaab87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,100 +135,6 @@ Variables</h2></td></tr>
     <tr><td class="paramname">password</td><td>out buffer (hash length / 2 characters) </td></tr>
     <tr><td class="paramname">hash_len</td><td>string length of hash </td></tr>
     <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (uppercase, min length 4) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a9fc0daa3bed5f7da055d9b4efc17758e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fc0daa3bed5f7da055d9b4efc17758e">&#9670;&nbsp;</a></span>Spin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void swiper::Spin </td>
-          <td>(</td>
-          <td class="paramtype">uint_fast32_t&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Spin performs n NOP's, useful for reducing benchmark noise. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>iterations (non-negative) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3dbd56f1b79952bcaebe53de028f95e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3dbd56f1b79952bcaebe53de028f95e2">&#9670;&nbsp;</a></span>WarmCache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void swiper::WarmCache </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>password</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>hash_len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>hash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint_fast32_t&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>WarmCache accelerates successive <a class="el" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a> calls, by prepopulating the system cache. </p>
-<p>Warning: Missing null terminator at password[hash.length() / 2 - 1].</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">password</td><td>out buffer (hash length / 2 characters) </td></tr>
-    <tr><td class="paramname">hash_len</td><td>string length of hash </td></tr>
-    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (/^[0-9]{2}([0-9A-F]{2})+$/) </td></tr>
-    <tr><td class="paramname">n</td><td>iterations (non-negative) </td></tr>
   </table>
   </dd>
 </dl>
