@@ -69,13 +69,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>swiper manages legacy Cisco IOS^tm type 7 passwords.  
+<p>swiper manages legacy Cisco type 7 passwords.  
 <a href="namespaceswiper.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a310674d83e4cf5220e18f6983cfaab87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">Decrypt</a> (char *password, size_t hash_len, const char *hash) noexcept</td></tr>
-<tr class="memdesc:a310674d83e4cf5220e18f6983cfaab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco IOS type 7 hashes.  <a href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">More...</a><br /></td></tr>
+<tr class="memdesc:a310674d83e4cf5220e18f6983cfaab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypt reverses Cisco type 7 hashes.  <a href="namespaceswiper.html#a310674d83e4cf5220e18f6983cfaab87">More...</a><br /></td></tr>
 <tr class="separator:a310674d83e4cf5220e18f6983cfaab87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -85,7 +85,7 @@ Variables</h2></td></tr>
 <tr class="separator:a0e5a5404a5aaf5ab2bdc034346d402d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>swiper manages legacy Cisco IOS^tm type 7 passwords. </p>
+<div class="textblock"><p>swiper manages legacy Cisco type 7 passwords. </p>
 <dl class="section copyright"><dt>Copyright</dt><dd>2020 YelloSoft </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a310674d83e4cf5220e18f6983cfaab87"></a>
@@ -128,13 +128,12 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Decrypt reverses Cisco IOS type 7 hashes. </p>
-<p>Warning: Missing null terminator at password[hash.length() / 2 - 1].</p>
+<p>Decrypt reverses Cisco type 7 hashes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">password</td><td>out buffer (hash length / 2 characters) </td></tr>
+    <tr><td class="paramname">password</td><td>out buffer, min hash_len / 2 - 2 characters, non-null terminated </td></tr>
     <tr><td class="paramname">hash_len</td><td>string length of hash </td></tr>
-    <tr><td class="paramname">hash</td><td>Cisco IOS^tm type 7 (uppercase, min length 4) </td></tr>
+    <tr><td class="paramname">hash</td><td>Cisco Itype 7 hash, uppercase, min length 4 </td></tr>
   </table>
   </dd>
 </dl>
