@@ -2,13 +2,6 @@
  * @copyright 2020 YelloSoft
 */
 
-
-
-
-#include <iostream>
-
-
-
 #include "swiper/swiper.hpp"
 
 namespace swiper {
