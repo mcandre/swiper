@@ -50,7 +50,8 @@ if(NOT MSVC)
         LINK_FLAGS "${PGO_GENERATE_FLAGS}"
     )
 
-    add_custom_target(swiper.profraw COMMAND "${CMAKE_COMMAND}" -E env LLVM_PROFILE_FILE=swiper.profraw $<TARGET_FILE:bench-swiper-instrument> "00091C080F5E")
+    # Train on "cheez"
+    add_custom_target(swiper.profraw COMMAND "${CMAKE_COMMAND}" -E env LLVM_PROFILE_FILE=swiper.profraw $<TARGET_FILE:bench-swiper-instrument> "00071B030141")
     add_dependencies(swiper.profraw bench-swiper-instrument)
 
     add_custom_target(swiper.profdata COMMAND llvm-profdata merge -output swiper.profdata swiper.profraw)
