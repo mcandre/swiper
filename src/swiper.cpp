@@ -47,14 +47,14 @@ namespace swiper {
     }
 
     void Decrypt(char* password, size_t hash_len, const char* hash) noexcept {
-        auto i = hash_len / 2 - 2;
+        hash_len = hash_len / 2 - 2;
         auto k = Xlat + ParseDecPair(hash);
         auto c = hash + 2;
 
         for (;;) {
             *password++ = static_cast<char>(*k++ ^ ParseHexPair(c));
 
-            if (i-- == 0) {
+            if (hash_len-- == 0) {
                 return;
             }
 
