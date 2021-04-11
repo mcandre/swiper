@@ -19,18 +19,6 @@ namespace swiper {
         }
 
         /**
-         * @brief ParseHexDigit reads a hexadecimal character.
-         *
-         * @param v ASCII character
-         *
-         * @returns numerical value
-         */
-        template<class T>
-        auto ParseHexDigit(T v) noexcept {
-            return v - (v & 64 ? 55 : 48);
-        }
-
-        /**
          * @brief ParseHexPair reads hexadecimal text.
          *
          * @param pair 2 ASCII characters
@@ -39,7 +27,8 @@ namespace swiper {
          */
         template<class T>
         auto ParseHexPair(const T* pair) noexcept {
-            return 16 * ParseHexDigit(pair[0]) + ParseHexDigit(pair[1]);
+            return 16 * (pair[0] - (pair[0] & 64 ? 55 : 48)) +
+                pair[1] - (pair[1] & 64 ? 55 : 48);
         }
 
         /**
