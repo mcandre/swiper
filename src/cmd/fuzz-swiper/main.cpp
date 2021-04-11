@@ -47,6 +47,20 @@ static void FormatHexPair(char* result, size_t offset, unsigned char v) noexcept
 }
 
 /**
+ * @brief Xlat is a fixed XOR key.
+ */
+static constexpr char Xlat[32] = {
+    0x64, 0x73, 0x66, 0x64,
+    0x3b, 0x6b, 0x66, 0x6f,
+    0x41, 0x2c, 0x2e, 0x69,
+    0x79, 0x65, 0x77, 0x72,
+    0x6b, 0x6c, 0x64, 0x4a,
+    0x4b, 0x44, 0x48, 0x53,
+    0x55, 0x42, 0x73, 0x00,
+    0x00, 0x00, 0x00, 0x00
+};
+
+/**
  * @brief Encrypt generates Cisco type 7 hashes.
  *
  * @param hash out buffer, min 2 * (1 + password_len), non-null termated
@@ -60,7 +74,7 @@ static void Encrypt(char* hash, size_t seed, size_t password_len, const char* pa
     }
 
     FormatDecPair(hash, 0, seed);
-    auto xlat_seeded = swiper::Xlat + seed;
+    auto xlat_seeded = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
         const auto c = static_cast<unsigned char>(password[i] ^ xlat_seeded[i]);
