@@ -14,7 +14,7 @@ namespace swiper {
          * @returns numerical value
          */
         template<class T>
-        auto ParseDecDigit(T v) {
+        auto ParseDecDigit(T v) noexcept {
             return v - 48;
         }
 
