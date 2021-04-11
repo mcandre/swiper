@@ -105,7 +105,12 @@ static bool PropReversible(size_t seed, size_t password_len, const char* passwor
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
-    if (Size < 2 || Data[1] == '\0') {
+    if (Size < 5 ||
+        Data[1] == '\0' ||
+        Data[2] == '\0' ||
+        Data[3] == '\0' ||
+        Data[4] == '\0'
+    ) {
         return 0;
     }
 
