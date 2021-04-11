@@ -7,18 +7,6 @@
 namespace swiper {
     namespace {
         /**
-         * @brief ParseDecDigit reads a decimal character.
-         *
-         * @param v ASCII character
-         *
-         * @returns numerical value
-         */
-        template<class T>
-        auto ParseDecDigit(T v) noexcept {
-            return v - 48;
-        }
-
-        /**
          * @brief ParseDecPair reads decimal text.
          *
          * @param pair 2 ASCII characters
@@ -27,7 +15,7 @@ namespace swiper {
          */
         template<class T>
         auto ParseDecPair(const T* pair) noexcept {
-            return 10 * ParseDecDigit(pair[0]) + ParseDecDigit(pair[1]);
+            return 10 * (pair[0] - 48) + (pair[1] - 48);
         }
 
         /**
