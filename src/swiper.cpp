@@ -26,7 +26,7 @@ auto ParseDecPair(const T* pair) noexcept {
  * @returns numerical value
  */
 template <class T>
-auto ParseHexPair(const T* pair) noexcept {
+T ParseHexPair(const T* pair) noexcept {
     return static_cast<T>(16) * (
             pair[0] +
             (pair[0] & static_cast<T>(64) ?
