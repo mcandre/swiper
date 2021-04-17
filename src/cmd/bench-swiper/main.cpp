@@ -78,8 +78,11 @@ int main(int argc __attribute__((unused)), const char** argv) {
     const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
     const auto throughput_sec = 1000000000.0 * trials / total_ns;
     const auto latency_ns = double(total_ns) / trials;
-    password[hash_len / 2 - 1] = '\0';
-    std::cout << password << std::endl;
+    const auto password_len = hash_len / 2 - 1;
+    password[password_len] = '\0';
+    char password_signed[12];
+    std::copy(password, password + password_len + 1, password_signed);
+    std::cout << password_signed << std::endl;
     std::cerr << std::setprecision(2);
     std::cerr << "latency (ns)\tthroughput (password/sec)" << std::endl <<
         std::fixed << std::setw(12) << std::left << latency_ns << "\t" <<
