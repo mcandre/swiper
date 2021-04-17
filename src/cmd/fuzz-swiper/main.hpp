@@ -5,8 +5,8 @@
  */
 
 #ifdef __SANITIZE_ADDRESS__
-#include <stddef.h>
-#include <stdint.h>
+#include <cstddef>
+#include <cstdint>
 
 /**
  * @brief LLVMFuzzerTestOneInput is the entrypoint.

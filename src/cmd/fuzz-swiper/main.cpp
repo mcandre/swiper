@@ -68,7 +68,7 @@ static constexpr unsigned char Xlat[32] = {
  * @param password_len string length of password
  * @param password ASCII, max length 11
  */
-static void Encrypt(unsigned char* hash, size_t seed, size_t password_len, const unsigned char* password) noexcept {
+static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8_t* password) noexcept {
     if (password_len > 11) {
         password_len = 11;
     }
@@ -77,7 +77,7 @@ static void Encrypt(unsigned char* hash, size_t seed, size_t password_len, const
     auto xlat_seeded = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
-        const auto c = static_cast<unsigned char>(password[i] ^ xlat_seeded[i]);
+        const auto c = static_cast<uint8_t>(password[i] ^ xlat_seeded[i]);
         FormatHexPair(hash, j, c);
     }
 }
@@ -89,18 +89,18 @@ static void Encrypt(unsigned char* hash, size_t seed, size_t password_len, const
  * @param password_len string length of password
  * @param password ASCII, max length 11
  */
-static bool PropReversible(size_t seed, size_t password_len, const unsigned char* password) {
+static bool PropReversible(size_t seed, size_t password_len, const uint8_t* password) {
     if (password_len == 0) {
         return true;
     }
 
     char password_signed[12];
     std::copy(password, password + password_len + 1, password_signed);
-    unsigned char hash[25];
+    uint8_t hash[25];
     Encrypt(hash, seed, password_len, password);
     const auto hash_len = 2 * (password_len + 1);
     hash[hash_len] = '\0';
-    unsigned char password2[12];
+    uint8_t password2[12];
     swiper::Decrypt(password2, hash_len, hash);
     const auto password2_len = hash_len / 2 - 1;
     password2[password2_len] = '\0';
@@ -121,7 +121,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         password_len = 11;
     }
 
-    unsigned char password[12];
+    uint8_t password[12];
     std::copy(Data + 1, Data + 1 + password_len, password);
     password[password_len] = '\0';
     assert(PropReversible(seed, password_len, password));

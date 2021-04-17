@@ -37,8 +37,8 @@ int main() {
         "151F04020F2F"
     };
 
-    unsigned char hash[13];
-    unsigned char password[12];
+    uint8_t hash[13];
+    uint8_t password[12];
     char password_signed[12];
 
     for (const auto hash_signed : hashes_signed) {
