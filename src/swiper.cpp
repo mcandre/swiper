@@ -13,7 +13,8 @@ namespace {
  *
  * @returns numerical value
  */
-auto ParseDecPair(const uint8_t* pair) noexcept {
+template <class T>
+auto ParseDecPair(const T* pair) noexcept {
     return 10 * pair[0] + pair[1] - 528;
 }
 
@@ -24,7 +25,8 @@ auto ParseDecPair(const uint8_t* pair) noexcept {
  *
  * @returns numerical value
  */
-auto ParseHexPair(const uint8_t* pair) noexcept {
+template <class T>
+auto ParseHexPair(const T* pair) noexcept {
     return 16 * (pair[0] + (pair[0] & 64 ? 9 : 0)) +
         pair[1] - (pair[1] & 64 ? 55 : 48);
 }
