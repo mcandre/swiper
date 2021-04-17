@@ -9,6 +9,8 @@ latency (ns)    throughput (password/sec)
 2.67            3.75e+08
 ```
 
+Don't be surprised if you get segfaults; Validation is left as an exercise for wrappers.
+
 # TECH TALK SLIDES
 
 [The Road to Gigacracking](https://app.box.com/s/w5n4h9gxhgdzo85e5zvlv1w0e71y2ti3)
