@@ -30,7 +30,7 @@ static void FormatDecPair(uint8_t* result, size_t offset, size_t v) noexcept {
  * @param v value
  */
 static uint8_t FormatHexDigit(uint8_t v) noexcept {
-    return static_cast<uint8_t>(7) * (v > static_cast<uint8_t>(9)) +
+    return static_cast<uint8_t>(7) * static_cast<uint8_t>(v > static_cast<uint8_t>(9)) +
         v +
         static_cast<uint8_t>(48);
 }
