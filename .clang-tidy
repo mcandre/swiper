@@ -1,0 +1,4 @@
+---
+HeaderFilterRegex: ".*"
+Checks: "*,-llvm-header-guard,-modernize-use-trailing-return-type,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-*-qualified-auto,-*-avoid-c-arrays,-*-magic-numbers,-*-namespace-comment*"
+# WarningsAsErrors: "*"

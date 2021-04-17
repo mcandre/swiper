@@ -34,7 +34,7 @@ static void spin(volatile uint_fast32_t n) noexcept {
  * @param hash Cisco type 7, uppercase, min length 4
  * @param n iterations
  */
-static void warm_cache(char* password, size_t hash_len, const char* hash, volatile uint_fast32_t n) noexcept {
+static void warm_cache(unsigned char* password, size_t hash_len, const unsigned char* hash, volatile uint_fast32_t n) noexcept {
     while (n-- != 0) {
         swiper::Decrypt(password, hash_len, hash);
     }
@@ -60,10 +60,12 @@ int main(int argc __attribute__((unused)), const char** argv) {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash = argv[1];
-    auto hash_len = strlen(hash);
-    char password[12];
-    constexpr auto trials = uint_fast32_t(1 << 30);
+    const auto hash_signed = argv[1];
+    auto hash_len = strlen(hash_signed);
+    unsigned char hash[25];
+    std::copy(hash_signed, hash_signed + hash_len, hash);
+    unsigned char password[12];
+    constexpr auto trials = uint_fast32_t(1UL << 30UL);
     const auto nop_start = std::chrono::steady_clock::now();
     spin(trials);
     const auto nop_end = std::chrono::steady_clock::now();

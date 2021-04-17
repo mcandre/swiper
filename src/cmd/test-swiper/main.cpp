@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <cstring>
 
@@ -17,7 +18,7 @@
  * @returns CLI exit code
  */
 int main() {
-    const char hashes[16][13] = {
+    const char hashes_signed[16][13] = {
         "00091C080F5E",
         "011E090A500E",
         "020B0B550003",
@@ -36,13 +37,17 @@ int main() {
         "151F04020F2F"
     };
 
-    char password[12];
+    unsigned char hash[13];
+    unsigned char password[12];
+    char password_signed[12];
 
-    for (auto i = 0; i < 16; i++) {
-        const auto hash = hashes[i];
-        const auto hash_len = strlen(hash);
+    for (const auto hash_signed : hashes_signed) {
+        const auto hash_len = strlen(hash_signed);
+        std::copy(hash_signed, hash_signed + hash_len, hash);
         swiper::Decrypt(password, hash_len, hash);
-        password[hash_len / 2 - 1] = '\0';
-        assert(strcmp(password, "monke") == 0);
+        const auto password_len = hash_len / 2 - 1;
+        password[password_len] = '\0';
+        std::copy(password, password + password_len, password_signed);
+        assert(strcmp(password_signed, "monke") == 0);
     }
 }

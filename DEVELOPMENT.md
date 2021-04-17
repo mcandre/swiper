@@ -5,7 +5,9 @@
 
 ## Recommended
 
-* [clang](https://clang.llvm.org/) + [llvm](https://llvm.org/)
+* [clang](https://clang.llvm.org/)
+* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
+* [llvm](https://llvm.org/)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
 * [time](https://linux.die.net/man/1/time)
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils

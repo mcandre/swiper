@@ -22,5 +22,5 @@ namespace swiper {
      * @param hash Cisco Itype 7 hash, uppercase, min length 4
      *
      */
-    void Decrypt(char* password, size_t hash_len, const char* hash) noexcept;
+    void Decrypt(unsigned char* password, size_t hash_len, const unsigned char* hash) noexcept;
 }

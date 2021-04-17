@@ -13,8 +13,7 @@ namespace {
  *
  * @returns numerical value
  */
-template<class T>
-auto ParseDecPair(const T* pair) noexcept {
+auto ParseDecPair(const unsigned char* pair) noexcept {
     return 10 * pair[0] + pair[1] - 528;
 }
 
@@ -25,8 +24,7 @@ auto ParseDecPair(const T* pair) noexcept {
  *
  * @returns numerical value
  */
-template<class T>
-auto ParseHexPair(const T* pair) noexcept {
+auto ParseHexPair(const unsigned char* pair) noexcept {
     return 16 * (pair[0] + (pair[0] & 64 ? 9 : 0)) +
         pair[1] - (pair[1] & 64 ? 55 : 48);
 }
@@ -34,7 +32,7 @@ auto ParseHexPair(const T* pair) noexcept {
 /**
  * @brief Xlat is a fixed XOR key.
  */
-constexpr char Xlat[27] __attribute__((aligned (16))) = {
+constexpr unsigned char Xlat[27] __attribute__((aligned (16))) = {
     0x64, 0x73, 0x66, 0x64,
     0x3b, 0x6b, 0x66, 0x6f,
     0x41, 0x2c, 0x2e, 0x69,
@@ -45,12 +43,12 @@ constexpr char Xlat[27] __attribute__((aligned (16))) = {
 };
 }
 
-void Decrypt(char* password, size_t hash_len, const char* hash) noexcept {
+void Decrypt(unsigned char* password, size_t hash_len, const unsigned char* hash) noexcept {
     auto k = Xlat + ParseDecPair(hash);
     hash += 2;
 
     for (hash_len = hash_len / 2 - 2;;) {
-        *password++ = static_cast<char>(*k++ ^ ParseHexPair(hash));
+        *password++ = static_cast<unsigned char>(*k++ ^ ParseHexPair(hash));
 
         if (hash_len-- == 0) {
             return;
