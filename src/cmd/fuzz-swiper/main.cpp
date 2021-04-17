@@ -18,8 +18,8 @@
  * @param offset buffer write index
  * @param v value
  */
-static void FormatDecPair(unsigned char* result, size_t offset, size_t v) noexcept {
-    unsigned char remainder = v % 10;
+static void FormatDecPair(uint8_t* result, size_t offset, size_t v) noexcept {
+    const uint8_t remainder = v % 10;
     result[offset] = (v - remainder) / 10 + 48;
     result[offset + 1]= remainder + 48;
 }
@@ -29,8 +29,10 @@ static void FormatDecPair(unsigned char* result, size_t offset, size_t v) noexce
  *
  * @param v value
  */
-static auto FormatHexDigit(unsigned char v) noexcept {
-    return v + 48 + 7 * (v > 9);
+static uint8_t FormatHexDigit(uint8_t v) noexcept {
+    return static_cast<uint8_t>(7) * (v > static_cast<uint8_t>(9)) +
+        v +
+        static_cast<uint8_t>(48);
 }
 
 /**
@@ -40,8 +42,8 @@ static auto FormatHexDigit(unsigned char v) noexcept {
  * @param offset buffer write index
  * @param v value
  */
-static void FormatHexPair(unsigned char* result, size_t offset, unsigned char v) noexcept {
-    auto remainder = v % 16;
+static void FormatHexPair(uint8_t* result, size_t offset, uint8_t v) noexcept {
+    const auto remainder = v % 16;
     result[offset] = FormatHexDigit((v - remainder) / 16);
     result[offset + 1]= FormatHexDigit(remainder);
 }
@@ -49,7 +51,7 @@ static void FormatHexPair(unsigned char* result, size_t offset, unsigned char v)
 /**
  * @brief Xlat is a fixed XOR key.
  */
-static constexpr unsigned char Xlat[32] = {
+static constexpr uint8_t Xlat[32] = {
     0x64, 0x73, 0x66, 0x64,
     0x3b, 0x6b, 0x66, 0x6f,
     0x41, 0x2c, 0x2e, 0x69,
@@ -74,10 +76,10 @@ static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8
     }
 
     FormatDecPair(hash, 0, seed);
-    auto xlat_seeded = Xlat + seed;
+    auto* k = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
-        const auto c = static_cast<uint8_t>(password[i] ^ xlat_seeded[i]);
+        const auto c = static_cast<uint8_t>(password[i] ^ k[i]);
         FormatHexPair(hash, j, c);
     }
 }
