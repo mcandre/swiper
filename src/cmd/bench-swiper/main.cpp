@@ -61,7 +61,7 @@ int main(int argc __attribute__((unused)), const char** argv) {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    const auto hash_signed = argv[1];
+    const auto* hash_signed = argv[1];
     auto hash_len = strlen(hash_signed);
     unsigned char hash[25];
     std::copy(hash_signed, hash_signed + hash_len, hash);

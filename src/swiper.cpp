@@ -56,7 +56,7 @@ constexpr uint8_t Xlat[27] __attribute__((aligned (16))) = {
 }
 
 void Decrypt(uint8_t* password, size_t hash_len, const uint8_t* hash) noexcept {
-    auto k = Xlat + ParseDecPair(hash);
+    auto* k = Xlat + ParseDecPair(hash);
     hash += 2;
 
     for (hash_len = hash_len / 2 - 2;;) {
