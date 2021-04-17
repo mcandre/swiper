@@ -27,8 +27,18 @@ auto ParseDecPair(const T* pair) noexcept {
  */
 template <class T>
 auto ParseHexPair(const T* pair) noexcept {
-    return 16 * (pair[0] + (pair[0] & 64 ? 9 : 0)) +
-        pair[1] - (pair[1] & 64 ? 55 : 48);
+    return static_cast<T>(16) * (
+            pair[0] +
+            (pair[0] & static_cast<T>(64) ?
+                    static_cast<T>(9) :
+                    static_cast<T>(0)
+            )
+        ) +
+        pair[1] -
+        (pair[1] & static_cast<T>(64) ?
+                static_cast<T>(55) :
+                static_cast<T>(48)
+        );
 }
 
 /**
