@@ -76,7 +76,7 @@ static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8
     }
 
     FormatDecPair(hash, 0, seed);
-    auto* k = Xlat + seed;
+    const auto* k = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
         const auto c = static_cast<uint8_t>(password[i] ^ k[i]);
