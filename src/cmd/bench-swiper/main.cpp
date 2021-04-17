@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <cstring>
 #include <iomanip>
