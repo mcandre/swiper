@@ -6,7 +6,7 @@
 $ bench-swiper "00091C080F5E"
 monke
 latency (ns)    throughput (password/sec)
-2.67            3.75e+08
+2.47            4.05e+08
 ```
 
 Don't be surprised if you get segfaults; Validation is left as an exercise for wrappers.
