@@ -49,7 +49,7 @@ static void FormatHexPair(unsigned char* result, size_t offset, unsigned char v)
 /**
  * @brief Xlat is a fixed XOR key.
  */
-static constexpr char Xlat[32] = {
+static constexpr unsigned char Xlat[32] = {
     0x64, 0x73, 0x66, 0x64,
     0x3b, 0x6b, 0x66, 0x6f,
     0x41, 0x2c, 0x2e, 0x69,
@@ -115,7 +115,6 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     }
 
     const auto seed = size_t(Data[0]) % 16;
-    const char *Data2 = (char*)(Data) + 1;
     auto password_len = size_t(Size - 1);
 
     if (password_len > 11) {
@@ -123,7 +122,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     }
 
     unsigned char password[12];
-    std::copy(Data2, Data2 + password_len, password);
+    std::copy(Data + 1, Data + 1 + password_len, password);
     password[password_len] = '\0';
     assert(PropReversible(seed, password_len, password));
     return 0;
