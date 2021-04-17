@@ -95,7 +95,7 @@ static bool PropReversible(size_t seed, size_t password_len, const unsigned char
     }
 
     char password_signed[12];
-    std::copy(password, password + password_len, password_signed);
+    std::copy(password, password + password_len + 1, password_signed);
     unsigned char hash[25];
     Encrypt(hash, seed, password_len, password);
     const auto hash_len = 2 * (password_len + 1);
@@ -105,7 +105,7 @@ static bool PropReversible(size_t seed, size_t password_len, const unsigned char
     const auto password2_len = hash_len / 2 - 1;
     password2[password2_len] = '\0';
     char password2_signed[12];
-    std::copy(password2, password2 + password2_len, password2_signed);
+    std::copy(password2, password2 + password2_len + 1, password2_signed);
     return strcmp(password2_signed, password_signed) == 0;
 }
 

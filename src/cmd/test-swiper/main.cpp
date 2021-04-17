@@ -43,11 +43,11 @@ int main() {
 
     for (const auto hash_signed : hashes_signed) {
         const auto hash_len = strlen(hash_signed);
-        std::copy(hash_signed, hash_signed + hash_len, hash);
+        std::copy(hash_signed, hash_signed + hash_len + 1, hash);
         swiper::Decrypt(password, hash_len, hash);
         const auto password_len = hash_len / 2 - 1;
         password[password_len] = '\0';
-        std::copy(password, password + password_len, password_signed);
+        std::copy(password, password + password_len + 1, password_signed);
         assert(strcmp(password_signed, "monke") == 0);
     }
 }
