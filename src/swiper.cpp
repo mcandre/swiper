@@ -14,7 +14,9 @@ namespace {
  * @returns numerical value
  */
 auto ParseDecPair(const unsigned char* pair) noexcept {
-    return 10 * pair[0] + pair[1] - 528;
+    return static_cast<unsigned char>(10) * pair[0] +
+        pair[1] -
+        static_cast<unsigned char>(528);
 }
 
 /**
@@ -25,8 +27,21 @@ auto ParseDecPair(const unsigned char* pair) noexcept {
  * @returns numerical value
  */
 auto ParseHexPair(const unsigned char* pair) noexcept {
-    return 16 * (pair[0] + (pair[0] & 64 ? 9 : 0)) +
-        pair[1] - (pair[1] & 64 ? 55 : 48);
+    return static_cast<unsigned char>(16) *
+            (
+                pair[0] +
+                (pair[0] & static_cast<unsigned char>(64) ?
+                    static_cast<unsigned char>(9)
+                    :
+                    static_cast<unsigned char>(0)
+                )
+            ) +
+            pair[1] -
+            (pair[1] & static_cast<unsigned char>(64) ?
+                static_cast<unsigned char>(55)
+                :
+                static_cast<unsigned char>(48)
+            );
 }
 
 /**

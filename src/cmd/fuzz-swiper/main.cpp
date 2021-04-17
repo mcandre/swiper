@@ -94,6 +94,8 @@ static bool PropReversible(size_t seed, size_t password_len, const unsigned char
         return true;
     }
 
+    char password_signed[12];
+    std::copy(password, password + password_len + 1, password_signed);
     unsigned char hash[25];
     Encrypt(hash, seed, password_len, password);
     const auto hash_len = 2 * (password_len + 1);
@@ -102,7 +104,9 @@ static bool PropReversible(size_t seed, size_t password_len, const unsigned char
     swiper::Decrypt(password2, hash_len, hash);
     const auto password2_len = hash_len / 2 - 1;
     password2[password2_len] = '\0';
-    return strcmp(reinterpret_cast<char*>(password2), reinterpret_cast<const char*>(password)) == 0;
+    char password2_signed[12];
+    std::copy(password2, password2 + password2_len + 1, password2_signed);
+    return strcmp(password2_signed, password_signed) == 0;
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
