@@ -61,11 +61,6 @@ int main(int argc, const char** argv) {
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
 
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <hash>" << std::endl;
-        return EXIT_FAILURE;
-    }
-
     const auto* hash_signed = argv[1];
     auto hash_len = strlen(hash_signed);
     unsigned char hash[25];
