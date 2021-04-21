@@ -51,7 +51,7 @@ static void warm_cache(unsigned char* password, size_t hash_len, const unsigned 
  *
  * @returns CLI exit code
  */
-int main(int argc, const char** argv) {
+int main([[maybe_unused]] int argc, const char** argv) {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
     #elif defined(__linux__)
