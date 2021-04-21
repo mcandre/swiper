@@ -42,7 +42,7 @@ int main() {
     char password_signed[12];
 
     for (const auto* hash_signed : hashes_signed) {
-        const auto hash_len = strlen(hash_signed);
+        const auto hash_len = static_cast<uint_fast8_t>(strlen(hash_signed));
         std::copy(hash_signed, hash_signed + hash_len + 1, hash);
         swiper::Decrypt(password, hash_len, hash);
         const auto password_len = hash_len / 2 - 1;

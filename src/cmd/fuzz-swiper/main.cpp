@@ -91,7 +91,7 @@ static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8
  * @param password_len string length of password
  * @param password ASCII, max length 11
  */
-static bool PropReversible(size_t seed, size_t password_len, const uint8_t* password) {
+static bool PropReversible(size_t seed, uint_fast8_t password_len, const uint8_t* password) {
     if (password_len == 0) {
         return true;
     }
@@ -117,7 +117,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     }
 
     const auto seed = size_t(Data[0]) % 16;
-    auto password_len = size_t(Size - 1);
+    auto password_len = static_cast<uint_fast8_t>(Size - 1);
 
     if (password_len > 11) {
         password_len = 11;

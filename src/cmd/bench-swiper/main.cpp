@@ -62,7 +62,7 @@ int main([[maybe_unused]] int argc, const char** argv) {
     #endif
 
     const auto* hash_signed = argv[1];
-    auto hash_len = strlen(hash_signed);
+    auto hash_len = static_cast<uint_fast8_t>(strlen(hash_signed));
     unsigned char hash[25];
     std::copy(hash_signed, hash_signed + hash_len, hash);
     unsigned char password[12];

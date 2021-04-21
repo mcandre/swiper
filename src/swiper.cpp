@@ -56,7 +56,7 @@ constexpr uint8_t Xlat[32] = {
 };
 }
 
-void Decrypt(uint8_t* password, size_t hash_len, const uint8_t* hash) noexcept {
+void Decrypt(uint8_t* password, uint_fast8_t hash_len, const uint8_t* hash) noexcept {
     const auto* k = Xlat + ParseDecPair(hash);
     hash += 2;
 

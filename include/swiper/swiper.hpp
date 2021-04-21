@@ -7,7 +7,6 @@
  * @ref swiper breaks Cisco type 7 passwords.
  */
 
-#include <cstddef>
 #include <cstdint>
 
 /**
@@ -21,5 +20,5 @@ namespace swiper {
      * @param hash_len string length of hash
      * @param hash Cisco type 7 hash, uppercase, min length 4
      */
-    void Decrypt(uint8_t* password, size_t hash_len, const uint8_t* hash) noexcept;
+    void Decrypt(uint8_t* password, uint_fast8_t hash_len, const uint8_t* hash) noexcept;
 }
