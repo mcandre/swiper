@@ -1,4 +1,4 @@
 ---
 HeaderFilterRegex: ".*"
-Checks: "*,-llvm-header-guard,-modernize-use-trailing-return-type,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-*-avoid-c-arrays,-*-magic-numbers,-*-namespace-comment*,-cppcoreguidelines-pro-bounds-constant-array-index,-*-decay"
+Checks: "*,-llvm-header-guard,-modernize-use-trailing-return-type,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-*-avoid-c-arrays,-*-magic-numbers,-*-namespace-comment*,-cppcoreguidelines-pro-bounds-constant-array-index,-*-decay,-fuchsia-default-arguments-calls"
 # WarningsAsErrors: "*"

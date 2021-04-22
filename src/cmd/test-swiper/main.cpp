@@ -4,9 +4,10 @@
 
 #include "main.hpp"
 
-#include <algorithm>
 #include <cassert>
-#include <cstring>
+#include <string>
+
+using namespace std::string_literals;
 
 #include "swiper/swiper.hpp"
 
@@ -38,14 +39,12 @@ int main() {
     };
 
     const auto hash_len = size_t(12);
-    uint8_t password[12];
-    char password_signed[12];
+    uint8_t password_unsigned[12];
 
     for (const auto* hash : hashes) {
-        swiper::Decrypt(password, hash_len, hash);
+        swiper::Decrypt(password_unsigned, hash_len, hash);
         const auto password_len = hash_len / 2 - 1;
-        password[password_len] = '\0';
-        std::copy(password, password + password_len + 1, password_signed);
-        assert(strcmp(password_signed, "monke") == 0);
+        std::string password(password_unsigned, password_unsigned + password_len);
+        assert(password == "monke"s);
     }
 }
