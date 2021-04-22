@@ -27,17 +27,17 @@ auto ParseDecPair(const T* pair) noexcept {
  */
 template <class T>
 T ParseHexPair(const T* pair) noexcept {
-    return static_cast<T>(16) * (
+    return T(16) * (
             pair[0] +
-            (pair[0] & static_cast<T>(64) ?
-                    static_cast<T>(9) :
-                    static_cast<T>(0)
+            (pair[0] & T(64) ?
+                    T(9) :
+                    T(0)
             )
         ) +
         pair[1] -
-        (pair[1] & static_cast<T>(64) ?
-                static_cast<T>(55) :
-                static_cast<T>(48)
+        (pair[1] & T(64) ?
+                T(55) :
+                T(48)
         );
 }
 
@@ -61,7 +61,7 @@ void Decrypt(uint8_t* password, size_t hash_len, const uint8_t* hash) noexcept {
     hash += 2;
 
     for (hash_len = hash_len / 2 - 2;;) {
-        *password++ = static_cast<uint8_t>(*k++ ^ ParseHexPair(hash));
+        *password++ = uint8_t(*k++ ^ ParseHexPair(hash));
 
         if (hash_len-- == 0) {
             return;

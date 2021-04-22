@@ -29,10 +29,10 @@ static void FormatDecPair(uint8_t* result, size_t offset, size_t v) noexcept {
  *
  * @param v value
  */
-static uint8_t FormatHexDigit(uint8_t v) noexcept {
-    return static_cast<uint8_t>(7) * static_cast<uint8_t>(v > static_cast<uint8_t>(9)) +
+static auto FormatHexDigit(uint8_t v) noexcept {
+    return uint8_t(7) * uint8_t(v > uint8_t(9)) +
         v +
-        static_cast<uint8_t>(48);
+        uint8_t(48);
 }
 
 /**
@@ -79,7 +79,7 @@ static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8
     const auto* k = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
-        const auto c = static_cast<uint8_t>(password[i] ^ k[i]);
+        const auto c = uint8_t(password[i] ^ k[i]);
         FormatHexPair(hash, j, c);
     }
 }
