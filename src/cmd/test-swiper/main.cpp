@@ -18,7 +18,7 @@
  * @returns CLI exit code
  */
 int main() {
-    const char hashes_signed[16][13] = {
+    const uint8_t hashes[16][13] = {
         "00091C080F5E",
         "011E090A500E",
         "020B0B550003",
@@ -37,13 +37,11 @@ int main() {
         "151F04020F2F"
     };
 
-    uint8_t hash[13];
+    const auto hash_len = size_t(12);
     uint8_t password[12];
     char password_signed[12];
 
-    for (const auto* hash_signed : hashes_signed) {
-        const auto hash_len = strlen(hash_signed);
-        std::copy(hash_signed, hash_signed + hash_len + 1, hash);
+    for (const auto* hash : hashes) {
         swiper::Decrypt(password, hash_len, hash);
         const auto password_len = hash_len / 2 - 1;
         password[password_len] = '\0';
