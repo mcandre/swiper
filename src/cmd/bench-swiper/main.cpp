@@ -51,7 +51,7 @@ static void warm_cache(unsigned char* password, size_t hash_len, const unsigned 
  *
  * @returns CLI exit code
  */
-int main([[maybe_unused]] int argc, const char** argv) {
+int main(int argc, const char** argv) {
     #if defined(_WIN32)
     ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
     #elif defined(__linux__)
@@ -60,6 +60,11 @@ int main([[maybe_unused]] int argc, const char** argv) {
     CPU_SET(0, &mask);
     sched_setaffinity(0, sizeof(mask), &mask);
     #endif
+
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <hash>" << std::endl;
+        return EXIT_FAILURE;
+    }
 
     const auto* hash_signed = argv[1];
     auto hash_len = strlen(hash_signed);
