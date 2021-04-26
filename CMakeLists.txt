@@ -39,7 +39,7 @@ else()
     endif()
 endif()
 
-include_directories(include)
+include_directories(include ${CONAN_INCLUDE_DIRS})
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
 target_link_libraries(bench-swiper ${CONAN_LIBS})

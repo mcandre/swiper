@@ -2,9 +2,9 @@
 unset IFS
 set -euf
 
-rm -f *.profdata || :
-rm -f *.profraw || :
-rm -f crash-* || :
+find . -name '*.profdata' -delete || :
+find . -name '*.profraw' -delete || :
+find . -name 'crash-*' -delete || :
 rm -rf html || :
 rm -rf latex || :
 rm -f debug.log || :
@@ -13,18 +13,17 @@ rm -rf debug || :
 rm -rf Testing || :
 rm -rf build || :
 rm -rf Makefile || :
-rm -rf *.vcxproj || :
-rm -rf *.vcxproj.filters || :
-rm -rf *.sln || :
+find . -name '*.vcxproj*' -delete || :
+find . -name '*.sln' -delete || :
 rm -rf x64 || :
-rm -rf *.dir || :
+find . -name '*.dir' -exec rm -rf "{}" \;
 rm -rf CMakeFiles || :
-rm Findbenchmark.cmake || :
-rm cmake_install.cmake || :
-rm CTestTestfile.cmake || :
-rm CMakeCache.txt || :
-rm conanbuildinfo.cmake || :
-rm graph_info.json || :
-rm conan.lock || :
-rm conanbuildinfo.txt || :
-rm conaninfo.txt || :
+rm -f Findbenchmark.cmake || :
+rm -f cmake_install.cmake || :
+rm -f CTestTestfile.cmake || :
+rm -f CMakeCache.txt || :
+rm -f conanbuildinfo.cmake || :
+rm -f graph_info.json || :
+rm -f conan.lock || :
+rm -f conanbuildinfo.txt || :
+rm -f conaninfo.txt || :
