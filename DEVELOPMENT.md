@@ -18,6 +18,12 @@ macOS users may need additional patches:
 
 * [Grow](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh) Xcode PATH
 
+# INSTALL DEPENDENCIES
+
+```console
+$ conan install [-s compiler=clang -s compiler.version=10] .
+```
+
 # INITIALIZE CMAKE
 
 ```console
