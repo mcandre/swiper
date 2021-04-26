@@ -3,8 +3,6 @@ latex
 debug.log
 bin
 debug
-CTestTestfile.cmake
-Testing
 build
 *.profraw
 *.profdata
@@ -16,62 +14,48 @@ leak-*
 *.vcxproj.filters
 *.sln
 *.dir
-# Created by https://www.toptal.com/developers/gitignore/api/c,cmake,visualstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=c,cmake,visualstudio
+# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudio,conan
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,visualstudio,conan
 
-### C ###
+### C++ ###
 # Prerequisites
 *.d
 
-# Object files
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.ko
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
 
 # Precompiled Headers
 *.gch
 *.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Linker files
+*.ilk
 
-# Shared objects (inc. Windows DLLs)
-*.dll
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
 *.so
-*.so.*
 *.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
 # Executables
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
 
 ### CMake ###
 CMakeLists.txt.user
@@ -90,6 +74,13 @@ CMakeUserPresets.json
 ### CMake Patch ###
 # External projects
 *-prefix/
+
+### Conan ###
+# Conan build information
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -117,6 +108,7 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
+[Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -154,6 +146,9 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
 
 # StyleCop
 StyleCopReport.xml
@@ -442,4 +437,11 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/c,cmake,visualstudio
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+### VisualStudio Patch ###
+# Additional files built by Visual Studio
+*.tlog
+
+# End of https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudio,conan
