@@ -25,13 +25,12 @@
  *
  * @param state contains a Cisco hash
  */
-static void BM_Decrypt(benchmark::State& state) {
-    const auto* hash_signed = state.range(0);
-    auto hash_len = strlen(hash_signed);
-    unsigned char hash[25];
-    std::copy(hash_signed, hash_signed + hash_len, hash);
-    unsigned char password[12];
-
+static void BM_Decrypt(
+    benchmark::State& state,
+    uint8_t* password,
+    size_t hash_len,
+    const uint8_t* hash
+) {
     for (auto _ : state) {
         swiper::Decrypt(password, hash_len, hash);
         benchmark::DoNotOptimize(password);
@@ -48,14 +47,14 @@ static void BM_Decrypt(benchmark::State& state) {
  *
  * @returns CLI exit code
  */
-int main(int argc, const char** argv) {
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <hash>" << std::endl;
-        return EXIT_FAILURE;
-    }
-
+int main(int argc, char** argv) {
     const auto* hash_signed = argv[1];
-
-    BENCHMARK(BM_Decrypt)->Args({hash_signed});
+    auto hash_len = strlen(hash_signed);
+    uint8_t hash[25];
+    std::copy(hash_signed, hash_signed + hash_len, hash);
+    uint8_t password[12];
+    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, password, hash_len, hash);
+    benchmark::Initialize(&argc, argv);
+    benchmark::RunSpecifiedBenchmarks();
     return EXIT_SUCCESS;
 }
