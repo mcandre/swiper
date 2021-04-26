@@ -48,6 +48,7 @@ if(NOT MSVC)
     add_dependencies(bench-swiper swiper.profdata)
 
     add_executable(bench-swiper-instrument src/cmd/bench-swiper/main.cpp src/swiper.cpp)
+    target_link_libraries(bench-swiper-instrument ${CONAN_LIBS})
     set(PGO_GENERATE_FLAGS "-fprofile-generate")
     set_target_properties(
         bench-swiper-instrument

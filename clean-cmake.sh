@@ -16,7 +16,7 @@ rm -rf Makefile || :
 find . -name '*.vcxproj*' -delete || :
 find . -name '*.sln' -delete || :
 rm -rf x64 || :
-find . -name '*.dir' -exec rm -rf "{}" \;
+find . -name '*.dir' -exec rm -rf "{}" \; || :
 rm -rf CMakeFiles || :
 rm -f Findbenchmark.cmake || :
 rm -f cmake_install.cmake || :
