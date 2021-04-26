@@ -21,7 +21,7 @@ macOS users may need additional patches:
 # INSTALL DEPENDENCIES
 
 ```console
-$ conan install [-s compiler=clang -s compiler.version=10] .
+$ conan install [-s compiler=clang -s compiler.version=10] --build missing .
 ```
 
 # INITIALIZE CMAKE

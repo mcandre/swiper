@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.4)
 set(CMAKE_MESSAGE_LOG_LEVEL "WARNING")
 set(EXECUTABLE_OUTPUT_PATH "bin")
+set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 project(swiper)
 
 if(MSVC)
@@ -39,6 +40,8 @@ endif()
 include_directories(include)
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
+find_package(benchmark)
+target_link_libraries(bench-swiper benchmark::benchmark)
 
 if(NOT MSVC)
     add_dependencies(bench-swiper swiper.profdata)

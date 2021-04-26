@@ -18,10 +18,11 @@ rm -rf *.vcxproj.filters || :
 rm -rf *.sln || :
 rm -rf x64 || :
 rm -rf *.dir || :
-
-/usr/bin/find . \
-    -iwholename '*cmake*' \
-    -not -name CMakeLists.txt \
-    -not -name clean-cmake.sh \
-    -print \
-    -exec rm -rf '{}' \; || :
+rm -rf CMakeFiles || :
+rm cmake_install.cmake || :
+rm CTestTestfile.cmake || :
+rm CMakeCache.txt || :
+rm graph_info.json || :
+rm conan.lock || :
+rm conanbuildinfo.txt || :
+rm conaninfo.txt || :

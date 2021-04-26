@@ -1,2 +1,5 @@
 [requires]
 benchmark/[>=1.5.2 <2.0]
+
+[generators]
+cmake_find_package
