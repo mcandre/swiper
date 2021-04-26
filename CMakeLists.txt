@@ -4,7 +4,7 @@ set(EXECUTABLE_OUTPUT_PATH "bin")
 project(swiper)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(TARGETS)
 
 if(MSVC)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}")
@@ -42,13 +42,13 @@ endif()
 include_directories(include ${CONAN_INCLUDE_DIRS})
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-target_link_libraries(bench-swiper ${CONAN_LIBS})
+target_link_libraries(bench-swiper CONAN_PKG::benchmark)
 
 if(NOT MSVC)
     add_dependencies(bench-swiper swiper.profdata)
 
     add_executable(bench-swiper-instrument src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-    target_link_libraries(bench-swiper-instrument ${CONAN_LIBS})
+    target_link_libraries(bench-swiper-instrument CONAN_PKG::benchmark)
     set(PGO_GENERATE_FLAGS "-fprofile-generate")
     set_target_properties(
         bench-swiper-instrument
