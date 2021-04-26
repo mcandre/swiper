@@ -26,7 +26,7 @@
  * @param state contains a Cisco hash
  */
 static void BM_Decrypt(
-    benchmark::State& state, // NOLINT(google-runtime-references)
+    benchmark::State& state, // NOLINT
     const char* hash_signed
 ) {
     auto hash_len = strlen(hash_signed);
@@ -34,7 +34,7 @@ static void BM_Decrypt(
     std::copy(hash_signed, hash_signed + hash_len, hash);
     uint8_t password[12];
 
-    for (auto _ : state) { // NOLINT(clang-analyzer-deadcode.DeadStores)
+    for (auto _ : state) { // NOLINT
         swiper::Decrypt(password, hash_len, hash);
         benchmark::DoNotOptimize(password);
     }
