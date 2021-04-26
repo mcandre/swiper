@@ -1,7 +1,6 @@
 #!/bin/sh
 unset IFS
 set -euf
-
 find . -name '*.profdata' -delete || :
 find . -name '*.profraw' -delete || :
 find . -name 'crash-*' -delete || :
@@ -18,12 +17,6 @@ find . -name '*.sln' -delete || :
 rm -rf x64 || :
 find . -name '*.dir' -exec rm -rf "{}" \; || :
 rm -rf CMakeFiles || :
-rm -f Findbenchmark.cmake || :
 rm -f cmake_install.cmake || :
 rm -f CTestTestfile.cmake || :
 rm -f CMakeCache.txt || :
-rm -f conanbuildinfo.cmake || :
-rm -f graph_info.json || :
-rm -f conan.lock || :
-rm -f conanbuildinfo.txt || :
-rm -f conaninfo.txt || :

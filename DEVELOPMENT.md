@@ -1,7 +1,8 @@
 # BUILDTIME REQUIREMENTS
 
-* a [C++](https://www.cplusplus.com/) compiler
+* a [C++](https://www.cplusplus.com/) compiler with C++17 support
 * [cmake](https://cmake.org/) 3.4+
+* [conan](https://conan.io/) 1.35+
 
 ## Recommended
 
@@ -72,5 +73,5 @@ $ karp html/index.html
 # CLEAN
 
 ```console
-# ./clean-cmake.sh
+# ./clean.sh
 ```

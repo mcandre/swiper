@@ -52,7 +52,7 @@ static void BM_Decrypt(
  */
 int main(int argc, char** argv) {
     const auto* hash_signed = argv[1];
-    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, hash_signed);
+    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, hash_signed)->Iterations(1UL << 30UL);
     benchmark::Initialize(&argc, argv);
     benchmark::RunSpecifiedBenchmarks();
     return EXIT_SUCCESS;
