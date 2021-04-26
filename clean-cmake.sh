@@ -19,9 +19,11 @@ rm -rf *.sln || :
 rm -rf x64 || :
 rm -rf *.dir || :
 rm -rf CMakeFiles || :
+rm Findbenchmark.cmake || :
 rm cmake_install.cmake || :
 rm CTestTestfile.cmake || :
 rm CMakeCache.txt || :
+rm conanbuildinfo.cmake || :
 rm graph_info.json || :
 rm conan.lock || :
 rm conanbuildinfo.txt || :

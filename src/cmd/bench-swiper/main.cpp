@@ -16,28 +16,25 @@
 #include <sys/sysinfo.h>
 #endif
 
+#include <benchmark/benchmark.h>
+
 #include "swiper/swiper.hpp"
 
 /**
- * @brief spin presents an empty loop for overhead measurement.
+ * @brief BM_Decrypt measures @ref swiper::Decrypt performance.
  *
- * @param n iterations
+ * @param state contains a Cisco hash
  */
-static void spin(volatile uint_fast32_t n) noexcept {
-    while (n-- != 0) {}
-}
+static void BM_Decrypt(benchmark::State& state) {
+    const auto* hash_signed = state.range(0);
+    auto hash_len = strlen(hash_signed);
+    unsigned char hash[25];
+    std::copy(hash_signed, hash_signed + hash_len, hash);
+    unsigned char password[12];
 
-/**
- * @brief warm_cache promotes application code to icache.
- *
- * @param password out buffer, min hash_len / 2 characters
- * @param hash_len string length of hash
- * @param hash Cisco type 7, uppercase, min length 4
- * @param n iterations
- */
-static void warm_cache(unsigned char* password, size_t hash_len, const unsigned char* hash, volatile uint_fast32_t n) noexcept {
-    while (n-- != 0) {
+    for (auto _ : state) {
         swiper::Decrypt(password, hash_len, hash);
+        benchmark::DoNotOptimize(password);
     }
 }
 
@@ -52,46 +49,13 @@ static void warm_cache(unsigned char* password, size_t hash_len, const unsigned 
  * @returns CLI exit code
  */
 int main(int argc, const char** argv) {
-    #if defined(_WIN32)
-    ::SetProcessAffinityMask(GetCurrentProcess(), 0x00);
-    #elif defined(__linux__)
-    cpu_set_t mask;
-    CPU_ZERO(&mask);
-    CPU_SET(0, &mask);
-    sched_setaffinity(0, sizeof(mask), &mask);
-    #endif
-
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <hash>" << std::endl;
         return EXIT_FAILURE;
     }
 
     const auto* hash_signed = argv[1];
-    auto hash_len = strlen(hash_signed);
-    unsigned char hash[25];
-    std::copy(hash_signed, hash_signed + hash_len, hash);
-    unsigned char password[12];
-    constexpr auto trials = uint_fast32_t(1UL << 30UL);
-    const auto nop_start = std::chrono::steady_clock::now();
-    spin(trials);
-    const auto nop_end = std::chrono::steady_clock::now();
-    warm_cache(password, hash_len, hash, trials);
-    const auto start = std::chrono::steady_clock::now();
-    warm_cache(password, hash_len, hash, trials);
-    const auto end = std::chrono::steady_clock::now();
-    const auto nop_elapsed = nop_end - nop_start;
-    const auto elapsed = end - start - nop_elapsed;
-    const auto total_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
-    const auto throughput_sec = 1000000000.0 * trials / total_ns;
-    const auto latency_ns = double(total_ns) / trials;
-    const auto password_len = hash_len / 2 - 1;
-    password[password_len] = '\0';
-    char password_signed[12];
-    std::copy(password, password + password_len + 1, password_signed);
-    std::cout << password_signed << std::endl;
-    std::cerr << std::setprecision(2);
-    std::cerr << "latency (ns)\tthroughput (password/sec)" << std::endl <<
-        std::fixed << std::setw(12) << std::left << latency_ns << "\t" <<
-        std::scientific << throughput_sec << std::endl;
+
+    BENCHMARK(BM_Decrypt)->Args({hash_signed});
     return EXIT_SUCCESS;
 }
