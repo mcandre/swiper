@@ -26,12 +26,15 @@
  * @param state contains a Cisco hash
  */
 static void BM_Decrypt(
-    benchmark::State& state,
-    uint8_t* password,
-    size_t hash_len,
-    const uint8_t* hash
+    benchmark::State& state, // NOLINT(google-runtime-references)
+    const char* hash_signed
 ) {
-    for (auto _ : state) {
+    auto hash_len = strlen(hash_signed);
+    uint8_t hash[25];
+    std::copy(hash_signed, hash_signed + hash_len, hash);
+    uint8_t password[12];
+
+    for (auto _ : state) { // NOLINT(clang-analyzer-deadcode.DeadStores)
         swiper::Decrypt(password, hash_len, hash);
         benchmark::DoNotOptimize(password);
     }
@@ -49,11 +52,7 @@ static void BM_Decrypt(
  */
 int main(int argc, char** argv) {
     const auto* hash_signed = argv[1];
-    auto hash_len = strlen(hash_signed);
-    uint8_t hash[25];
-    std::copy(hash_signed, hash_signed + hash_len, hash);
-    uint8_t password[12];
-    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, password, hash_len, hash);
+    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, hash_signed);
     benchmark::Initialize(&argc, argv);
     benchmark::RunSpecifiedBenchmarks();
     return EXIT_SUCCESS;
