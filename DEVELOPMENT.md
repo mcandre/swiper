@@ -5,7 +5,7 @@
 
 ## Recommended
 
-* [clang](https://clang.llvm.org/)
+* [clang](https://clang.llvm.org/) or [clang-cl.exe](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [llvm](https://llvm.org/)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
@@ -17,6 +17,12 @@
 macOS users may need additional patches:
 
 * [Grow](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh) Xcode PATH
+
+# INITIALIZE CMAKE
+
+```console
+$ cmake [-T ClangCL] .
+```
 
 # LINT
 
