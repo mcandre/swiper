@@ -9,7 +9,8 @@
 * [clang](https://clang.llvm.org/) or [clang-cl.exe](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [llvm](https://llvm.org/)
-* [perf](https://perf.wiki.kernel.org/index.php/Main_Page)
+* [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
+* [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [time](https://linux.die.net/man/1/time)
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
