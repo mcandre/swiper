@@ -6,9 +6,9 @@
 
 ## Recommended
 
-* [clang](https://clang.llvm.org/) or [clang-cl.exe](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89)
-* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
-* [llvm](https://llvm.org/)
+* [clang](https://clang.llvm.org/) (UNIX) or [MSVC](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89) (Windows)
+* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
+* [llvm](https://llvm.org/) (UNIX)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [time](https://linux.die.net/man/1/time)
