@@ -23,7 +23,7 @@ macOS users may need additional patches:
 # INSTALL DEPENDENCIES
 
 ```console
-$ conan install [-s compiler={clang,apple-clang} -s compiler.version={10,12.0}] --build missing .
+$ conan install -s cppstd=17 [-s compiler={clang,apple-clang} -s compiler.version={10,12.0}] --build missing .
 ```
 
 # INITIALIZE CMAKE
