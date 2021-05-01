@@ -5,16 +5,7 @@
 #include "main.hpp"
 
 #include <algorithm>
-#include <chrono>
 #include <cstring>
-#include <iomanip>
-#include <iostream>
-#if defined(_WIN32)
-#include <Windows.h>
-#elif defined(__linux__)
-#include <sched.h>
-#include <sys/sysinfo.h>
-#endif
 
 #include <benchmark/benchmark.h>
 
