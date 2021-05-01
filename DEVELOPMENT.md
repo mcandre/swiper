@@ -49,7 +49,7 @@ $ conan install -s compiler.cppstd=17 -s compiler=msvc -s compiler.version=19.28
 # INITIALIZE CMAKE
 
 ```console
-$ cmake [-T ClangCL] .
+$ cmake .
 ```
 
 # LINT
