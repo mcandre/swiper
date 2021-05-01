@@ -34,10 +34,12 @@ int main(int argc, char** argv) {
     std::copy(hash_signed, hash_signed + hash_len, hash);
     uint8_t password[12];
 
-    ankerl::nanobench::Bench().run("crack", [&] {
-        swiper::Decrypt(password, hash_len, hash);
-        ankerl::nanobench::doNotOptimizeAway(password);
-    });
+    ankerl::nanobench::Bench()
+        .minEpochIterations(1UL << 24UL)
+        .run("crack", [&] {
+            swiper::Decrypt(password, hash_len, hash);
+            ankerl::nanobench::doNotOptimizeAway(password);
+        });
 
     return EXIT_SUCCESS;
 }
