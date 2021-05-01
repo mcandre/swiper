@@ -28,10 +28,16 @@ macOS users may need additional patches:
 $ conan install -s compiler.cppstd=17 -s compiler=apple-clang -s compiler.version=12.0 --build missing .
 ```
 
-## UNIX
+## UNIX (clang)
 
 ```console
 $ conan install -s compiler.cppstd=17 -s compiler=clang -s compiler.version=10 --build missing .
+```
+
+## UNIX (gcc)
+
+```console
+$ conan install -s compiler.cppstd=17 -s compiler=gcc -s compiler.version=9 --build missing .
 ```
 
 ## Windows

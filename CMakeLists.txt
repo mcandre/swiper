@@ -47,7 +47,7 @@ include_directories(include ${CONAN_INCLUDE_DIRS})
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
 target_link_libraries(bench-swiper CONAN_PKG::benchmark)
 
-if(NOT MSVC)
+if(CMAKE_C_COMPILER_ID MATCHES "Clang")
     add_dependencies(bench-swiper swiper.profdata)
 
     add_executable(bench-swiper-instrument src/cmd/bench-swiper/main.cpp src/swiper.cpp)
