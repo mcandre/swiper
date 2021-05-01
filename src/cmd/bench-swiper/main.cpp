@@ -6,32 +6,14 @@
 
 #include <algorithm>
 #include <cstring>
+#include <iostream>
 
-#include <benchmark/benchmark.h>
+#define ANKERL_NANOBENCH_IMPLEMENT
+#include <nanobench.h>
 
 #include "swiper/swiper.hpp"
 
-/**
- * @brief BM_Decrypt measures @ref swiper::Decrypt performance.
- *
- * @param state contains a Cisco hash
- */
-static void BM_Decrypt(
-    benchmark::State& state, // NOLINT
-    const char* hash_signed
-) {
-    auto hash_len = strlen(hash_signed);
-    uint8_t hash[25];
-    std::copy(hash_signed, hash_signed + hash_len, hash);
-    uint8_t password[12];
-
-    for (auto _ : state) { // NOLINT
-        swiper::Decrypt(password, hash_len, hash);
-        benchmark::DoNotOptimize(password);
-    }
-}
-
-/**
+    /**
  * @brief main is the entrypoint.
  *
  * Usage: bench-swiper <Cisco type 7 hash>
@@ -42,9 +24,20 @@ static void BM_Decrypt(
  * @returns CLI exit code
  */
 int main(int argc, char** argv) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <type 7 hash>" << std::endl;
+    }
+
     const auto* hash_signed = argv[1];
-    benchmark::RegisterBenchmark("Decrypt", BM_Decrypt, hash_signed)->Iterations(1UL << 30UL); // NOLINT
-    benchmark::Initialize(&argc, argv);
-    benchmark::RunSpecifiedBenchmarks();
+    const auto hash_len = strlen(hash_signed);
+    uint8_t hash[25];
+    std::copy(hash_signed, hash_signed + hash_len, hash);
+    uint8_t password[12];
+
+    ankerl::nanobench::Bench().run("crack", [&] {
+        swiper::Decrypt(password, hash_len, hash);
+        ankerl::nanobench::doNotOptimizeAway(password);
+    });
+
     return EXIT_SUCCESS;
 }

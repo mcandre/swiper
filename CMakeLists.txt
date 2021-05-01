@@ -45,7 +45,7 @@ endif()
 include_directories(include ${CONAN_INCLUDE_DIRS})
 
 add_executable(bench-swiper src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-target_link_libraries(bench-swiper CONAN_PKG::benchmark)
+target_link_libraries(bench-swiper CONAN_PKG::nanobench)
 
 if(
     CMAKE_C_COMPILER_ID MATCHES "Clang" AND
@@ -54,7 +54,7 @@ if(
     add_dependencies(bench-swiper swiper.profdata)
 
     add_executable(bench-swiper-instrument src/cmd/bench-swiper/main.cpp src/swiper.cpp)
-    target_link_libraries(bench-swiper-instrument CONAN_PKG::benchmark)
+    target_link_libraries(bench-swiper-instrument CONAN_PKG::nanobench)
     set(PGO_GENERATE_FLAGS "-fprofile-generate")
     set_target_properties(
         bench-swiper-instrument
