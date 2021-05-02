@@ -82,7 +82,7 @@ endif()
 find_program(PERF "perf")
 
 if(PERF)
-    add_custom_target(bench COMMAND sudo perf stat -dde "branches,branch-misses,cycles,instructions,cache-references,cache-misses" $<TARGET_FILE:bench-swiper> "00091C080F5E")
+    add_custom_target(bench COMMAND sudo -E perf stat -dde "branches,branch-misses,cycles,instructions,cache-references,cache-misses" $<TARGET_FILE:bench-swiper> "00091C080F5E")
 elseif(MSVC)
     add_custom_target(bench COMMAND powershell -Command "Measure-Command { $<TARGET_FILE:bench-swiper> 00091C080F5E | Out-Default }")
 elseif(APPLE)
