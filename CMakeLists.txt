@@ -96,12 +96,13 @@ endif()
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND sail include src | xargs -n 1 cpplint)
 add_custom_target(vera++ COMMAND sail include src | xargs -n 1 vera++)
+add_custom_target(clang-format COMMAND sail include src | xargs -n 1 clang-format -i)
 
 # Missing linter ports
 if(MSVC)
     add_custom_target(lint DEPENDS cppcheck)
 else()
-    add_custom_target(lint DEPENDS cppcheck cpplint vera++)
+    add_custom_target(lint DEPENDS cppcheck cpplint vera++ clang-format)
 endif()
 
 add_executable(test-swiper src/cmd/test-swiper/main.cpp src/swiper.cpp)

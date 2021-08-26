@@ -14,7 +14,7 @@ namespace {
  * @returns numerical value
  */
 template <class T>
-auto ParseDecPair(const T* pair) noexcept {
+auto ParseDecPair(const T *pair) noexcept {
     return 10 * pair[0] + pair[1] - 528;
 }
 
@@ -26,19 +26,11 @@ auto ParseDecPair(const T* pair) noexcept {
  * @returns numerical value
  */
 template <class T>
-T ParseHexPair(const T* pair) noexcept {
-    return T(16) * (
-            pair[0] +
-            (pair[0] & T(64) ?
-                    T(9) :
-                    T(0)
-            )
-        ) +
-        pair[1] -
-        (pair[1] & T(64) ?
-                T(55) :
-                T(48)
-        );
+T ParseHexPair(const T *pair) noexcept {
+    return T(16) * (pair[0] +
+                    (pair[0] & T(64) ? T(9) : T(0))) +
+           pair[1] -
+           (pair[1] & T(64) ? T(55) : T(48));
 }
 
 /**
@@ -56,8 +48,8 @@ constexpr uint8_t Xlat[32] = {
 };
 }
 
-void Decrypt(uint8_t* password, size_t hash_len, const uint8_t* hash) noexcept {
-    const auto* k = Xlat + ParseDecPair(hash);
+void Decrypt(uint8_t *password, size_t hash_len, const uint8_t *hash) noexcept {
+    const auto *k = Xlat + ParseDecPair(hash);
     hash += 2;
 
     for (hash_len = hash_len / 2 - 2;;) {

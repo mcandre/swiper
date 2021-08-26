@@ -18,10 +18,10 @@
  * @param offset buffer write index
  * @param v value
  */
-static void FormatDecPair(uint8_t* result, size_t offset, size_t v) noexcept {
+static void FormatDecPair(uint8_t *result, size_t offset, size_t v) noexcept {
     const uint8_t remainder = v % 10;
     result[offset] = (v - remainder) / 10 + 48;
-    result[offset + 1]= remainder + 48;
+    result[offset + 1] = remainder + 48;
 }
 
 /**
@@ -31,8 +31,8 @@ static void FormatDecPair(uint8_t* result, size_t offset, size_t v) noexcept {
  */
 static auto FormatHexDigit(uint8_t v) noexcept {
     return uint8_t(7) * uint8_t(v > uint8_t(9)) +
-        v +
-        uint8_t(48);
+           v +
+           uint8_t(48);
 }
 
 /**
@@ -42,10 +42,10 @@ static auto FormatHexDigit(uint8_t v) noexcept {
  * @param offset buffer write index
  * @param v value
  */
-static void FormatHexPair(uint8_t* result, size_t offset, uint8_t v) noexcept {
+static void FormatHexPair(uint8_t *result, size_t offset, uint8_t v) noexcept {
     const auto remainder = v % 16;
     result[offset] = FormatHexDigit((v - remainder) / 16);
-    result[offset + 1]= FormatHexDigit(remainder);
+    result[offset + 1] = FormatHexDigit(remainder);
 }
 
 /**
@@ -70,13 +70,13 @@ static constexpr uint8_t Xlat[32] = {
  * @param password_len string length of password
  * @param password ASCII, max length 11
  */
-static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8_t* password) noexcept {
+static void Encrypt(uint8_t *hash, size_t seed, size_t password_len, const uint8_t *password) noexcept {
     if (password_len > 11) {
         password_len = 11;
     }
 
     FormatDecPair(hash, 0, seed);
-    const auto* k = Xlat + seed;
+    const auto *k = Xlat + seed;
 
     for (auto i = size_t(0), j = size_t(2); i < password_len; i++, j += 2) {
         const auto c = uint8_t(password[i] ^ k[i]);
@@ -91,7 +91,7 @@ static void Encrypt(uint8_t* hash, size_t seed, size_t password_len, const uint8
  * @param password_len string length of password
  * @param password ASCII, max length 11
  */
-static bool PropReversible(size_t seed, size_t password_len, const uint8_t* password) {
+static bool PropReversible(size_t seed, size_t password_len, const uint8_t *password) {
     if (password_len == 0) {
         return true;
     }

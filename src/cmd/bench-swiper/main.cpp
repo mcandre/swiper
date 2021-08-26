@@ -13,7 +13,7 @@
 
 #include "swiper/swiper.hpp"
 
-    /**
+/**
  * @brief main is the entrypoint.
  *
  * Usage: bench-swiper <Cisco type 7 hash>
@@ -23,12 +23,12 @@
  *
  * @returns CLI exit code
  */
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <type 7 hash>" << std::endl;
     }
 
-    const auto* hash_signed = argv[1];
+    const auto *hash_signed = argv[1];
     const auto hash_len = strlen(hash_signed);
     uint8_t hash[25];
     std::copy(hash_signed, hash_signed + hash_len, hash);

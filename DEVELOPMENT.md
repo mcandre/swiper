@@ -7,6 +7,7 @@
 ## Recommended
 
 * [clang](https://clang.llvm.org/) (UNIX) or [MSVC](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89) (Windows)
+* [clang-format](https://clang.llvm.org/docs/ClangFormat.html) (UNIX)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
 * [llvm](https://llvm.org/) (UNIX)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)

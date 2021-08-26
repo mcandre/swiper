@@ -41,7 +41,7 @@ int main() {
     const auto hash_len = size_t(12);
     uint8_t password_unsigned[12];
 
-    for (const auto* hash : hashes) {
+    for (const auto *hash : hashes) {
         swiper::Decrypt(password_unsigned, hash_len, hash);
         const auto password_len = hash_len / 2 - 1;
         std::string password(password_unsigned, password_unsigned + password_len);
