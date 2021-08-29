@@ -23,7 +23,7 @@
  *
  * @returns CLI exit code
  */
-int main(int argc, char **argv) {
+int main(int argc, const char **argv) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <type 7 hash>" << std::endl;
     }

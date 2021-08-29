@@ -10,7 +10,6 @@
 
 #include "swiper/swiper.hpp"
 
-#ifdef __SANITIZE_ADDRESS__
 /**
  * @brief FormatDecPair renders decimal pairs.
  *
@@ -71,9 +70,7 @@ static constexpr uint8_t Xlat[32] = {
  * @param password ASCII, max length 11
  */
 static void Encrypt(uint8_t *hash, size_t seed, size_t password_len, const uint8_t *password) noexcept {
-    if (password_len > 11) {
-        password_len = 11;
-    }
+    password_len = std::min(size_t(11), password_len);
 
     FormatDecPair(hash, 0, seed);
     const auto *k = Xlat + seed;
@@ -117,11 +114,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     }
 
     const auto seed = size_t(Data[0]) % 16;
-    auto password_len = size_t(Size - 1);
-
-    if (password_len > 11) {
-        password_len = 11;
-    }
+    const auto password_len = std::min(size_t(11), size_t(Size - 1));
 
     uint8_t password[12];
     std::copy(Data + 1, Data + 1 + password_len, password);
@@ -129,4 +122,3 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     assert(PropReversible(seed, password_len, password));
     return 0;
 }
-#endif

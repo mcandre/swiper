@@ -4,7 +4,6 @@
  * @copyright 2021 YelloSoft
  */
 
-#ifdef __SANITIZE_ADDRESS__
 #include <cstddef>
 #include <cstdint>
 
@@ -17,4 +16,3 @@
  * @returns 0. Aborts on error.
  */
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size);
-#endif
