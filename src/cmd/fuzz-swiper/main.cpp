@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 
+#ifdef __SANITIZE_ADDRESS__
 #include <algorithm>
 #include <cassert>
 #include <cstring>
@@ -122,3 +123,4 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     assert(PropReversible(seed, password_len, password));
     return 0;
 }
+#endif
