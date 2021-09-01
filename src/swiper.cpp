@@ -28,9 +28,9 @@ auto ParseDecPair(const T *pair) noexcept {
 template <class T>
 T ParseHexPair(const T *pair) noexcept {
     return T(16) * (pair[0] +
-                    (pair[0] & T(64) ? T(9) : T(0))) +
+                    ((pair[0] & T(64)) ? T(9) : T(0))) +
            pair[1] -
-           (pair[1] & T(64) ? T(55) : T(48));
+           ((pair[1] & T(64)) ? T(55) : T(48));
 }
 
 /**

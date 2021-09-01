@@ -7,7 +7,7 @@
 #include <cassert>
 #include <string>
 
-using namespace std::string_literals;
+using std::string_literals::operator""s;
 
 #include "swiper/swiper.hpp"
 
