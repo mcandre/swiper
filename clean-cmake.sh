@@ -7,7 +7,6 @@ find . -name 'crash-*' -delete || :
 rm -rf html || :
 rm -rf latex || :
 rm -f debug.log || :
-rm -rf bin || :
 rm -rf debug || :
 rm -rf Testing || :
 rm -rf build || :
@@ -20,3 +19,5 @@ rm -rf CMakeFiles || :
 rm -f cmake_install.cmake || :
 rm -f CTestTestfile.cmake || :
 rm -f CMakeCache.txt || :
+rm -f cmake_install.cmake || :
+rm -f CTestTestfile.cmake || :
