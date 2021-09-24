@@ -33,7 +33,7 @@ else()
         set(CMAKE_CXX_FLAGS "${CLANG_CXX_FLAGS}")
 
         if(
-            CLANG_VERSION_MAJOR VERSION_GREATER 8 AND
+            CLANG_VERSION_MAJOR VERSION_GREATER_EQUAL 9 AND
             NOT CMAKE_SYSTEM_NAME MATCHES "Darwin"
         )
             set(CMAKE_C_CLANG_TIDY clang-tidy -header-filter=${CMAKE_SOURCE_DIR})
@@ -52,7 +52,7 @@ target_link_libraries(bench-swiper CONAN_PKG::nanobench)
 
 if(
     CMAKE_C_COMPILER_ID MATCHES "Clang" AND
-    CLANG_VERSION_MAJOR VERSION_GREATER 8 AND
+    CLANG_VERSION_MAJOR VERSION_GREATER_EQUAL 9 AND
     NOT MSVC
 )
     add_dependencies(bench-swiper swiper.profdata)
@@ -116,7 +116,7 @@ add_test(NAME swiper_unit_test COMMAND $<TARGET_FILE:test-swiper>)
 
 if(
     CMAKE_C_COMPILER_ID MATCHES "Clang" AND
-    CLANG_VERSION_MAJOR VERSION_GREATER 8 AND
+    CLANG_VERSION_MAJOR VERSION_GREATER_EQUAL 9 AND
     NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" AND
     NOT CMAKE_SYSTEM_NAME MATCHES "Windows"
 )
