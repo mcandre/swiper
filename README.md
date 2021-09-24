@@ -24,6 +24,8 @@ swiper is a library for regenerating passwords from Cisco type 7 encrypted confi
 
 Expect API/ABI breakages as we continue to tune the project. Recommended to pin dependency at VCS commit ID.
 
+Performance metrics are questionable on Raspberry Pi; ns/op appears to be weirdly too stable. Perhaps a rebase onto Debian Bullseye could refine the metrics.
+
 # DOCUMENTATION
 
 https://mcandre.github.io/swiper/
