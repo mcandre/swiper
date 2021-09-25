@@ -97,6 +97,25 @@ else()
     add_custom_target(bench COMMAND /usr/bin/time $<TARGET_FILE:bench-swiper> "00091C080F5E")
 endif()
 
+if(MSVC)
+    set(HOME "$ENV{HOMEDRIVE}$ENV{HOMEPATH}")
+    set(ARTIFACT_BENCH bench-swiper.exe)
+else()
+    set(HOME "$ENV{HOME}")
+    set(ARTIFACT_BENCH bench-swiper)
+endif()
+
+file(TO_NATIVE_PATH "${HOME}/bin" INSTALL_DIR)
+file(TO_NATIVE_PATH "${INSTALL_DIR}/${ARTIFACT_BENCH}" INSTALL_FILE_BENCH)
+
+install(PROGRAMS $<TARGET_FILE:bench-swiper> DESTINATION "${INSTALL_DIR}")
+
+if(MSVC)
+    add_custom_target(uninstall COMMAND del /s /q "${INSTALL_FILE_BENCH}")
+else()
+    add_custom_target(uninstall COMMAND rm -f "${INSTALL_FILE_BENCH}")
+endif()
+
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND sail include src | xargs -n 1 cpplint)
 add_custom_target(vera++ COMMAND sail include src | xargs -n 1 vera++)
