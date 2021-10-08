@@ -1,4 +1,4 @@
-# swiper: a high performance password cracker
+# swiper: high performance password cracker
 
 # EXAMPLE
 
