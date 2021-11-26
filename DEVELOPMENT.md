@@ -6,16 +6,17 @@
 
 ## Recommended
 
+* [c++filt](https://linux.die.net/man/1/c++filt) from binutils
 * [clang](https://clang.llvm.org/) (UNIX) or [MSVC](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89) (Windows)
 * [clang-format](https://clang.llvm.org/docs/ClangFormat.html) (UNIX)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
+* [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
+* [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
 * [llvm](https://llvm.org/) (UNIX)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
-* [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
-* [time](https://linux.die.net/man/1/time)
-* [c++filt](https://linux.die.net/man/1/c++filt) from binutils
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
-* [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
+* [pyenv](https://github.com/pyenv/pyenv)
+* [time](https://linux.die.net/man/1/time)
 
 macOS users may need additional patches:
 
