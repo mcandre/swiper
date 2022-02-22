@@ -19,7 +19,7 @@
  * Usage: bench-swiper <Cisco type 7 hash>
  *
  * @param argc argument count
- * @param argv CLI arguments
+ * @param argv CLI arguments (min length 2, including the program name)
  *
  * @returns CLI exit code
  */
