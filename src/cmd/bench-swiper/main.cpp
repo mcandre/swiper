@@ -23,7 +23,7 @@
  *
  * @returns CLI exit code
  */
-int main(int argc, const char **argv) {
+int main(int /* argc */, const char **argv) {
     const auto *hash_signed = argv[1];
     const auto hash_len = strlen(hash_signed);
     uint8_t hash[25];

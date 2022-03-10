@@ -16,6 +16,7 @@
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [pyenv](https://github.com/pyenv/pyenv)
+* [rez](https://github.com/mcandre/rez) v0.0.9
 * [time](https://linux.die.net/man/1/time)
 
 macOS users may need additional patches:
@@ -48,22 +49,16 @@ $ conan install -s compiler.cppstd=17 -s compiler=gcc -s compiler.version=<versi
 $ conan install -s compiler.cppstd=17 -s compiler=msvc -s compiler.version=<version> -s compiler.runtime=dynamic --build missing .
 ```
 
-# INITIALIZE CMAKE
-
-```console
-$ cmake .
-```
-
 # LINT
 
 ```console
-# cmake --build . --target lint
+$ rez lint
 ```
 
 # COMPILE
 
 ```console
-# cmake --build . --config Release
+$ rez [build]
 ```
 
 # TEST
@@ -71,30 +66,30 @@ $ cmake .
 ## SPOT CHECK
 
 ```console
-# CTEST_OUTPUT_ON_FAILURE=1 ctest -C Release
+$ rez test
 ```
 
 ## FULL
 
 ```console
-# cmake --build . --target fuzz
+$ rez fuzz
 ```
 
 # BENCHMARK
 
 ```console
-$ cmake --build . --target bench
+$ rez bench
 ```
 
 # DOCUMENT
 
 ```console
-# cmake --build . --target doc
+# rez doc
 $ karp html/index.html
 ```
 
 # CLEAN
 
 ```console
-# ./clean.sh
+$ rez clean
 ```
