@@ -54,26 +54,6 @@ static int test() {
     return system("ctest -C Release");
 }
 
-static int bench() {
-    const auto status = build();
-
-    if (status != EXIT_SUCCESS) {
-        return status;
-    }
-
-    return system("cmake --build . --target bench");
-}
-
-static int fuzz() {
-    const auto status = build();
-
-    if (status != EXIT_SUCCESS) {
-        return status;
-    }
-
-    return system("cmake --build . --target fuzz");
-}
-
 static int install() {
     const auto status = build();
 
@@ -92,6 +72,26 @@ static int uninstall() {
     }
 
     return system("cmake --build . --target uninstall");
+}
+
+static int bench() {
+    const auto status = install();
+
+    if (status != EXIT_SUCCESS) {
+        return status;
+    }
+
+    return system("cmake --build . --target bench");
+}
+
+static int fuzz() {
+    const auto status = install();
+
+    if (status != EXIT_SUCCESS) {
+        return status;
+    }
+
+    return system("cmake --build . --target fuzz");
 }
 
 static int clean_doc() {
