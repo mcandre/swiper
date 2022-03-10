@@ -94,6 +94,11 @@ static int uninstall() {
     return system("cmake --build . --target uninstall");
 }
 
+static int clean_doc() {
+    std::filesystem::remove_all("html");
+    return EXIT_SUCCESS;
+}
+
 static int clean_bin() {
     std::filesystem::remove_all("bin");
     return EXIT_SUCCESS;
@@ -129,6 +134,7 @@ static int clean_cmake() {
     std::filesystem::remove_all("CMakeCache.txt");
     std::filesystem::remove_all("cmake_install.cmake");
     std::filesystem::remove_all("CTestTestfile.cmake");
+    std::filesystem::remove_all("Testing");
     return EXIT_SUCCESS;
 }
 
@@ -142,6 +148,7 @@ static int clean_conan() {
 }
 
 static int clean() {
+    clean_doc();
     clean_bin();
     clean_msvc();
     clean_cmake();
@@ -163,6 +170,7 @@ int main(int argc, const char **argv) {
 
     const auto tasks = std::map<std::string_view, std::function<int()>>{
         { "clean"sv, clean },
+        { "clean_doc"sv, clean_doc },
         { "clean_bin"sv, clean_bin },
         { "clean_cmake"sv, clean_cmake },
         { "clean_conan"sv, clean_conan },
