@@ -1,6 +1,6 @@
 /**
  * @copyright 2020 YelloSoft
-*/
+ */
 
 #include "swiper/swiper.hpp"
 
