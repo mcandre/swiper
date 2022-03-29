@@ -36,7 +36,7 @@ T ParseHexPair(const T *pair) noexcept {
 /**
  * @brief Xlat is a fixed XOR key.
  */
-constexpr uint8_t Xlat[32] = {
+constexpr uint8_t Xlat[32]{
     0x64, 0x73, 0x66, 0x64,
     0x3b, 0x6b, 0x66, 0x6f,
     0x41, 0x2c, 0x2e, 0x69,
@@ -49,7 +49,7 @@ constexpr uint8_t Xlat[32] = {
 }
 
 void Decrypt(uint8_t *password, size_t hash_len, const uint8_t *hash) noexcept {
-    const auto *k = Xlat + ParseDecPair(hash);
+    const uint8_t *k{ Xlat + ParseDecPair(hash) };
     hash += 2;
 
     for (hash_len = hash_len / 2 - 2;;) {

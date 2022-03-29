@@ -15,7 +15,7 @@ static int cmake_init() {
 }
 
 static int lint() {
-    const int status = cmake_init();
+    const int status{ cmake_init() };
 
     if (status) {
         return status;
@@ -25,7 +25,7 @@ static int lint() {
 }
 
 static int doc() {
-    const int status = cmake_init();
+    const int status{ cmake_init() };
 
     if (status) {
         return status;
@@ -35,7 +35,7 @@ static int doc() {
 }
 
 static int build() {
-    const auto status = cmake_init();
+    const int status{ cmake_init() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -45,7 +45,7 @@ static int build() {
 }
 
 static int test() {
-    const auto status = build();
+    const int status{ build() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -55,7 +55,7 @@ static int test() {
 }
 
 static int install() {
-    const auto status = build();
+    const int status{ build() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -65,7 +65,7 @@ static int install() {
 }
 
 static int uninstall() {
-    const auto status = cmake_init();
+    const int status{ cmake_init() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -75,7 +75,7 @@ static int uninstall() {
 }
 
 static int bench() {
-    const auto status = install();
+    const int status{ install() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -85,7 +85,7 @@ static int bench() {
 }
 
 static int fuzz() {
-    const auto status = install();
+    const int status{ install() };
 
     if (status != EXIT_SUCCESS) {
         return status;
@@ -108,7 +108,7 @@ static int clean_msvc() {
     std::filesystem::remove_all("x64");
     std::filesystem::remove_all("x86");
 
-    const auto junk_extensions = std::unordered_set<std::string>{
+    const std::unordered_set<std::string> junk_extensions{
         ".dir",
         ".filters",
         ".obj",
@@ -116,8 +116,8 @@ static int clean_msvc() {
         ".vcxproj"
     };
 
-    for (const auto &child : std::filesystem::directory_iterator(std::filesystem::current_path())) {
-        const auto child_path = child.path();
+    for (const std::filesystem::directory_entry &child : std::filesystem::directory_iterator(std::filesystem::current_path())) {
+        const std::filesystem::path child_path{ child.path() };
 
         if (junk_extensions.find(child_path.extension().string()) != junk_extensions.end()) {
             std::filesystem::remove_all(child_path);
@@ -157,8 +157,8 @@ static int clean() {
 }
 
 int main(int argc, const char **argv) {
-    const auto args = std::vector<std::string_view>{ argv + 1, argv + argc };
-    const auto default_task = std::function<int()>(bench);
+    const std::vector<std::string_view> args{ argv + 1, argv + argc };
+    const std::function<int()> default_task{ bench };
 
     if (args.empty()) {
         if (default_task()) {
@@ -168,7 +168,7 @@ int main(int argc, const char **argv) {
         return EXIT_SUCCESS;
     }
 
-    const auto tasks = std::map<std::string_view, std::function<int()>>{
+    const std::map<std::string_view, std::function<int()>> tasks{
         { "clean"sv, clean },
         { "clean_doc"sv, clean_doc },
         { "clean_bin"sv, clean_bin },
@@ -194,9 +194,9 @@ int main(int argc, const char **argv) {
         return EXIT_SUCCESS;
     }
 
-    for (const auto &arg : args) {
+    for (const std::string_view &arg : args) {
         try {
-            const auto f = tasks.at(arg);
+            const std::function<int()> f{ tasks.at(arg) };
 
             if (f()) {
                 return EXIT_FAILURE;

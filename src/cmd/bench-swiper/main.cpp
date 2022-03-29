@@ -24,8 +24,8 @@
  * @returns CLI exit code
  */
 int main(int /* argc */, const char **argv) {
-    const auto *hash_signed = argv[1];
-    const auto hash_len = strlen(hash_signed);
+    const char *hash_signed{ argv[1] };
+    const size_t hash_len{ strlen(hash_signed) };
     uint8_t hash[25];
     std::copy(hash_signed, hash_signed + hash_len, hash);
     uint8_t password[12];

@@ -19,7 +19,7 @@ using std::string_literals::operator""s;
  * @returns CLI exit code
  */
 int main() {
-    const uint8_t hashes[16][13] = {
+    const uint8_t hashes[16][13]{
         "00091C080F5E",
         "011E090A500E",
         "020B0B550003",
@@ -38,12 +38,12 @@ int main() {
         "151F04020F2F"
     };
 
-    const auto hash_len = size_t(12);
+    const size_t hash_len{ size_t(12) };
     uint8_t password_unsigned[12];
 
-    for (const auto *hash : hashes) {
+    for (const uint8_t *hash : hashes) {
         swiper::Decrypt(password_unsigned, hash_len, hash);
-        const auto password_len = hash_len / 2 - 1;
+        const size_t password_len{ hash_len / 2 - 1 };
         std::string password(password_unsigned, password_unsigned + password_len);
         assert(password == "monke"s);
     }
