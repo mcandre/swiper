@@ -19,7 +19,7 @@
  * @param v value
  */
 static void FormatDecPair(uint8_t *result, size_t offset, size_t v) noexcept {
-    const uint8_t remainder{ v % 10 };
+    const uint8_t remainder{ uint8_t(v % 10) };
     result[offset] = (v - remainder) / 10 + 48;
     result[offset + 1] = remainder + 48;
 }
@@ -43,7 +43,7 @@ static uint8_t FormatHexDigit(uint8_t v) noexcept {
  * @param v value
  */
 static void FormatHexPair(uint8_t *result, size_t offset, uint8_t v) noexcept {
-    const uint8_t remainder{ v % 16 };
+    const uint8_t remainder{ uint8_t(v % 16) };
     result[offset] = FormatHexDigit((v - remainder) / 16);
     result[offset + 1] = FormatHexDigit(remainder);
 }
@@ -113,7 +113,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         return 0;
     }
 
-    const size_t seed{ Data[0] % 16 };
+    const size_t seed{ uint8_t(Data[0] % 16) };
     const size_t password_len{ std::min(size_t(11), size_t(Size - 1)) };
     uint8_t password[12];
     std::copy(Data + 1, Data + 1 + password_len, password);
