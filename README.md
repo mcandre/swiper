@@ -42,6 +42,6 @@ For more details on developing swiper itself, see [DEVELOPMENT.md](DEVELOPMENT.m
 
 Intended for educational purposes only.
 
-# SEE ALSO
+# DEPRECATED
 
-* [shifty](https://github.com/mcandre/shifty), an FPGA implementation
+See [shifty](https://github.com/mcandre/shifty), an FPGA implementation.
