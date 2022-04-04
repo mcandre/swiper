@@ -16,7 +16,8 @@
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [pyenv](https://github.com/pyenv/pyenv)
-* [rez](https://github.com/mcandre/rez) v0.0.9
+* [rez](https://github.com/mcandre/rez) 0.0.9
+* [snyk](https://www.npmjs.com/package/snyk) 1.893.0 (`npm install -g snyk@1.893.0`)
 * [time](https://linux.die.net/man/1/time)
 
 macOS users may need additional patches:
@@ -47,6 +48,12 @@ $ conan install -s compiler.cppstd=17 -s compiler=gcc -s compiler.version=<versi
 
 ```console
 $ conan install -s compiler.cppstd=17 -s compiler=msvc -s compiler.version=<version> -s compiler.runtime=dynamic --build missing .
+```
+
+# SECURITY AUDIT
+
+```console
+$ rez audit
 ```
 
 # LINT
