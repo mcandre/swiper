@@ -6,11 +6,13 @@
 
 ## Recommended
 
+* [ASDF](https://asdf-vm.com/) 0.10
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils
 * [clang](https://clang.llvm.org/) (UNIX) or [MSVC](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89) (Windows)
 * [clang-format](https://clang.llvm.org/docs/ClangFormat.html) (UNIX)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
+* [direnv](https://direnv.net/) 2
 * [karp](https://github.com/mcandre/karp) (`go get github.com/mcandre/karp/...`)
 * [llvm](https://llvm.org/) (UNIX)
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
