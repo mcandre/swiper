@@ -19,7 +19,7 @@
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [pyenv](https://github.com/pyenv/pyenv)
 * [rez](https://github.com/mcandre/rez) 0.0.9
-* [snyk](https://www.npmjs.com/package/snyk) 1.893.0 (`npm install -g snyk@1.893.0`)
+* [snyk](https://www.npmjs.com/package/snyk) 1.996.0 (`npm install -g snyk@1.996.0`)
 * [time](https://linux.die.net/man/1/time)
 
 macOS users may need additional patches:
