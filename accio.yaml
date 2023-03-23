@@ -1,6 +1,6 @@
 ---
 packages:
 - name: "github.com/mcandre/karp/cmd/karp"
-  version: "v0.0.6"
+  version: "v0.0.7"
 - name: "mvdan.cc/sh/v3/cmd/shfmt"
   version: "latest"
