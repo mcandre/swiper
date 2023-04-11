@@ -2,9 +2,11 @@
 
 * a [C++](https://www.cplusplus.com/) compiler with C++17 support (e.g. clang 7+, g++ 9+, MSVC 19+)
 * [cmake](https://cmake.org/) 3.4+
-* [Go](https://go.dev/) 1.20.2+ with `go install github.com/mcandre/accio/cmd/accio@v0.0.4` and `accio -install`
-* [Node.js](https://nodejs.org/en) 16.14.2+ with `npm install -g snyk@1.996.0`
-* [Python](https://www.python.org/) 3.11.2+ with `pip[3] install --upgrade pip setuptools` and `pip[3] install -r requirements-dev.txt`
+* [Go](https://go.dev/) 1.20.2+
+* [Python](https://www.python.org/) 3.11.2+
+* [sail](https://github.com/mcandre/sail) 0.0.1
+* a POSIX compliant [sh](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html) implementation (e.g. bash, ksh, zsh)
+* Provision additional dev tools with `./install`
 
 ## Recommended
 
