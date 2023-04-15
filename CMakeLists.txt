@@ -106,16 +106,17 @@ else()
     add_custom_target(uninstall COMMAND rm -f "${INSTALL_FILE_BENCH}")
 endif()
 
-add_custom_target(yamllint COMMAND yamllint .)
 add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND cpplint --recursive include src)
 add_custom_target(clang-format COMMAND sail include src | xargs -n 1 clang-format -i)
+add_custom_target(yamllint COMMAND yamllint .)
+add_custom_target(unmake COMMAND unmake install.mk)
 
 # Missing linter ports
 if(MSVC)
-    add_custom_target(lint DEPENDS cppcheck yamllint)
+    add_custom_target(lint DEPENDS cppcheck yamllint unmake)
 else()
-    add_custom_target(lint DEPENDS cppcheck cpplint clang-format yamllint)
+    add_custom_target(lint DEPENDS cppcheck cpplint clang-format yamllint unmake)
 endif()
 
 add_executable(test-swiper src/cmd/test-swiper/main.cpp src/swiper.cpp)
