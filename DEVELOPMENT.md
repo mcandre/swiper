@@ -2,6 +2,7 @@
 
 * a [C++](https://www.cplusplus.com/) compiler with C++17 support (e.g. clang 7+, g++ 9+, MSVC 19+)
 * [cmake](https://cmake.org/) 3.4+
+* [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html) or [ninja](https://ninja-build.org/)
 * [Go](https://go.dev/) 1.20.2+
 * [Python](https://www.python.org/) 3.11.2+
 * [sail](https://github.com/mcandre/sail) 0.0.1
