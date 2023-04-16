@@ -169,6 +169,7 @@ static int fuzz() {
 
 static int clean_doc() {
     std::filesystem::remove_all("html");
+    std::filesystem::remove_all("latex");
     return EXIT_SUCCESS;
 }
 
