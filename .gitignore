@@ -1,11 +1,14 @@
-html
-latex
+.rez/
+.psenvrc
+bin/
+debug/
 debug.log
-bin
-debug
-build
 *.profraw
 *.profdata
+html/
+latex/
+CTestTestfile.cmake
+Testing/
 crash-*
 leak-*
 *.data
@@ -14,8 +17,8 @@ leak-*
 *.vcxproj.filters
 *.sln
 *.dir
-# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudio,conan
-# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,visualstudio,conan
+# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,VisualStudio
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,VisualStudio
 
 ### C++ ###
 # Prerequisites
@@ -30,12 +33,6 @@ leak-*
 # Precompiled Headers
 *.gch
 *.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
 
 # Compiled Dynamic libraries
 *.so
@@ -69,18 +66,10 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
-CMakeUserPresets.json
 
 ### CMake Patch ###
 # External projects
 *-prefix/
-
-### Conan ###
-# Conan build information
-conan.lock
-conanbuildinfo.*
-conaninfo.txt
-graph_info.json
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -157,8 +146,10 @@ StyleCopReport.xml
 *_i.c
 *_p.c
 *_h.h
+*.ilk
 *.meta
 *.iobj
+*.pdb
 *.ipdb
 *.pgc
 *.pgd
@@ -171,6 +162,7 @@ StyleCopReport.xml
 *.tmp_proj
 *_wpftmp.csproj
 *.log
+*.tlog
 *.vspscc
 *.vssscc
 .builds
@@ -223,7 +215,9 @@ _TeamCity*
 !.axoCover/settings.json
 
 # Coverlet is a free, cross platform Code Coverage Tool
-coverage*[.json, .xml, .info]
+coverage*.json
+coverage*.xml
+coverage*.info
 
 # Visual Studio code coverage results
 *.coverage
@@ -283,6 +277,9 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
+
+# Nuget personal access tokens and Credentials
+nuget.config
 
 # Microsoft Azure Build Output
 csx/
@@ -440,8 +437,29 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# Windows Installer files from build outputs
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
-*.tlog
 
-# End of https://www.toptal.com/developers/gitignore/api/c++,cmake,visualstudio,conan
+# End of https://www.toptal.com/developers/gitignore/api/c++,cmake,VisualStudio
