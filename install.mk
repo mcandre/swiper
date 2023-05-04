@@ -3,7 +3,7 @@
 .PHONY: all
 
 all:
-	cargo install --force unmake@0.0.10
+	cargo install --force unmake@0.0.11
 
 	go install github.com/mcandre/karp/cmd/karp@v0.0.7
 	go mod tidy
