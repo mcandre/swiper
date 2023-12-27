@@ -32,7 +32,7 @@ https://mcandre.github.io/swiper/
 
 # LICENSE
 
-FreeBSD
+BSD-2-Clause
 
 # CONTRIBUTING
 
