@@ -22,8 +22,7 @@ find \
     . \
     -type f \
     -not -path '*/\.*' \
-    -print |
-    xargs -n 1 rm -rf || :
+    -execdir rm -rf "{}" + || :
 
 cd "$TRAVIS_BUILD_DIR"
 
