@@ -22,7 +22,9 @@ find \
     . \
     -type f \
     -not -path '*/\.*' \
-    -exec rm -rf "{}" \;
+    -print |
+    xargs -n 1 rm -rf || :
+
 cd "$TRAVIS_BUILD_DIR"
 
 DOXYGEN_FILES="$(find . -name Doxyfile)"
