@@ -3,7 +3,6 @@
 * a [C++](https://www.cplusplus.com/) compiler with C++17 support (e.g. clang 7+, g++ 9+, MSVC 19+)
 * [cmake](https://cmake.org/) 3.4+
 * GNU or BSD [findutils](https://en.wikipedia.org/wiki/Find_(Unix))
-* [Go](https://go.dev/) 1.21.5+
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
 * [Python](https://www.python.org/) 3.12.1+
@@ -22,6 +21,7 @@
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [llvm](https://llvm.org/) (UNIX)
+* an [open](https://github.com/mcandre/dotfiles) shim for non-BSD environments
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [rez](https://github.com/mcandre/rez) 0.0.11
@@ -99,7 +99,7 @@ $ rez bench
 
 ```console
 # rez doc
-$ karp html/index.html
+$ open html/index.html
 ```
 
 # CLEAN
