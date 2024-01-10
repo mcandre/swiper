@@ -21,7 +21,7 @@
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [llvm](https://llvm.org/) (UNIX)
-* an [open](https://github.com/mcandre/dotfiles) shim for non-BSD environments
+* macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [rez](https://github.com/mcandre/rez) 0.0.11
