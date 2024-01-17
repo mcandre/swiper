@@ -27,10 +27,6 @@
 * [rez](https://github.com/mcandre/rez) 0.0.11
 * [time](https://linux.die.net/man/1/time)
 
-macOS users may need additional patches:
-
-* [Grow](https://github.com/mcandre/dotfiles/blob/master/.profile.d/xcode.sh) Xcode PATH
-
 # INSTALL DEPENDENCIES
 
 ## macOS
