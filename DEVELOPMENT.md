@@ -1,7 +1,10 @@
 # BUILDTIME REQUIREMENTS
 
 * a [C++](https://www.cplusplus.com/) compiler with C++17 support (e.g. clang 7+, g++ 9+, MSVC 19+)
-* [cmake](https://cmake.org/) 3.4+
+* [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
+* [cmake](https://cmake.org/) 3.5+
+* [cppcheck](https://cppcheck.sourceforge.io/) 2.13.0+
 * GNU or BSD [findutils](https://en.wikipedia.org/wiki/Find_(Unix))
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
@@ -32,25 +35,25 @@
 ## macOS
 
 ```console
-$ conan install -s compiler.cppstd=17 -s compiler=apple-clang -s compiler.version=<version> --build missing .
+$ conan install -s compiler.cppstd=17 -s compiler=apple-clang -s compiler.version=<version> --build missing . --install-folder build
 ```
 
 ## UNIX (clang)
 
 ```console
-$ conan install -s compiler.cppstd=17 -s compiler=clang -s compiler.version=<version> --build missing .
+$ conan install -s compiler.cppstd=17 -s compiler=clang -s compiler.version=<version> --build missing . --install-folder build
 ```
 
 ## UNIX (gcc)
 
 ```console
-$ conan install -s compiler.cppstd=17 -s compiler=gcc -s compiler.version=<version> --build missing .
+$ conan install -s compiler.cppstd=17 -s compiler=gcc -s compiler.version=<version> --build missing . --install-folder build
 ```
 
 ## Windows
 
 ```console
-$ conan install -s compiler.cppstd=17 -s compiler=msvc -s compiler.version=<version> -s compiler.runtime=dynamic --build missing .
+$ conan install -s compiler.cppstd=17 -s compiler=msvc -s compiler.version=<version> -s compiler.runtime=dynamic --build missing . --install-folder build
 ```
 
 # AUDIT

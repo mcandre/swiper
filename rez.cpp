@@ -45,7 +45,7 @@ std::optional<std::string> GetEnvironmentVariable(const std::string &key) {
 }
 
 static int cmake_init() {
-    return system("cmake .");
+    return system("cmake -B build .");
 }
 
 static int lint() {
@@ -55,7 +55,7 @@ static int lint() {
         return status;
     }
 
-    return system("cmake --build . --target lint");
+    return system("cmake --build build --target lint");
 }
 
 static int doc() {
@@ -65,7 +65,7 @@ static int doc() {
         return status;
     }
 
-    return system("cmake --build . --target doc");
+    return system("cmake --build build --target doc");
 }
 
 static int build() {
@@ -75,7 +75,7 @@ static int build() {
         return status;
     }
 
-    return system("cmake --build . --config Release");
+    return system("cmake --build build --config Release");
 }
 
 static int snyk() {
@@ -114,7 +114,7 @@ static int safety() {
 }
 
 static int audit() {
-    return system("cmake --build . --target audit");
+    return system("cmake --build build --target audit");
 }
 
 static int test() {
@@ -134,7 +134,7 @@ static int install() {
         return status;
     }
 
-    return system("cmake --build . --target install");
+    return system("cmake --build build --target install");
 }
 
 static int uninstall() {
@@ -144,7 +144,7 @@ static int uninstall() {
         return status;
     }
 
-    return system("cmake --build . --target uninstall");
+    return system("cmake --build build --target uninstall");
 }
 
 static int bench() {
@@ -154,7 +154,7 @@ static int bench() {
         return status;
     }
 
-    return system("cmake --build . --target bench");
+    return system("cmake --build build --target bench");
 }
 
 static int fuzz() {
@@ -164,7 +164,7 @@ static int fuzz() {
         return status;
     }
 
-    return system("cmake --build . --target fuzz");
+    return system("cmake --build build --target fuzz");
 }
 
 static int clean_doc() {
@@ -175,65 +175,18 @@ static int clean_doc() {
 
 static int clean_bin() {
     std::filesystem::remove_all("bin");
-    std::filesystem::remove_all("debug");
-    std::filesystem::remove_all("debug.log");
-    return EXIT_SUCCESS;
-}
-
-static int clean_msvc() {
-    std::filesystem::remove_all("x64");
-    std::filesystem::remove_all("x86");
-
-    const std::unordered_set<std::string> junk_extensions{
-        ".dir",
-        ".filters",
-        ".obj",
-        ".sln",
-        ".vcxproj"
-    };
-
-    for (const std::filesystem::directory_entry &child : std::filesystem::directory_iterator(std::filesystem::current_path())) {
-        const std::filesystem::path child_path{ child.path() };
-
-        if (junk_extensions.find(child_path.extension().string()) != junk_extensions.end()) {
-            std::filesystem::remove_all(child_path);
-        }
-    }
-
     return EXIT_SUCCESS;
 }
 
 static int clean_cmake() {
-    std::filesystem::remove_all("install_manifest.txt");
-    std::filesystem::remove_all("Makefile");
-    std::filesystem::remove_all("build.ninja");
-    std::filesystem::remove_all(".ninja_deps");
-    std::filesystem::remove_all(".ninja_log");
-    std::filesystem::remove_all("Testing");
-    std::filesystem::remove_all("CTestTestfile.cmake");
-    std::filesystem::remove_all("CMakeFiles");
-    std::filesystem::remove_all("CMakeCache.txt");
-    std::filesystem::remove_all("cmake_install.cmake");
-    std::filesystem::remove_all("CTestTestfile.cmake");
-    std::filesystem::remove_all("Testing");
+    std::filesystem::remove_all("build");
     return EXIT_SUCCESS;
-}
-
-static int clean_conan() {
-    std::filesystem::remove_all("conanbuildinfo.cmake");
-    std::filesystem::remove_all("graph_info.json");
-    std::filesystem::remove_all("conan.lock");
-    std::filesystem::remove_all("conanbuildinfo.txt");
-    std::filesystem::remove_all("conaninfo.txt");
-    return system("conan remove -f \"*\"");
 }
 
 static int clean() {
     clean_doc();
     clean_bin();
-    clean_msvc();
     clean_cmake();
-    clean_conan();
     return EXIT_SUCCESS;
 }
 
@@ -254,8 +207,6 @@ int main(int argc, const char **argv) {
         { "clean_doc"sv, clean_doc },
         { "clean_bin"sv, clean_bin },
         { "clean_cmake"sv, clean_cmake },
-        { "clean_conan"sv, clean_conan },
-        { "clean_msvc"sv, clean_msvc },
         { "cmake_init"sv, cmake_init },
         { "snyk"sv, snyk },
         { "safety"sv, safety },

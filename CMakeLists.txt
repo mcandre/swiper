@@ -1,6 +1,35 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.5)
 set(CMAKE_MESSAGE_LOG_LEVEL "WARNING")
 set(EXECUTABLE_OUTPUT_PATH "bin")
+
+if(
+    NOT DEFINED ENV{TARGET} OR
+    (
+        (NOT "$ENV{TARGET}" MATCHES "netbsd") AND
+        (NOT "$ENV{TARGET}" MATCHES "openbsd")
+    )
+)
+    find_program(CPPCHECK_PATH "cppcheck")
+
+    if ("${CPPCHECK_PATH}" STREQUAL "CPPCHECK_PATH-NOTFOUND")
+        message(FATAL_ERROR "cppcheck not found")
+    endif()
+
+    set(
+        CPPCHECK
+        "cppcheck"
+        "-q"
+        "--force"
+        "--enable=all"
+        "--inline-suppr"
+        "--suppressions-list=../suppressions.cfg"
+        "--error-exitcode=1"
+        "-U__SANITIZE_ADDRESS__"
+    )
+    set(CMAKE_C_CPPCHECK "${CPPCHECK}")
+    set(CMAKE_CXX_CPPCHECK "${CPPCHECK}")
+endif()
+
 project(swiper)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -115,7 +144,6 @@ endif()
 
 add_custom_target(audit COMMAND snyk test)
 
-add_custom_target(cppcheck COMMAND cppcheck -q --force --enable=all --inline-suppr --suppressions-list=suppressions.cfg --error-exitcode=1 -U__SANITIZE_ADDRESS__ -I include src)
 add_custom_target(cpplint COMMAND cpplint --recursive include src)
 add_custom_target(clang-format COMMAND sail -print0 include src | xargs -0 -n 1 clang-format -i)
 add_custom_target(yamllint COMMAND yamllint .)
@@ -123,9 +151,9 @@ add_custom_target(unmake COMMAND unmake .)
 
 # Missing linter ports
 if(MSVC)
-    add_custom_target(lint DEPENDS cppcheck yamllint unmake)
+    add_custom_target(lint DEPENDS yamllint unmake)
 else()
-    add_custom_target(lint DEPENDS cppcheck cpplint clang-format yamllint unmake)
+    add_custom_target(lint DEPENDS cpplint clang-format yamllint unmake)
 endif()
 
 add_executable(test-swiper src/cmd/test-swiper/main.cpp src/swiper.cpp)
