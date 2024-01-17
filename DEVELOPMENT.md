@@ -4,7 +4,6 @@
 * [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [cmake](https://cmake.org/) 3.5+
-* [cppcheck](https://cppcheck.sourceforge.io/) 2.13.0+
 * GNU or BSD [findutils](https://en.wikipedia.org/wiki/Find_(Unix))
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
