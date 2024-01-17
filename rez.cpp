@@ -3,9 +3,9 @@
 #include <filesystem>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <string_view>
-#include <map>
 #include <unordered_set>
 #include <vector>
 
@@ -84,12 +84,12 @@ static int safety() {
 
 static int snyk() {
 #if defined(_WIN32)
-    const std::string home_env_var_name{"USERPROFILE"};
+    const std::string home_env_var_name{ "USERPROFILE" };
 #else
-    const std::string home_env_var_name{"HOME"};
+    const std::string home_env_var_name{ "HOME" };
 #endif
 
-    const std::optional<std::string> home_opt{GetEnvironmentVariable(home_env_var_name)};
+    const std::optional<std::string> home_opt{ GetEnvironmentVariable(home_env_var_name) };
 
     if (!home_opt.has_value()) {
         std::cerr << "error missing environment variable: ";
@@ -97,14 +97,14 @@ static int snyk() {
         return EXIT_FAILURE;
     }
 
-    const std::filesystem::path home{*home_opt};
-    const std::filesystem::path conan_data_dir{home / ".conan" / "data"};
+    const std::filesystem::path home{ *home_opt };
+    const std::filesystem::path conan_data_dir{ home / ".conan" / "data" };
     std::stringstream command;
     command << "snyk test --unmanaged --trust-policies"
-        << " "
-        << conan_data_dir;
+            << " "
+            << conan_data_dir;
 
-    const int status{system(command.str().c_str())};
+    const int status{ system(command.str().c_str()) };
 
     if (status) {
         return EXIT_FAILURE;
@@ -221,7 +221,7 @@ int main(int argc, const char **argv) {
         { "build"sv, build },
         { "doc"sv, doc },
         { "fuzz"sv, fuzz },
-        { "lint"sv, lint},
+        { "lint"sv, lint },
         { "test"sv, test },
         { "install"sv, install },
         { "uninstall"sv, uninstall }
