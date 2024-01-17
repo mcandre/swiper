@@ -24,7 +24,7 @@
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
-* [rez](https://github.com/mcandre/rez) 0.0.11
+* [rez](https://github.com/mcandre/rez) 0.0.15
 * [time](https://linux.die.net/man/1/time)
 
 # INSTALL DEPENDENCIES
