@@ -142,8 +142,6 @@ else()
     add_custom_target(uninstall COMMAND rm -f "${INSTALL_FILE_BENCH}")
 endif()
 
-add_custom_target(audit COMMAND snyk test)
-
 add_custom_target(cpplint COMMAND cpplint --recursive ../include ../src)
 add_custom_target(clang-format COMMAND sail -print0 ../include ../src | xargs -0 -n 1 clang-format -i)
 add_custom_target(yamllint COMMAND yamllint ..)
