@@ -1,6 +1,5 @@
 .rez/
 .psenvrc
-bin/
 *.profraw
 *.profdata
 html/
