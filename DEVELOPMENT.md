@@ -4,12 +4,10 @@
 * [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
 * [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [cmake](https://cmake.org/) 3.5+
-* GNU or BSD [findutils](https://en.wikipedia.org/wiki/Find_(Unix))
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
 * [Python](https://www.python.org/) 3.12.1+
 * [Rust](https://www.rust-lang.org/en-US/) 1.68.2+
-* POSIX compatible [sh](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
 * Provision additional dev tools with `make -f install.mk`
 
 ## Recommended
