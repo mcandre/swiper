@@ -8,6 +8,7 @@
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
 * [Python](https://www.python.org/) 3.12.1+
+* [rez](https://github.com/mcandre/rez) 0.0.16
 * [Rust](https://www.rust-lang.org/en-US/) 1.68.2+
 * Provision additional dev tools with `make -f install.mk`
 
@@ -24,7 +25,6 @@
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
-* [rez](https://github.com/mcandre/rez) 0.0.15
 * [time](https://linux.die.net/man/1/time)
 
 # INSTALL DEPENDENCIES
