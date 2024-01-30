@@ -1,8 +1,6 @@
 # BUILDTIME REQUIREMENTS
 
-* a [C++](https://www.cplusplus.com/) compiler with C++17 support (e.g. clang 7+, g++ 9+, MSVC 19+)
-* [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
-* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
+* [clang++](https://clang.llvm.org/) 14+ or [g++](https://gcc.gnu.org/) 12+
 * [cmake](https://cmake.org/) 3.5+
 * [git](https://git-scm.com/) 2.39+
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
@@ -17,9 +15,8 @@
 * [ASDF](https://asdf-vm.com/) 0.10 (run `asdf reshim` after provisioning)
 * [direnv](https://direnv.net/) 2
 * [c++filt](https://linux.die.net/man/1/c++filt) from binutils
-* [clang](https://clang.llvm.org/) (UNIX) or [MSVC](https://gist.github.com/mcandre/5ceb67ad44f6b974d33bcddedcb16e89) (Windows)
-* [clang-format](https://clang.llvm.org/docs/ClangFormat.html) (UNIX)
-* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) (UNIX)
+* [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+* [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [llvm](https://llvm.org/) (UNIX)
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
