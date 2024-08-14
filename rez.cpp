@@ -78,10 +78,6 @@ static int build() {
     return system("cmake --build build --config Release");
 }
 
-static int safety() {
-    return system("safety check");
-}
-
 static int snyk() {
 #if defined(_WIN32)
     const std::string home_env_var_name{ "USERPROFILE" };
@@ -114,12 +110,6 @@ static int snyk() {
 }
 
 static int audit() {
-    const int status{ safety() };
-
-    if (status != EXIT_SUCCESS) {
-        return status;
-    }
-
     return snyk();
 }
 
@@ -215,7 +205,6 @@ int main(int argc, const char **argv) {
         { "clean_cmake"sv, clean_cmake },
         { "cmake_init"sv, cmake_init },
         { "snyk"sv, snyk },
-        { "safety"sv, safety },
         { "audit"sv, audit },
         { "bench"sv, bench },
         { "build"sv, build },
