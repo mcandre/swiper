@@ -3,6 +3,7 @@
 * [clang++](https://clang.llvm.org/) 14+ or [g++](https://gcc.gnu.org/) 12+
 * [cmake](https://cmake.org/) 3.5+
 * [git](https://git-scm.com/) 2.39+
+* [Go](https://go.dev/) 1.23.0+
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
 * [Python](https://www.python.org/) 3.12.1+
