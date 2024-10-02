@@ -3,12 +3,12 @@
 * [clang++](https://clang.llvm.org/) 14+ or [g++](https://gcc.gnu.org/) 12+
 * [cmake](https://cmake.org/) 3.5+
 * [git](https://git-scm.com/) 2.39+
-* [Go](https://go.dev/) 1.23.0+
+* [Go](https://go.dev/) 1.23.2+
 * POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
-* [Node.js](https://nodejs.org/en) 20.10.0+
 * [Python](https://www.python.org/) 3.12.1+
 * [rez](https://github.com/mcandre/rez) 0.0.16
 * [Rust](https://www.rust-lang.org/en-US/) 1.68.2+
+* [Snyk](https://snyk.io/)
 * Provision additional dev tools with `make -f install.mk`
 
 ## Recommended
