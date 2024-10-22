@@ -1,9 +1,15 @@
 .POSIX:
 .SILENT:
-.PHONY: all
+.PHONY: \
+	all \
+	python \
+	rust
 
-all:
-	cargo install --force unmake@0.0.17
+all: python rust
 
+python:
 	pip3 install --upgrade pip setuptools
 	pip3 install -r requirements-dev.txt
+
+rust:
+	cargo install --force unmake@0.0.17
