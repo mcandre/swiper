@@ -3,13 +3,12 @@
 * [clang++](https://clang.llvm.org/) 14+ or [g++](https://gcc.gnu.org/) 12+
 * [cmake](https://cmake.org/) 3.5+
 * [git](https://git-scm.com/) 2.39+
-* [Go](https://go.dev/) 1.23.2+
-* [GNU](https://www.gnu.org/software/make/) / [BSD](https://man.freebsd.org/cgi/man.cgi?make(1)) make
+* POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
 * [Python](https://www.python.org/) 3.12.1+
 * [rez](https://github.com/mcandre/rez) 0.0.16
 * [Rust](https://www.rust-lang.org/en-US/) 1.68.2+
 * [Snyk](https://snyk.io/)
-* Provision additional dev tools with `make -j 4 -f install.mk`
+* Provision additional dev tools with `make -f install.mk [-j 4]`
 
 ## Recommended
 
@@ -21,6 +20,7 @@
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [llvm](https://llvm.org/) (UNIX)
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
+* [GNU](https://www.gnu.org/)/[BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) make
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
 * [time](https://linux.die.net/man/1/time)

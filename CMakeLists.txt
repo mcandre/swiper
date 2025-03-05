@@ -121,7 +121,7 @@ else()
     add_custom_target(uninstall COMMAND rm -f "${INSTALL_FILE_BENCH}")
 endif()
 
-add_custom_target(cpplint COMMAND cpplint --recursive ../include ../src)
+add_custom_target(cpplint COMMAND .venv/bin/cpplint --recursive ../include ../src)
 add_custom_target(clang-format COMMAND clang-format -i ${CXX_SOURCE_FILES})
 add_custom_target(unmake COMMAND unmake ..)
 add_custom_target(unmake_dry_run COMMAND unmake -n ..)

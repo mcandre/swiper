@@ -8,8 +8,9 @@
 all: python rust
 
 python:
-	pip3 install --upgrade pip setuptools
-	pip3 install -r requirements-dev.txt
+	python3 -m venv .venv
+	.venv/bin/python3 -m pip install --upgrade pip setuptools
+	.venv/bin/python3 -m pip install -r requirements.txt
 
 rust:
 	cargo install --force unmake@0.0.17
