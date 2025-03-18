@@ -3,7 +3,7 @@
 * [clang++](https://clang.llvm.org/) 14+ or [g++](https://gcc.gnu.org/) 12+
 * [cmake](https://cmake.org/) 3.5+
 * [git](https://git-scm.com/) 2.39+
-* POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
+* [POSIX](https://pubs.opengroup.org/onlinepubs/9799919799/) compatible [make](https://en.wikipedia.org/wiki/Make_(software))
 * [Python](https://www.python.org/) 3.12.1+
 * [rez](https://github.com/mcandre/rez) 0.0.16
 * [Rust](https://www.rust-lang.org/en-US/) 1.68.2+
@@ -20,10 +20,10 @@
 * [cpufrequtils](https://linux.die.net/man/1/cpufreq-set) (Linux)
 * [llvm](https://llvm.org/) (UNIX)
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
-* [GNU](https://www.gnu.org/)/[BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) make
+* [GNU](https://www.gnu.org/)/[BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) [make](https://en.wikipedia.org/wiki/Make_(software))
 * [perf](https://perf.wiki.kernel.org/index.php/Main_Page) (Linux)
 * [powershell](https://docs.microsoft.com/en-us/powershell/)
-* [time](https://linux.die.net/man/1/time)
+* [POSIX](https://pubs.opengroup.org/onlinepubs/9799919799/) compatible [time](https://en.wikipedia.org/wiki/Time_(Unix))
 
 # INSTALL DEPENDENCIES
 
